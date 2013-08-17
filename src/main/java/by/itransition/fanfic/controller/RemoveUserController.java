@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import by.itransition.fanfic.model.FanficModel;
+
 @Controller
 @RequestMapping("/removeUser")
 public class RemoveUserController {
@@ -15,7 +17,7 @@ public class RemoveUserController {
 	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
 	public String user(@PathVariable("username") String username,
 			Model model, HttpServletRequest request){
-		//FanficModel.getInstance().removeUser(username);
+		FanficModel.getInstance().removeUser(username);
 		return "redirect:/allUsers";
 	}
 }

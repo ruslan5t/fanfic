@@ -11,10 +11,13 @@
 	rel="stylesheet" media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="/resources/js/jquery-1.10.2.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.raty.min.js" />"></script>
+<script src="<c:url value="/resources/js/fanfic.js" />"></script>
 </head>
 <body>
+	<div id="fanficId" value="${fanfic.getId()}"></div>
 	<div class="navbar">
 		<div class="navbar-inner">
 			<ul class="nav">
@@ -54,6 +57,11 @@
 		<tr>
 			<td>
 				<hr />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="rating"></div>
 			</td>
 		</tr>
 		<c:forEach items="${fanfic.getComments()}" var="comment">
