@@ -27,14 +27,18 @@ public class FanficModel {
 
 	}
 
-	public void clear() {
-		fanficModel = new FanficModel();
-	}
-
 	public static FanficModel getInstance() {
 		return fanficModel;
 	}
 
+	public void removeUserByName(String username) {
+		for (User user : userDao.getUsers()) {
+			if (user.getUsername().equals(username)) {
+				userDao.remove(user);
+			}
+		}
+	}
+	
 	public void registerUser(User user) {
 		userDao.register(user);
 		user.setFanficDao(fanficDao);
