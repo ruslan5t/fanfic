@@ -11,4 +11,7 @@ public interface UserDao {
 	void register(User user);
 	
 	List<User> getUsers();
+	
+	void remove(User user);
+	
 }

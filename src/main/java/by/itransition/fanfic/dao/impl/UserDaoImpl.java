@@ -29,4 +29,10 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getUsers() {
 		return users;
 	}
+	
+	@Override
+	public void remove(User user) {
+		users.remove(user);
+	}
+	
 }
