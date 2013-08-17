@@ -24,6 +24,7 @@ public class FanficModel {
 	private ChapterDao chapterDao = new ChapterDaoImpl();
 
 	private FanficModel() {
+
 	}
 
 	public void clear() {
