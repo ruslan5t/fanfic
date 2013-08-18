@@ -82,4 +82,33 @@ public class User {
 		this.chapterDao = chapterDao;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((chapterDao == null) ? 0 : chapterDao.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result
+				+ ((fanficDao == null) ? 0 : fanficDao.hashCode());
+		result = prime * result + ((fanfics == null) ? 0 : fanfics.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((userDao == null) ? 0 : userDao.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return username == other.getUsername();
+	}
 }

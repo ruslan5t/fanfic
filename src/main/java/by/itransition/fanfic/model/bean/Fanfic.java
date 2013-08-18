@@ -1,7 +1,9 @@
 package by.itransition.fanfic.model.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import by.itransition.fanfic.dao.ChapterDao;
 
@@ -22,6 +24,8 @@ public class Fanfic {
 	private List<Chapter> chapters = new ArrayList<Chapter>();
 	
 	private List<Comment> comments = new ArrayList<Comment>();
+	
+	private Map<User, Integer> vote = new HashMap<User, Integer>();
 
 	private User author;
 	
@@ -106,6 +110,18 @@ public class Fanfic {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public void vote(int rating, User user) {
+		if (vote.containsKey(user)) {
+			vote.remove(user);
+		}
+		vote.put(user, rating);
+		this.rating = 0;
+		for (User userKey : vote.keySet()) {
+			this.rating += vote.get(userKey);
+		}
+		this.rating /= vote.size();
 	}
 
 }
