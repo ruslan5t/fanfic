@@ -7,24 +7,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link href="<c:url value="/resources/css/style.css" />" 
-	rel="stylesheet" media="screen">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="/resources/js/jquery-1.10.2.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<ul class="nav">
-				<jsp:include page="menu.jsp"></jsp:include>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<table>
 		<tr>
-			<td><a href="${pageContext.servletContext.contextPath}/createFanfic">Create fanfic</a></td>
+			<td><a
+				href="${pageContext.servletContext.contextPath}/createFanfic">Create
+					fanfic</a></td>
 		</tr>
 		<tr>
 			<td>
@@ -38,19 +34,24 @@
 		</tr>
 		<tr>
 			<td>
-				<h3><b>${showedUser.getUsername()}</b></h3>
+				<h3>
+					<b>${showedUser.getUsername()}</b>
+				</h3>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<h3><b>Fanfics:</b></h3>
+				<h3>
+					<b>Fanfics:</b>
+				</h3>
 			</td>
 		</tr>
 		<c:forEach items="${showedUser.getFanfics()}" var="fanfic">
 			<tr>
 				<td>
 					<h3>
-						<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
+						<a
+							href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
 					</h3>
 				</td>
 			</tr>

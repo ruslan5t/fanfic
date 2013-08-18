@@ -11,17 +11,11 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="/resources/js/jquery-1.10.2.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<ul class="nav">
-				<jsp:include page="menu.jsp"></jsp:include>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<form:form method="post" modelAttribute="newFanfic">
 		<form:label path="name">Name :</form:label>
 		<form:input path="name" />

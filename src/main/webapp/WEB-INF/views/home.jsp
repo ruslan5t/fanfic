@@ -14,13 +14,7 @@
 <script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<ul class="nav">
-				<jsp:include page="menu.jsp"></jsp:include>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset1">
 		<div class="span2">
 			<div class="pageTitle">Main page</div>
@@ -44,12 +38,18 @@
 		<div class="span1 offset8">
 			<div id="tagcloud">
 				<ul>
-					<li><a href="${pageContext.servletContext.contextPath}/catalog/comedy">
+					<li><a
+						href="${pageContext.servletContext.contextPath}/catalog/comedy">
 							comedy</a></li>
-					<li><a href="${pageContext.servletContext.contextPath}/catalog/tragedy">
+					<li><a
+						href="${pageContext.servletContext.contextPath}/catalog/tragedy">
 							tragedy</a></li>
-					<li><a href="${pageContext.servletContext.contextPath}/catalog/drama">
+					<li><a
+						href="${pageContext.servletContext.contextPath}/catalog/drama">
 							drama</a></li>
+					<li><a
+						href="${pageContext.servletContext.contextPath}/catalog/fantasy">
+							fantasy</a></li>
 				</ul>
 			</div>
 		</div>

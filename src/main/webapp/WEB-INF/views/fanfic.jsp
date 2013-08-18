@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link href="<c:url value="/resources/css/style.css" />" 
-	rel="stylesheet" media="screen">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
 <script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
@@ -21,20 +21,14 @@
 	<div id="isLogged" value="${isLogged}"></div>
 	<div id="fanficRating" value="${fanfic.getRating()}"></div>
 	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<ul class="nav">
-				<jsp:include page="menu.jsp"></jsp:include>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<table>
 		<tr>
 			<td>
 				<h2>
-					<a href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
-						${fanfic.getAuthor().getUsername()}
-					</a>
+					<a
+						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
+						${fanfic.getAuthor().getUsername()} </a>
 				</h2>
 			</td>
 		</tr>
@@ -42,29 +36,27 @@
 			<td><h2>${fanfic.getName()}</h2></td>
 		</tr>
 		<tr>
-			<td>
-				Categories:
-				<c:forEach items="${fanfic.getCategories()}" var="category">
-					<a href="${pageContext.servletContext.contextPath}/catalog/${category}">
-					${category}
-					</a>
+			<td>Categories: <c:forEach items="${fanfic.getCategories()}"
+					var="category">
+					<a
+						href="${pageContext.servletContext.contextPath}/catalog/${category}">
+						${category} </a>
 				</c:forEach>
 			</td>
 		</tr>
-		<c:if test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
+		<c:if
+			test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
 			<tr>
-				<td>
-					<a href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">Add chapter</a>
-				</td>
+				<td><a
+					href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">Add
+						chapter</a></td>
 			</tr>
 		</c:if>
 		<c:forEach items="${fanfic.getChapters()}" var="chapter">
 			<tr>
-				<td>
-					<a href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getName()}">
-					${chapter.getName()}
-					</a>
-				</td>
+				<td><a
+					href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getName()}">
+						${chapter.getName()} </a></td>
 			</tr>
 		</c:forEach>
 		<tr>
@@ -79,20 +71,18 @@
 		</tr>
 		<c:forEach items="${fanfic.getComments()}" var="comment">
 			<tr>
-				<td>
-					${comment.getContent()}
-				</td>
+				<td>${comment.getContent()}</td>
 			</tr>
 		</c:forEach>
 		<c:if test="${isLogged}">
 			<tr>
-				<td>
-					Add comment:
-				</td>
+				<td>Add comment:</td>
 			</tr>
 			<tr>
 				<td>
-					<form action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}" method="post">
+					<form
+						action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
+						method="post">
 						<textarea name="newComment"></textarea>
 						<input type="submit" value="Add comment" />
 					</form>

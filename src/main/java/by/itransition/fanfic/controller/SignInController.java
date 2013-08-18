@@ -31,7 +31,7 @@ public class SignInController {
 		if (isUserRegistered == true) {
 			request.getSession().setAttribute("username",
 					user.getUsername());
-			return "redirect:/home";
+			return "redirect:/";
 		}
 		model.addAttribute("error", true);
 		return "signIn";

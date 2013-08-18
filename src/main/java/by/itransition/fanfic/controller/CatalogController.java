@@ -27,7 +27,8 @@ public class CatalogController extends AbstractController {
 	@RequestMapping(value = "/comedy", method = RequestMethod.GET)
 	public String getComedy(Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("comedy");
+		List<Fanfic> fanfics = FanficModel.getInstance()
+				.getFanficsByCategory("comedy");
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}
@@ -35,7 +36,8 @@ public class CatalogController extends AbstractController {
 	@RequestMapping(value = "/tragedy", method = RequestMethod.GET)
 	public String getTragedy(Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("tragedy");
+		List<Fanfic> fanfics = FanficModel.getInstance()
+				.getFanficsByCategory("tragedy");
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}
@@ -43,7 +45,8 @@ public class CatalogController extends AbstractController {
 	@RequestMapping(value = "/drama", method = RequestMethod.GET)
 	public String getDrama(Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("drama");
+		List<Fanfic> fanfics = FanficModel.getInstance()
+				.getFanficsByCategory("drama");
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}

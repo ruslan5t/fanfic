@@ -7,34 +7,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link href="<c:url value="/resources/css/style.css" />" 
-	rel="stylesheet" media="screen">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="/resources/js/jquery-1.10.2.min.js"></script>
-<script src="/resources/js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<ul class="nav">
-				<jsp:include page="menu.jsp"></jsp:include>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="menu.jsp"></jsp:include>
 	<table>
 		<tr>
-			<td>
-			<form:form method="post" modelAttribute="user" class="inputDialog">
-				<p><form:input path="username" placeholder="Username"/></p>
-				<p><form:password path="password" placeholder="Password"/></p>
-				<c:if test="${not empty error}">
-					<p><form:label path="">Incorrect username or password.</form:label></p>
-				</c:if>
-				<input type="submit" value="Sign in">
-				<a href="signUp">Register now</a>
-			</form:form>
-			</td>
+			<td><form:form method="post" modelAttribute="user"
+					class="inputDialog">
+					<p>
+						<form:input path="username" placeholder="Username" />
+					</p>
+					<p>
+						<form:password path="password" placeholder="Password" />
+					</p>
+					<c:if test="${not empty error}">
+						<p>
+							<form:label path="">Incorrect username or password.</form:label>
+						</p>
+					</c:if>
+					<input type="submit" value="Sign in">
+					<a href="signUp">Register now</a>
+				</form:form></td>
 		</tr>
 	</table>
 </body>
