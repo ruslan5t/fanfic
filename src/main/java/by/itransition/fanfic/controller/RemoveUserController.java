@@ -17,7 +17,7 @@ public class RemoveUserController {
 	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
 	public String user(@PathVariable("username") String username,
 			Model model, HttpServletRequest request){
-		FanficModel.getInstance().removeUser(username);
+		FanficModel.getInstance().removeUserByName(username);
 		return "redirect:/allUsers";
 	}
 }

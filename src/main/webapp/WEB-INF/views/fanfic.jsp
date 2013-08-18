@@ -18,6 +18,9 @@
 </head>
 <body>
 	<div id="fanficId" value="${fanfic.getId()}"></div>
+	<div id="isLogged" value="${isLogged}"></div>
+	<div id="fanficRating" value="${fanfic.getRating()}"></div>
+	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 	<div class="navbar">
 		<div class="navbar-inner">
 			<ul class="nav">
@@ -29,7 +32,7 @@
 		<tr>
 			<td>
 				<h2>
-					<a href="/fanfic/user/${fanfic.getAuthor().getUsername()}">
+					<a href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
 						${fanfic.getAuthor().getUsername()}
 					</a>
 				</h2>
@@ -38,17 +41,25 @@
 		<tr>
 			<td><h2>${fanfic.getName()}</h2></td>
 		</tr>
+		<tr>
+			<td>
+				Categories:
+				<c:forEach items="${fanfic.getCategories()}" var="category">
+					${category}
+				</c:forEach>
+			</td>
+		</tr>
 		<c:if test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
 			<tr>
 				<td>
-					<a href="/fanfic/addChapter/${fanfic.getId()}">Add chapter</a>
+					<a href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">Add chapter</a>
 				</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${fanfic.getChapters()}" var="chapter">
 			<tr>
 				<td>
-					<a href="/fanfic/chapter/${fanfic.getId()}/${chapter.getName()}">
+					<a href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getName()}">
 					${chapter.getName()}
 					</a>
 				</td>
@@ -79,7 +90,7 @@
 			</tr>
 			<tr>
 				<td>
-					<form action="/fanfic/addComment/${fanfic.getId()}" method="post">
+					<form action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}" method="post">
 						<textarea name="newComment"></textarea>
 						<input type="submit" value="Add comment" />
 					</form>

@@ -24,7 +24,7 @@
 	</div>
 	<table>
 		<tr>
-			<td><a href="/fanfic/createFanfic">Create fanfic</a></td>
+			<td><a href="${pageContext.servletContext.contextPath}/createFanfic">Create fanfic</a></td>
 		</tr>
 		<tr>
 			<td>
@@ -50,7 +50,7 @@
 			<tr>
 				<td>
 					<h3>
-						<a href="/fanfic/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
+						<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
 					</h3>
 				</td>
 			</tr>

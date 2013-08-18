@@ -24,9 +24,9 @@
 	<ul>
 		<c:forEach items="${allUsers}" var="user">
 			<li>
-				<a href="/fanfic/user/${user.getUsername()}">
+				<a href="${pageContext.servletContext.contextPath}/user/${user.getUsername()}">
 					${user.getUsername()} </a>
-				<a href="/fanfic/removeUser/${user.getUsername()}">
+				<a href="${pageContext.servletContext.contextPath}/removeUser/${user.getUsername()}">
 					Remove
 				</a>	
 			</li>

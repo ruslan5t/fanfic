@@ -40,7 +40,7 @@
 				<c:forEach items="${allFanfics}" var="fanfic">
 					<tr>
 					<td>
-					<a href="/fanfic/fanfic/${fanfic.getId()}">
+					<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
 					${fanfic.getName()}
 					</a>
 					</td>

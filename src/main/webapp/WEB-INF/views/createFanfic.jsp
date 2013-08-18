@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link href="<c:url value="/resources/css/style.css" />" 
-	rel="stylesheet" media="screen">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
 <script src="/resources/js/jquery-1.10.2.min.js"></script>
@@ -22,16 +22,15 @@
 			</ul>
 		</div>
 	</div>
-	<table>
-		<tr>
-			<td>
-				<form:form method="post" modelAttribute="newFanfic">
-					<form:label path="name">Name :</form:label>
-					<form:input path="name" />
-					<input type="submit" value="Create fanfic">
-				</form:form>
-			</td>
-		</tr>
-	</table>
+	<form:form method="post" modelAttribute="newFanfic">
+		<form:label path="name">Name :</form:label>
+		<form:input path="name" />
+		<input type="submit" value="Create fanfic">
+		<form:select path="categories" class="catigories">
+			<form:option value="comedy">comedy</form:option>
+			<form:option value="tragedy">tragedy</form:option>
+			<form:option value="drama">drama</form:option>
+		</form:select>
+	</form:form>
 </body>
 </html>

@@ -33,7 +33,9 @@
 			<tr>
 				<td>
 					<h2>
-						<a href="/fanfic/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
+						<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+						${fanfic.getName()}
+						</a>
 					</h2>
 				</td>
 			</tr>
