@@ -30,6 +30,7 @@
 			<form:option value="comedy">comedy</form:option>
 			<form:option value="tragedy">tragedy</form:option>
 			<form:option value="drama">drama</form:option>
+			<form:option value="drama">fantasy</form:option>
 		</form:select>
 	</form:form>
 </body>

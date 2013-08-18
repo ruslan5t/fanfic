@@ -45,7 +45,9 @@
 			<td>
 				Categories:
 				<c:forEach items="${fanfic.getCategories()}" var="category">
+					<a href="${pageContext.servletContext.contextPath}/catalog/${category}">
 					${category}
+					</a>
 				</c:forEach>
 			</td>
 		</tr>

@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Home</title>
@@ -20,28 +21,38 @@
 			</ul>
 		</div>
 	</div>
-	<table>
-		<tr>
-			<td>
-				<div class="pageTitle">Main page</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<hr />
-			</td>
-		</tr>
-		<c:forEach items="${bestFanfics}" var="fanfic">
-			<tr>
-				<td>
-					<h2>
-						<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-						${fanfic.getName()}
-						</a>
-					</h2>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
+	<div class="row offset1">
+		<div class="span2">
+			<div class="pageTitle">Main page</div>
+			<div class="row">
+				<div class="span2">
+					<hr />
+				</div>
+			</div>
+			<c:forEach items="${bestFanfics}" var="fanfic">
+				<div class="row">
+					<div class="span2">
+						<h2>
+							<a
+								href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+								${fanfic.getName()} </a>
+						</h2>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="span1 offset8">
+			<div id="tagcloud">
+				<ul>
+					<li><a href="${pageContext.servletContext.contextPath}/catalog/comedy">
+							comedy</a></li>
+					<li><a href="${pageContext.servletContext.contextPath}/catalog/tragedy">
+							tragedy</a></li>
+					<li><a href="${pageContext.servletContext.contextPath}/catalog/drama">
+							drama</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -26,10 +26,8 @@ public class SetFanficRatingController {
 		User user = FanficModel.getInstance().getUser((String)
 				request.getSession().getAttribute("username"));
 		Fanfic fanfic = FanficModel.getInstance().getFanficById(fanficId);
-		System.out.println(userRating);
 		fanfic.vote(userRating, user);
 		System.out.println(fanfic.getRating());
-		System.out.println("***************");
 		return Double.toString(fanfic.getRating());
 	}
 }

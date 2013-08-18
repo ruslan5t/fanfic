@@ -23,4 +23,28 @@ public class CatalogController extends AbstractController {
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}
+	
+	@RequestMapping(value = "/comedy", method = RequestMethod.GET)
+	public String getComedy(Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("comedy");
+		model.addAttribute("allFanfics", fanfics);
+		return "catalog";
+	}
+	
+	@RequestMapping(value = "/tragedy", method = RequestMethod.GET)
+	public String getTragedy(Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("tragedy");
+		model.addAttribute("allFanfics", fanfics);
+		return "catalog";
+	}
+	
+	@RequestMapping(value = "/drama", method = RequestMethod.GET)
+	public String getDrama(Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		List<Fanfic> fanfics = FanficModel.getInstance().getFanfics("drama");
+		model.addAttribute("allFanfics", fanfics);
+		return "catalog";
+	}
 }
