@@ -50,4 +50,13 @@ public class CatalogController extends AbstractController {
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}
+	
+	@RequestMapping(value = "/fantasy", method = RequestMethod.GET)
+	public String getFantasy(Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		List<Fanfic> fanfics = FanficModel.getInstance()
+				.getFanficsByCategory("fantasy");
+		model.addAttribute("allFanfics", fanfics);
+		return "catalog";
+	}
 }

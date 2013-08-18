@@ -15,18 +15,10 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/setFanficRating")
-public class SetFanficRatingController {
+public class FindController {
 
-	@RequestMapping(value = "/{fanficId}/{userRating}",
-			method = RequestMethod.POST)
-	public @ResponseBody
-	String setFanficRating(@PathVariable("fanficId") int fanficId,
-			@PathVariable("userRating") int userRating,
-			Model model, HttpServletRequest request) {
-		User user = FanficModel.getInstance().getUser((String)
-				request.getSession().getAttribute("username"));
-		Fanfic fanfic = FanficModel.getInstance().getFanficById(fanficId);
-		fanfic.vote(userRating, user);
-		return Double.toString(fanfic.getRating());
+	@RequestMapping(method = RequestMethod.GET)
+	public String setFanficRating(Model model, HttpServletRequest request) {
+		throw new RuntimeException();
 	}
 }

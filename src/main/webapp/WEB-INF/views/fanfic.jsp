@@ -34,6 +34,8 @@
 		</tr>
 		<tr>
 			<td><h2>${fanfic.getName()}</h2></td>
+			<td><button id="convertToPdf">convert to pdf</button></td>
+			<td><a id="hrefToConvertedFile"></a></td>
 		</tr>
 		<tr>
 			<td>Categories: <c:forEach items="${fanfic.getCategories()}"

@@ -17,15 +17,31 @@ $(function() {
 
 	function setUsersRating(rating) {
 		$.ajax({
-			url: "/fanfic/setFanficRating/" + $("#fanficId").attr("value") +
-			"/" + rating,
+			url: $("#contextPath").attr("value") + "/setFanficRating/" 
+				+ $("#fanficId").attr("value") + "/" + rating,
 			type: "post",
-			success: setFanficRating 
+			success: setFanficRating
 		});
 	}
 
 	function setFanficRating(fanficRating) {
 		console.log(fanficRating);
 		$("#rating").raty("score", fanficRating);
+	}
+	
+	$("#convertToPdf").on("click", convertFanficToPdf);
+	
+	function convertFanficToPdf() {
+		$.ajax({
+			url: $("#contextPath").attr("value") + "/convertFanficToPdf/" 
+				+ $("#fanficId").attr("value"),
+			type: "post",
+			success: setHrefToConvertedFile 
+		});
+	}
+	
+	function setHrefToConvertedFile(hrefToConvertedFile) {
+		$("#hrefToConvertedFile").attr("href", hrefToConvertedFile);
+		$("#hrefToConvertedFile").text("Download");
 	}
 });
