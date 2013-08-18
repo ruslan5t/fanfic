@@ -1,5 +1,6 @@
 package by.itransition.fanfic.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +38,16 @@ public class FanficModel {
 				userDao.remove(user);
 			}
 		}
+	}
+	
+	public List<Fanfic> getFanficsByCategory(String category) {
+		List<Fanfic> answer = new ArrayList<Fanfic>();
+		for (Fanfic fanfic : fanficDao.getFanfics()) {
+			if (fanfic.getCategories().contains(category)) {
+				answer.add(fanfic);
+			}
+		}
+		return answer;
 	}
 	
 	public void registerUser(User user) {
