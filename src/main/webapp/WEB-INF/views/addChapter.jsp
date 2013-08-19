@@ -16,14 +16,11 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<table>
-		<tr>
-			<td><form:form method="POST" modelAttribute="chapter">
-					<form:input path="name" />
-					<form:textarea path="content" />
-					<input type="submit" value="Add chapter" />
-				</form:form></td>
-		</tr>
-	</table>
+	<div class="row offset1">
+		<form:form method="POST" modelAttribute="chapter">
+			<jsp:include page="makeChapterForm.jsp"></jsp:include>
+			<input type="submit" value="Add chapter" />
+		</form:form>
+	</div>
 </body>
 </html>

@@ -22,75 +22,77 @@
 	<div id="fanficRating" value="${fanfic.getRating()}"></div>
 	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<table>
-		<tr>
-			<td>
-				<h2>
-					<a
-						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
-						${fanfic.getAuthor().getUsername()} </a>
-				</h2>
-			</td>
-		</tr>
-		<tr>
-			<td><h2>${fanfic.getName()}</h2></td>
-			<td><button id="convertToPdf">convert to pdf</button></td>
-			<td><a id="hrefToConvertedFile"></a></td>
-		</tr>
-		<tr>
-			<td>Categories: <c:forEach items="${fanfic.getCategories()}"
-					var="category">
-					<a
-						href="${pageContext.servletContext.contextPath}/catalog/${category}">
-						${category} </a>
-				</c:forEach>
-			</td>
-		</tr>
-		<c:if
-			test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
-			<tr>
-				<td><a
-					href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">Add
-						chapter</a></td>
-			</tr>
-		</c:if>
-		<c:forEach items="${fanfic.getChapters()}" var="chapter">
-			<tr>
-				<td><a
-					href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getName()}">
-						${chapter.getName()} </a></td>
-			</tr>
-		</c:forEach>
-		<tr>
-			<td>
-				<hr />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div id="rating"></div>
-			</td>
-		</tr>
-		<c:forEach items="${fanfic.getComments()}" var="comment">
-			<tr>
-				<td>${comment.getContent()}</td>
-			</tr>
-		</c:forEach>
-		<c:if test="${isLogged}">
-			<tr>
-				<td>Add comment:</td>
-			</tr>
-			<tr>
-				<td>
-					<form
-						action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
-						method="post">
-						<textarea name="newComment"></textarea>
-						<input type="submit" value="Add comment" />
-					</form>
-				</td>
-			</tr>
-		</c:if>
-	</table>
+	<div class="row offset1">
+		<h2>${fanfic.getName()}</h2>
+		<button id="convertToPdf">convert to pdf</button>
+		<a id="hrefToConvertedFile"></a>
+	</div>
+	<c:if
+		test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
+		<div class="row offset1">
+			<a 
+				href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
+				Edit
+			</a>
+		</div>
+		<div class="row offset1">
+			<a
+				href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
+				Add chapter</a>
+		</div>
+	</c:if>
+	<div class="row offset1">
+		<div class="span1">Author:</div>
+		<div class="span2">
+			<a
+				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
+				${fanfic.getAuthor().getUsername()} </a>
+		</div>
+	</div>
+	<div class="row offset1">
+		<div class="span1">Categories:</div>
+		<div class="span2">
+			<c:forEach items="${fanfic.getCategories()}" var="category">
+				<a
+					href="${pageContext.servletContext.contextPath}/catalog/${category}">
+					${category} </a>
+			</c:forEach>
+		</div>
+	</div>
+	<div class="row offset1">
+		<div class="span1">Tags:</div>
+		<div class="span2">
+			<c:forEach items="${fanfic.getTags()}" var="tag">
+			${tag}
+			</c:forEach>
+		</div>
+	</div>
+	<c:forEach items="${fanfic.getChapters()}" var="chapter">
+		<div class="row offset1">
+			<a
+				href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
+				${chapter.getName()} </a>
+		</div>
+	</c:forEach>
+	<div class="row offset1">
+		<hr />
+	</div>
+	<div class="row offset1">
+		<div id="rating"></div>
+	</div>
+	<c:forEach items="${fanfic.getComments()}" var="comment">
+		<div class="row offset1">${comment.getContent()}</div>
+	</c:forEach>
+	<c:if test="${isLogged}">
+		<div class="row offset1">Add comment:</div>
+		<div class="row offset1">
+			<form
+				action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
+				method="post">
+				<textarea name="newComment"></textarea>
+				<input type="submit" value="Add comment" />
+			</form>
+		</div>
+	</c:if>
 </body>
 </html>

@@ -16,35 +16,14 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset1">
-		<div class="pageTitle">User profile</div>
-	</div>
-	<div class="row offset1">
-		<hr />
-	</div>
-	<div class="row offset1">
-		<h3>
-			<b>${showedUser.getUsername()}</b>
-		</h3>
-	</div>
-	<c:if test="${showedUser.getUsername().equals(currentUsername)}">
-		<div class="row offset1">
-			<a href="${pageContext.servletContext.contextPath}/createFanfic">
-				Create fanfic </a>
+
+	<form:form
+		action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
+		method="POST" modelAttribute="chapter">
+		<jsp:include page="makeChapterForm.jsp"></jsp:include>
+		<div class="row offset7">
+			<input type="submit" value="Edit chapter" />
 		</div>
-	</c:if>
-	<div class="row offset1">
-		<h3>
-			<b>Fanfics:</b>
-		</h3>
-	</div>
-	<c:forEach items="${showedUser.getFanfics()}" var="fanfic">
-		<div class="row offset1">
-			<h3>
-				<a
-					href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
-			</h3>
-		</div>
-	</c:forEach>
+	</form:form>
 </body>
 </html>

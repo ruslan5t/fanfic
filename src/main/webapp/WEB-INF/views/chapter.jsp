@@ -15,13 +15,12 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<table>
-		<tr>
-			<td>${chapter.getName()}</td>
-		</tr>
-		<tr>
-			<td>${chapter.getContent()}</td>
-		</tr>
-	</table>
+	<div class="row offset1">${chapter.getName()}</div>
+	<div class="row offset1">
+		<a
+			href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
+			Edit </a>
+	</div>
+	<div class="row offset1">${chapter.getContent()}</div>
 </body>
 </html>

@@ -16,19 +16,14 @@ import by.itransition.fanfic.model.bean.Fanfic;
 @RequestMapping("/chapter")
 public class ChapterController extends AbstractController {
 
-	@RequestMapping(value = "/{fanficId}/{chapterName}",
+	@RequestMapping(value = "/{fanficId}/{chapterId}",
 			method = RequestMethod.GET)
 	public String getChapter(@PathVariable("fanficId") int fanficId,
-			@PathVariable("chapterName") String chapterName,
+			@PathVariable("chapterId") int chapterId,
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
 		Fanfic fanfic = FanficModel.getInstance().getFanficById(fanficId);
-		for (Chapter chapter : fanfic.getChapters()) {
-			if (chapter.getName().equals(chapterName)) {
-				model.addAttribute("chapter", chapter);
-				break;
-			}
-		}
+		model.addAttribute("chapter", fanfic.getChapterById(chapterId));
 		return "chapter";
 	}
 }

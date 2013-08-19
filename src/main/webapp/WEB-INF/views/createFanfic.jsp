@@ -17,19 +17,10 @@
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<form:form method="post" modelAttribute="newFanfic">
-		<form:label path="name">Name:</form:label>
-		<form:input path="name" />
-		<form:label path="description">Description:</form:label>
-		<form:textarea path="description"/>
-		<form:label path="tags">Tags:</form:label>
-		<form:input path="tags"/>
-		<form:select path="categories" class="catigories">
-			<form:option value="comedy">comedy</form:option>
-			<form:option value="tragedy">tragedy</form:option>
-			<form:option value="drama">drama</form:option>
-			<form:option value="drama">fantasy</form:option>
-		</form:select>
-		<input type="submit" value="Create fanfic">
+		<jsp:include page="makeFanficForm.jsp"></jsp:include>
+		<div class="row offset7">
+			<input type="submit" value="Create fanfic">
+		</div>
 	</form:form>
 </body>
 </html>

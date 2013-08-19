@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.petebevin.markdown.MarkdownFilter;
+import com.petebevin.markdown.MarkdownProcessor;
+
 import by.itransition.fanfic.model.FanficModel;
+import by.itransition.fanfic.model.bean.Chapter;
 import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
@@ -25,7 +29,7 @@ public class ConvertFanficToPdfController {
 		RestTemplate restTemplate = new RestTemplate();
 		String url = "http://do.convertapi.com/Web2Pdf/json?" +
 				"storefile=true&OutputFileName=Fanfic&PageNo=true" +
-				"&curl=" + convertingFanfic.getName();
+				"&curl=" + convertToBook(convertingFanfic);
 		String jsonStr = restTemplate.postForObject(url, null, String.class);
 		JSONObject responseOfService = null;
 		JSONParser parser = new JSONParser();
@@ -35,5 +39,17 @@ public class ConvertFanficToPdfController {
 			e.printStackTrace();
 		}
 		return responseOfService.get("FileUrl").toString();
+	}
+	
+	private String convertToBook(Fanfic convertingFanfic) {
+		StringBuilder convertedBook = new StringBuilder();
+		convertedBook.append("<center><h2>" + convertingFanfic.getName() +
+				"</h2></center>");
+		for (Chapter chapter : convertingFanfic.getChapters()) {
+			convertedBook.append("<center><h4>" + chapter.getName() +
+					"</h4></center>");
+			convertedBook.append(chapter.getContent());
+		}
+		return convertedBook.toString();
 	}
 }

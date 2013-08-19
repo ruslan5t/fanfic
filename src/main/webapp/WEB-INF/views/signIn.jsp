@@ -16,25 +16,22 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<table>
-		<tr>
-			<td><form:form method="post" modelAttribute="user"
-					class="inputDialog">
-					<p>
-						<form:input path="username" placeholder="Username" />
-					</p>
-					<p>
-						<form:password path="password" placeholder="Password" />
-					</p>
-					<c:if test="${not empty error}">
-						<p>
-							<form:label path="">Incorrect username or password.</form:label>
-						</p>
-					</c:if>
-					<input type="submit" value="Sign in">
-					<a href="signUp">Register now</a>
-				</form:form></td>
-		</tr>
-	</table>
+	<div class="row offset7">
+		<form:form method="post" modelAttribute="user" class="inputDialog">
+			<p>
+				<form:input path="username" placeholder="Username" />
+			</p>
+			<p>
+				<form:password path="password" placeholder="Password" />
+			</p>
+			<c:if test="${not empty error}">
+				<p>
+					<form:label path="">Incorrect username or password.</form:label>
+				</p>
+			</c:if>
+			<input type="submit" value="Sign in">
+			<a href="signUp">Register now</a>
+		</form:form>
+	</div>
 </body>
 </html>

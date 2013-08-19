@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,38 +25,12 @@ public class CatalogController extends AbstractController {
 		return "catalog";
 	}
 	
-	@RequestMapping(value = "/comedy", method = RequestMethod.GET)
-	public String getComedy(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/{category}", method = RequestMethod.GET)
+	public String getComedy(@PathVariable("category") String category,
+			Model model, HttpServletRequest request) {
 		settingModel(model, request);
 		List<Fanfic> fanfics = FanficModel.getInstance()
-				.getFanficsByCategory("comedy");
-		model.addAttribute("allFanfics", fanfics);
-		return "catalog";
-	}
-	
-	@RequestMapping(value = "/tragedy", method = RequestMethod.GET)
-	public String getTragedy(Model model, HttpServletRequest request) {
-		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance()
-				.getFanficsByCategory("tragedy");
-		model.addAttribute("allFanfics", fanfics);
-		return "catalog";
-	}
-	
-	@RequestMapping(value = "/drama", method = RequestMethod.GET)
-	public String getDrama(Model model, HttpServletRequest request) {
-		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance()
-				.getFanficsByCategory("drama");
-		model.addAttribute("allFanfics", fanfics);
-		return "catalog";
-	}
-	
-	@RequestMapping(value = "/fantasy", method = RequestMethod.GET)
-	public String getFantasy(Model model, HttpServletRequest request) {
-		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance()
-				.getFanficsByCategory("fantasy");
+				.getFanficsByCategory(category);
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}

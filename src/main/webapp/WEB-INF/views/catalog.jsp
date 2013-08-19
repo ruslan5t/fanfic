@@ -15,30 +15,22 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<table>
-		<tr>
-			<td>
-				<div class="pageTitle">Catalog</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<hr />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table>
-					<c:forEach items="${allFanfics}" var="fanfic">
-						<tr>
-							<td><a
-								href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-									${fanfic.getName()} </a></td>
-						</tr>
-					</c:forEach>
-				</table>
-			</td>
-		</tr>
-	</table>
+	<div class="row offset1">
+		<div class="pageTitle">Catalog</div>
+	</div>
+	<div class="row offset1">
+		<hr />
+	</div>
+	<div class="row offset1">
+		<table>
+			<c:forEach items="${allFanfics}" var="fanfic">
+				<tr>
+					<td><a
+						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+							${fanfic.getName()} </a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

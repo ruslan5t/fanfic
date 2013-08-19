@@ -18,14 +18,10 @@
 	<div class="row offset1">
 		<div class="span2">
 			<div class="pageTitle">Main page</div>
-			<div class="row">
-				<div class="span2">
-					<hr />
-				</div>
-			</div>
+			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
 				<div class="row">
-					<div class="span2">
+					<div class="span4">
 						<h2>
 							<a
 								href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">

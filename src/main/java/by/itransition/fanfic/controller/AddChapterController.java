@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.petebevin.markdown.MarkdownProcessor;
+
 import by.itransition.fanfic.model.FanficModel;
 import by.itransition.fanfic.model.bean.Chapter;
 import by.itransition.fanfic.model.bean.Fanfic;
@@ -33,6 +35,8 @@ public class AddChapterController extends AbstractController {
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String createChapter(@ModelAttribute("chapter") Chapter chapter,
 			BindingResult bindingResult, HttpServletRequest request) {
+		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
+		chapter.setContent(markdownProcessor.markdown(chapter.getContent()));
 		fanfic.addChapter(chapter);
 		return "redirect:/fanfic/" + fanfic.getId();
 	}

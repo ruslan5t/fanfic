@@ -15,14 +15,14 @@
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<ul>
-		<c:forEach items="${allUsers}" var="user">
-			<li><a
+	<c:forEach items="${allUsers}" var="user">
+		<div class="row offset1">
+			<a
 				href="${pageContext.servletContext.contextPath}/user/${user.getUsername()}">
-					${user.getUsername()} </a> <a
+				${user.getUsername()} </a> <a
 				href="${pageContext.servletContext.contextPath}/removeUser/${user.getUsername()}">
-					Remove </a></li>
-		</c:forEach>
-	</ul>
+				Remove </a>
+		</div>
+	</c:forEach>
 </body>
 </html>
