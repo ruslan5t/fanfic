@@ -10,4 +10,8 @@ public interface ChapterDao {
 
 	List<Chapter> getChapters();
 
+	List<Chapter> search(String searchQuery);
+	
+	void save(Chapter chapter);
+	
 }

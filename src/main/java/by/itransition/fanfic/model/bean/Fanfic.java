@@ -12,9 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
+
 import by.itransition.fanfic.model.FanficModel;
 
 @Entity
+@Indexed
+@AnalyzerDef(name = "FanficAnalyzer",
+	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+	filters = { @TokenFilterDef(factory = LowerCaseFilterFactory.class) }
+)
 public class Fanfic {
 
 	@Id
@@ -23,22 +37,28 @@ public class Fanfic {
 
 	private double rating;
 
+	@Field
+	@Analyzer
 	private String name;
 
+	@Field
+	@Analyzer
 	private String description;
 
+	//@Field(bridge = @FieldBridge(impl=CollectionToCSVBridge.class))
 	@ElementCollection
 	private List<String> tags = new ArrayList<String>();
 
+	//@Field(bridge = @FieldBridge(impl=CollectionToCSVBridge.class))
 	@ElementCollection
 	private List<String> categories = new ArrayList<String>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Chapter> chapters = new ArrayList<Chapter>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Comment> comments = new ArrayList<Comment>();
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Vote> votes = new ArrayList<Vote>();
 
@@ -59,6 +79,7 @@ public class Fanfic {
 
 	public void setName(String name) {
 		this.name = name;
+		FanficModel.getInstance().save(this);
 	}
 
 	public String getDescription() {
@@ -67,6 +88,7 @@ public class Fanfic {
 
 	public void setDescription(String description) {
 		this.description = description;
+		FanficModel.getInstance().save(this);
 	}
 
 	public List <String> getTags() {
@@ -75,6 +97,7 @@ public class Fanfic {
 
 	public void setTags(List <String> tags) {
 		this.tags = tags;
+		FanficModel.getInstance().save(this);
 	}
 
 	public List <String> getCategories() {
@@ -83,6 +106,7 @@ public class Fanfic {
 
 	public void setCategories(List <String> categories) {
 		this.categories = categories;
+		FanficModel.getInstance().save(this);
 	}
 
 	public List <Chapter> getChapters() {
@@ -90,6 +114,7 @@ public class Fanfic {
 	}
 
 	public void addChapter(Chapter chapter) {
+		chapter.setFanfic(this);
 		chapters.add(chapter);
 		FanficModel.getInstance().save(this);
 	}
@@ -98,7 +123,7 @@ public class Fanfic {
 		comments.add(comment);
 		FanficModel.getInstance().save(this);
 	}
-	
+
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -118,7 +143,7 @@ public class Fanfic {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public void makeVote(int rating, User user) {
 		Vote newVote = null;
 		for (Vote vote : votes) {
@@ -191,4 +216,13 @@ public class Fanfic {
 		this.comments = comments;
 	}
 	
+	public Chapter getChapterById(int id) {
+		for (Chapter chapter : chapters) {
+			if (chapter.getId() == id) {
+				return chapter;
+			}
+		}
+		return null;
+	}
+
 }
