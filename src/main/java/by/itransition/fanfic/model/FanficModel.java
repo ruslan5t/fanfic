@@ -11,6 +11,7 @@ import by.itransition.fanfic.dao.UserDao;
 import by.itransition.fanfic.dao.impl.ChapterDaoImpl;
 import by.itransition.fanfic.dao.impl.FanficDaoImpl;
 import by.itransition.fanfic.dao.impl.UserDaoImpl;
+import by.itransition.fanfic.model.bean.Chapter;
 import by.itransition.fanfic.model.bean.Fanfic;
 import by.itransition.fanfic.model.bean.User;
 
@@ -38,6 +39,25 @@ public class FanficModel {
 
 	public void save(Fanfic fanfic) {
 		fanficDao.save(fanfic);
+	}
+	
+	public void save(Chapter chapter) {
+		chapterDao.save(chapter);
+	}
+	
+	public List<Fanfic> searchFanfics(String searchQuery) {
+		List<Fanfic> answer = new ArrayList<Fanfic>();
+		for (Fanfic fanfic : fanficDao.search(searchQuery)) {
+			if (!answer.contains(fanfic)) {
+				answer.add(fanfic);
+			}
+		}
+		for (Chapter chapter : chapterDao.search(searchQuery)) {
+			if (!answer.contains(chapter.getFanfic())) {
+				answer.add(chapter.getFanfic());
+			}
+		}
+		return answer;
 	}
 	
 	public List<Fanfic> getFanficsByCategory(String category) {

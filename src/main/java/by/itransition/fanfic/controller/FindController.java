@@ -14,11 +14,16 @@ import by.itransition.fanfic.model.bean.Fanfic;
 import by.itransition.fanfic.model.bean.User;
 
 @Controller
-@RequestMapping("/setFanficRating")
+@RequestMapping("/find")
 public class FindController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String setFanficRating(Model model, HttpServletRequest request) {
-		throw new RuntimeException();
+	public void setFanficRating(Model model, HttpServletRequest request) {
+		System.out.println("Start");
+		for (Fanfic fanfic : FanficModel.getInstance()
+				.searchFanfics(request.getParameter("searchRequest"))) {
+			System.out.println(fanfic.getName());
+		}
+		System.out.println("End");
 	}
 }
