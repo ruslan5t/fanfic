@@ -11,4 +11,6 @@ public interface FanficDao {
 	
 	List<Fanfic> getFanfics();
 
+	void save(Fanfic fanfic);
+	
 }

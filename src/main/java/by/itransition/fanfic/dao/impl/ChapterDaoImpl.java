@@ -1,25 +1,28 @@
 package by.itransition.fanfic.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.model.bean.Chapter;
 
 public class ChapterDaoImpl implements ChapterDao {
 
-	private List<Chapter> chapters = new ArrayList<Chapter> ();
-	private int curId = -1;
+	private EntityManager entityManager = HibernateUtil.getEntityManager();
 	
 	@Override
 	public void addChapter(Chapter chapter) {
-		chapter.setId(++curId);
-		chapters.add(chapter);
+		entityManager.getTransaction().begin();
+		entityManager.persist(chapter);
+		entityManager.getTransaction().commit();
 	}
 
 	@Override
 	public List<Chapter> getChapters() {
-		return chapters;
+		TypedQuery<Chapter> query = entityManager.createQuery("SELECT u FROM Chapter u", Chapter.class);
+		return query.getResultList();
 	}
 
 }

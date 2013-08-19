@@ -1,7 +1,15 @@
 package by.itransition.fanfic.model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Chapter {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String name;

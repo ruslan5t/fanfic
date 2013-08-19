@@ -12,6 +12,9 @@ public interface UserDao {
 	
 	List<User> getUsers();
 	
-	void remove(User user);
+	void save(User user);
 	
+	void deleteAll();
+	
+	void remove(User user);
 }

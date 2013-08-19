@@ -1,9 +1,22 @@
 package by.itransition.fanfic.model.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Comment {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@ManyToOne
 	private User author;
 	
+	@ManyToOne
 	private Fanfic fanfic;
 	
 	private String content;

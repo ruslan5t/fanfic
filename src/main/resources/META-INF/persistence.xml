@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="PersistenceUnit">
+		<class>by.itransition.fanfic.model.bean.Comment</class>
+		<class>by.itransition.fanfic.model.bean.Chapter</class>
+		<class>by.itransition.fanfic.model.bean.User</class>
+		<class>by.itransition.fanfic.model.bean.Fanfic</class>
+		<class>by.itransition.fanfic.model.bean.Vote</class>
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ruslan" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="pass" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.pool_size" value="20" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+</persistence>

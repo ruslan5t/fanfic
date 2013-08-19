@@ -25,19 +25,19 @@ public class FanficModel {
 	private ChapterDao chapterDao = new ChapterDaoImpl();
 
 	private FanficModel() {
-
+		userDao.deleteAll();
 	}
 
 	public static FanficModel getInstance() {
 		return fanficModel;
 	}
 
-	public void removeUserByName(String username) {
-		for (User user : userDao.getUsers()) {
-			if (user.getUsername().equals(username)) {
-				userDao.remove(user);
-			}
-		}
+	public void save(User user) {
+		userDao.save(user);
+	}
+
+	public void save(Fanfic fanfic) {
+		fanficDao.save(fanfic);
 	}
 	
 	public List<Fanfic> getFanficsByCategory(String category) {
@@ -50,10 +50,16 @@ public class FanficModel {
 		return answer;
 	}
 	
+	public void removeUserByName(String username) {
+		for (User user : userDao.getUsers()) {
+			if (user.getUsername().equals(username)) {
+				userDao.remove(user);
+			}
+		}
+	}
+	
 	public void registerUser(User user) {
 		userDao.register(user);
-		user.setFanficDao(fanficDao);
-		user.setChapterDao(chapterDao);
 	}
 
 	public List<Fanfic> getAllFanfics() {
