@@ -80,7 +80,7 @@ public class FanficModel {
 				userCalendar.clear(Calendar.SECOND);
 				userCalendar.clear(Calendar.MILLISECOND);
 				if (userCalendar.getTime().equals(calendar.getTime())) {
-					if (null == map.get(10 - minutesBeforeNow)) {
+					if (null == map.get(minutesBeforeNow)) {
 						map.put(minutesBeforeNow, 1);
 					} else {
 						map.put(minutesBeforeNow, map.get(minutesBeforeNow) + 1);
