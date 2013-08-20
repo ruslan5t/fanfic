@@ -15,7 +15,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/editChapter")
-public class EditChapterController extends AbstractController {
+public class EditChapterController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}/{chapterId}", method = RequestMethod.GET)
 	public String getChapterEditForm(@PathVariable("fanficId") int fanficId,
@@ -23,6 +23,9 @@ public class EditChapterController extends AbstractController {
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
 		Chapter newChapter = new Chapter();
+		copyChapter(newChapter, 
+				FanficModel.getInstance().getFanficById(fanficId)
+				.getChapterById(chapterId));
 		model.addAttribute("newChapter", newChapter);
 		model.addAttribute("editingFanficId", fanficId);
 		model.addAttribute("editingChapterId", chapterId);

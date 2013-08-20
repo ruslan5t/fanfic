@@ -13,7 +13,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/addComment")
-public class AddCommentController extends AbstractController {
+public class AddCommentController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String addComment(@PathVariable("fanficId") int fanficId,

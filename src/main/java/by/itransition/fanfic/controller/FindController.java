@@ -15,7 +15,7 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/find")
-public class FindController extends AbstractController {
+public class FindController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String setFanficRating(Model model, HttpServletRequest request) {

@@ -15,7 +15,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/catalog")
-public class CatalogController extends AbstractController {
+public class CatalogController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCatalog(Model model, HttpServletRequest request) {

@@ -50,6 +50,7 @@ public class ConvertFanficToPdfController {
 					"</h4></center>");
 			convertedBook.append(chapter.getContent());
 		}
-		return convertedBook.toString();
+		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
+		return markdownProcessor.markdown(convertedBook.toString());
 	}
 }

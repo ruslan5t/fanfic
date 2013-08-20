@@ -18,7 +18,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/addChapter")
-public class AddChapterController extends AbstractController {
+public class AddChapterController extends VisitPageController {
 	
 	private Fanfic fanfic;
 	
@@ -35,8 +35,7 @@ public class AddChapterController extends AbstractController {
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String createChapter(@ModelAttribute("chapter") Chapter chapter,
 			BindingResult bindingResult, HttpServletRequest request) {
-		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
-		chapter.setContent(markdownProcessor.markdown(chapter.getContent()));
+		chapter.setContent(chapter.getContent());
 		fanfic.addChapter(chapter);
 		FanficModel.getInstance().save(fanfic);
 		return "redirect:/fanfic/" + fanfic.getId();

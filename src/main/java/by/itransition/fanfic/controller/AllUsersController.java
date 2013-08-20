@@ -14,7 +14,7 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/allUsers")
-public class AllUsersController extends AbstractController {
+public class AllUsersController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAllUsers(Model model, HttpServletRequest request) {

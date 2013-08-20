@@ -14,7 +14,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/editFanfic")
-public class EditFanficController extends AbstractController {
+public class EditFanficController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
 	public String getFanficEditForm(@PathVariable("fanficId") int fanficId,

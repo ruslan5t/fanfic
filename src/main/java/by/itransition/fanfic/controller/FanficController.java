@@ -13,7 +13,7 @@ import by.itransition.fanfic.model.bean.Fanfic;
 
 @Controller
 @RequestMapping("/fanfic")
-public class FanficController extends AbstractController {
+public class FanficController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
 	public String getFanfic(@PathVariable("fanficId") int fanficId,

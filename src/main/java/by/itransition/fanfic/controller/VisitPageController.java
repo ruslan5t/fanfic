@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import by.itransition.fanfic.model.FanficModel;
 import by.itransition.fanfic.model.bean.User;
 
-public class AbstractController {
+public class VisitPageController {
 
 	protected void settingModel(Model model, HttpServletRequest request) {
 		Integer userId = (Integer)request.getSession().getAttribute("userId");

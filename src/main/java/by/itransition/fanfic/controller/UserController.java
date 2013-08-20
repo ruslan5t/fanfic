@@ -13,7 +13,7 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/user")
-public class UserController extends AbstractController {
+public class UserController extends VisitPageController {
 
 	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
 	public String user(@PathVariable("userId") int userId,

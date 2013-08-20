@@ -11,31 +11,33 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
+<script src="<c:url value="/resources/js/dx.chartjs.js" />"></script>
 <script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset1">
-		<div class="span2">
+	<div class="row">
+		<div class="span4">
+			<div id="chartContainer"></div>
+		</div>
+		<div class="span4">
 			<div class="pageTitle">Main page</div>
 			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
 				<div class="row">
-					<div class="span4">
-						<h2>
-							<a
-								href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-								${fanfic.getName()} </a>
-						</h2>
-					</div>
+					<h2>
+						<a
+							href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+							${fanfic.getName()} </a>
+					</h2>
 				</div>
 			</c:forEach>
 		</div>
-		<div class="span1 offset8">
-			<div id="tagcloud">
+		<div class="span4">
+			<div id="tagcloud" class="row">
 				<ul>
 					<li><a
 						href="${pageContext.servletContext.contextPath}/catalog/comedy">

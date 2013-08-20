@@ -11,16 +11,16 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
+<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset1">
-		<form:form method="POST" modelAttribute="chapter">
-			<jsp:include page="makeChapterForm.jsp"></jsp:include>
+	<form:form method="POST" modelAttribute="chapter">
+		<jsp:include page="makeChapterForm.jsp"></jsp:include>
+		<div class="row offset7">
 			<input type="submit" value="Add chapter" />
-		</form:form>
-	</div>
+		</div>
+	</form:form>
 </body>
 </html>

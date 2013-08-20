@@ -1,4 +1,4 @@
-package by.itransition.fanfic;
+package by.itransition.fanfic.controller;
 
 import java.util.Locale;
 
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import by.itransition.fanfic.controller.AbstractController;
 import by.itransition.fanfic.model.FanficModel;
 import by.itransition.fanfic.model.bean.User;
 
@@ -20,7 +19,7 @@ import by.itransition.fanfic.model.bean.User;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController extends AbstractController {
+public class HomeController extends VisitPageController {
 	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(HomeController.class);

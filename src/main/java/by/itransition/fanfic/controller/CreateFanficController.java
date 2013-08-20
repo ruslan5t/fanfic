@@ -15,7 +15,7 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/createFanfic")
-public class CreateFanficController extends AbstractController {
+public class CreateFanficController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getFanficCreationForm(

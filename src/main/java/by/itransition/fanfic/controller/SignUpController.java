@@ -14,7 +14,7 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/signUp")
-public class SignUpController extends AbstractController {
+public class SignUpController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getUserCreationForm(
