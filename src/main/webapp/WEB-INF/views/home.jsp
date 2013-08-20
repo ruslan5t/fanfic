@@ -15,17 +15,18 @@
 	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
-<script src="<c:url value="/resources/js/dx.chartjs.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.flot.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.flot.categories.min.js" />"></script>
 <script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
 	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row">
-		<div class="span4">
+		<div class="span5">
 			<div id="chartContainer"></div>
 		</div>
-		<div class="span4">
+		<div class="span5">
 			<div class="pageTitle">Main page</div>
 			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
@@ -38,7 +39,7 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div class="span4">
+		<div class="span5">
 			<div id="tagcloud" class="row">
 				<ul>
 					<li><a

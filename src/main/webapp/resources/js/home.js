@@ -10,16 +10,19 @@ $(function() {
 	});
 	
 	function setStatistics(statistics) {
-		console.log(statistics);
-		$("#chartContainer").dxChart({
-		    dataSource: statistics,
-		    series: {
-		        argumentField: "day",
-		        valueField: "oranges",
-		        name: "My oranges",
-		        type: "bar",
-		        color: "orange"
-		    }
+		var statisticsJSON = $.parseJSON(statistics);
+		$.plot("#chartContainer", [ statisticsJSON ], {
+			series: {
+				bars: {
+					show: true,
+					barWidth: 0.6,
+					align: "center"
+				}
+			},
+			xaxis: {
+				mode: "categories",
+				tickLength: 0
+			}
 		});
 	}
 });

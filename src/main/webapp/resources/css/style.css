@@ -21,3 +21,7 @@
 select.categories {
 	multiple: multiple;
 }
+
+#chartContainer {
+	height: 300px;
+}

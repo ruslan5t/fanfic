@@ -1,40 +1,42 @@
 
 $(function() {
+	var $rating = $("#rating");
+	var fanficId = $("#fanficId").attr("value");
+	var contextPath = $("#contextPath").attr("value");
 	var baseRatyOptions = {
-		path: $("#contextPath").attr("value") + "/resources/js/img/",
+		path: contextPath + "/resources/js/img/",
 		score: $("#fanficRating").attr("value")
 	};
 	if ($("#isLogged").attr("value") === "true") {
-		$("#rating").raty($.extend({
+		$rating.raty($.extend({
 			click: setUsersRating
 		}, baseRatyOptions));
 	}
 	else {
-		$("#rating").raty($.extend({
+		$rating.raty($.extend({
 			readOnly: true
 		}, baseRatyOptions));
 	}
 
 	function setUsersRating(rating) {
 		$.ajax({
-			url: $("#contextPath").attr("value") + "/setFanficRating/" 
-				+ $("#fanficId").attr("value") + "/" + rating,
+			url: contextPath + "/setFanficRating/" 
+				+ fanficId + "/" + rating,
 			type: "post",
 			success: setFanficRating
 		});
 	}
 
 	function setFanficRating(fanficRating) {
-		console.log(fanficRating);
-		$("#rating").raty("score", fanficRating);
+		$rating.raty("score", fanficRating);
 	}
 	
 	$("#convertToPdf").on("click", convertFanficToPdf);
 	
 	function convertFanficToPdf() {
 		$.ajax({
-			url: $("#contextPath").attr("value") + "/convertFanficToPdf/" 
-				+ $("#fanficId").attr("value"),
+			url: contextPath + "/convertFanficToPdf/" 
+				+ fanficId,
 			type: "post",
 			success: setHrefToConvertedFile 
 		});

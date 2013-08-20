@@ -26,9 +26,10 @@ public class GetStatisticsController {
 		for (int statisticsByTimeIndex = 0;
 				statisticsByTimeIndex < statistics.size();
 				++statisticsByTimeIndex) {
-			JSONObject statisticsByTimeJSON = new JSONObject();
-			statisticsByTimeJSON.put("day", statisticsByTimeIndex + 1);
-			statisticsByTimeJSON.put("orange",
+			JSONArray statisticsByTimeJSON = new JSONArray();
+			statisticsByTimeJSON.add( 
+					String.valueOf(statisticsByTimeIndex + 1));
+			statisticsByTimeJSON.add(
 					statistics.get(statisticsByTimeIndex));
 			statisticsJSON.add(statisticsByTimeJSON);
 		}

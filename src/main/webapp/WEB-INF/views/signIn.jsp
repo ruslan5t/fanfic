@@ -11,27 +11,42 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
+<script
+	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset7">
-		<form:form method="post" modelAttribute="user" class="inputDialog">
-			<p>
-				<form:input path="username" placeholder="Username" />
-			</p>
-			<p>
-				<form:password path="password" placeholder="Password" />
-			</p>
-			<c:if test="${not empty error}">
-				<p>
-					<form:label path="">Incorrect username or password.</form:label>
-				</p>
-			</c:if>
-			<input type="submit" value="Sign in">
-			<a href="signUp">Register now</a>
-		</form:form>
+		<div class="span3">
+			<form:form method="post" modelAttribute="user" class="inputDialog">
+				<div class="row">
+					<div class="span3">
+						<form:input path="username" placeholder="Username" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3">
+						<form:password path="password" placeholder="Password" />
+					</div>
+				</div>
+				<c:if test="${not empty error}">
+					<div class="row">
+						<div class="span3">
+							<form:label path="">Incorrect username or password.</form:label>
+						</div>
+					</div>
+				</c:if>
+				<div class="row">
+					<div class="span1">
+						<input type="submit" value="Sign in">
+					</div>
+					<div class="span2">
+						<a href="signUp">Register now</a>
+					</div>
+				</div>
+			</form:form>
+		</div>
 	</div>
 </body>
 </html>
