@@ -62,7 +62,6 @@ public class User {
 	public void addFanfic(Fanfic fanfic) {
 		fanfic.setAuthor(this);
 		fanfics.add(fanfic);
-		FanficModel.getInstance().save(this);
 	}
 
 	public List<Comment> getComments() {

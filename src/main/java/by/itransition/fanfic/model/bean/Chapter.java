@@ -42,7 +42,6 @@ public class Chapter {
 
 	public void setName(String name) {
 		this.name = name;
-		FanficModel.getInstance().save(this);
 	}
 
 	public String getContent() {
@@ -51,7 +50,6 @@ public class Chapter {
 
 	public void setContent(String content) {
 		this.content = content;
-		FanficModel.getInstance().save(this);
 	}
 
 	public int getId() {

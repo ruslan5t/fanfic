@@ -49,6 +49,15 @@ public class FanficModel {
 		return userDao.getUserById(id);
 	}
 	
+	public User getUserByName(String username) {
+		for (User user : userDao.getUsers()) {
+			if (user.getUsername().equals(username)) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	public List<Fanfic> searchFanfics(String searchQuery) {
 		List<Fanfic> answer = new ArrayList<Fanfic>();
 		for (Fanfic fanfic : fanficDao.search(searchQuery)) {
