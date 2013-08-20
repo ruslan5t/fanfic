@@ -26,7 +26,7 @@ public class FanficModel {
 	private ChapterDao chapterDao = new ChapterDaoImpl();
 
 	private FanficModel() {
-		userDao.deleteAll();
+
 	}
 
 	public static FanficModel getInstance() {

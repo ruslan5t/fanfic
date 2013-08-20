@@ -14,8 +14,6 @@ public interface UserDao {
 	
 	void save(User user);
 	
-	void deleteAll();
-	
 	void remove(User user);
 	
 	User getUserById(int id);

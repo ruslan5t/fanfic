@@ -18,7 +18,7 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.connection.pool_size" value="20" />
 			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.search.default.directory_provider" value="ram" />
 			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes" />
 			<property name="hibernate.connection.autocommit" value="true" />

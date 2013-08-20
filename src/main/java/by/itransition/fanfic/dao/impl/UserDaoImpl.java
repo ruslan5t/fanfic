@@ -43,15 +43,6 @@ public class UserDaoImpl implements UserDao {
 		entityManager.persist(user);
 		entityManager.getTransaction().commit();
 	}
-
-	@Override
-	public void deleteAll() {
-		entityManager.getTransaction().begin();
-		for (User user : getUsers()) {
-			entityManager.remove(user);
-		}
-		entityManager.getTransaction().commit();
-	}
 	
 	@Override
 	public void remove(User user) {
