@@ -22,6 +22,7 @@ public class AddCommentController extends AbstractController {
 		Comment comment = new Comment();
 		comment.setContent((String)request.getParameter("newComment"));
 		fanfic.addComment(comment);
+		FanficModel.getInstance().save(fanfic);
 		return "redirect:/fanfic/" + fanficId;
 	}
 }

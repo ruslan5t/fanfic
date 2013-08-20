@@ -38,6 +38,7 @@ public class AddChapterController extends AbstractController {
 		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
 		chapter.setContent(markdownProcessor.markdown(chapter.getContent()));
 		fanfic.addChapter(chapter);
+		FanficModel.getInstance().save(fanfic);
 		return "redirect:/fanfic/" + fanfic.getId();
 	}
 }

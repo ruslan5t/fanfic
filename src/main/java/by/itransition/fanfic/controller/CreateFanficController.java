@@ -31,6 +31,7 @@ public class CreateFanficController extends AbstractController {
 		User user = FanficModel.getInstance().getUserById(
 				(Integer)request.getSession().getAttribute("userId"));
 		user.addFanfic(fanfic);
+		FanficModel.getInstance().save(user);
 		return "redirect:/user/" + user.getId();
 	}
 }

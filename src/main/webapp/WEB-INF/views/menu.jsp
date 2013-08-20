@@ -39,7 +39,8 @@
 			</c:if>
 		</ul>
 		<form class="navbar-form pull-right"
-			action="${pageContext.servletContext.contextPath}/find">
+			action="${pageContext.servletContext.contextPath}/find"
+			method="post">
 			<input type="text" class="form-control" placeholder="Search"
 				name="searchRequest">
 			<button type="submit" class="btn btn-default">Submit</button>

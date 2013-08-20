@@ -29,7 +29,9 @@ public class SignInController {
 				FanficModel.getInstance().isRegistered(user.getUsername(),
 						user.getPassword());
 		if (isUserRegistered == true) {
-			request.getSession().setAttribute("userId", user.getId());
+			request.getSession().setAttribute("userId",
+					FanficModel.getInstance()
+					.getUserByName(user.getUsername()).getId());
 			return "redirect:/";
 		}
 		model.addAttribute("error", true);

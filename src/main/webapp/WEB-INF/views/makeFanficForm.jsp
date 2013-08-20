@@ -11,7 +11,7 @@
 </div>
 <div class="row offset7">
 	<form:label path="tags">Tags:</form:label>
-	<form:input path="tags" />
+	<form:textarea path="tags" />
 </div>
 <div class="row offset7">
 	<form:label path="categories">Categories:</form:label>

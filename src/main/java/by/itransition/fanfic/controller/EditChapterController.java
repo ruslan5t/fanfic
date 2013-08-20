@@ -40,6 +40,7 @@ public class EditChapterController extends AbstractController {
 				.getFanficById(editingFanficId);
 		Chapter editingChapter = editingFanfic.getChapterById(editingChapterId);
 		copyChapter(editingChapter, newChapter);
+		FanficModel.getInstance().save(editingChapter);
 		return "redirect:/chapter/" + editingFanficId + "/" + editingChapterId;
 	}
 	

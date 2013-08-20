@@ -24,6 +24,7 @@ public class EditFanficController extends AbstractController {
 		Fanfic newFanfic = new Fanfic();
 		copyFanfic(newFanfic, editingFanfic);
 		model.addAttribute("newFanfic", newFanfic);
+		model.addAttribute("newFanfic", newFanfic);
 		model.addAttribute("editingFanficId", editingFanfic.getId());
 		return "editFanfic";
 	}
@@ -36,6 +37,7 @@ public class EditFanficController extends AbstractController {
 		Fanfic editingFanfic = FanficModel.getInstance()
 				.getFanficById(editingFanficId);
 		copyFanfic(editingFanfic, newFanfic);
+		FanficModel.getInstance().save(editingFanfic);
 		return "redirect:/fanfic/" + editingFanficId;
 	}
 	

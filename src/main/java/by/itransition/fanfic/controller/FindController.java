@@ -17,9 +17,10 @@ import by.itransition.fanfic.model.bean.User;
 @RequestMapping("/find")
 public class FindController extends AbstractController {
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.POST)
 	public String setFanficRating(Model model, HttpServletRequest request) {
 		settingModel(model, request);
+		System.out.println(request.getParameter("searchRequest"));
 		model.addAttribute("foundedFanfics", FanficModel.getInstance()
 				.searchFanfics(request.getParameter("searchRequest")));
 		return "find";
