@@ -15,4 +15,8 @@ public interface FanficDao {
 	
 	List<Fanfic> search(String searchQuery);
 	
+	void removeFanficById(int id);
+	
+	Fanfic getFanficById(int id);
+	
 }

@@ -26,7 +26,7 @@ public class FanficModel {
 	private ChapterDao chapterDao = new ChapterDaoImpl();
 
 	private FanficModel() {
-
+ 
 	}
 
 	public static FanficModel getInstance() {
@@ -43,6 +43,10 @@ public class FanficModel {
 	
 	public void save(Chapter chapter) {
 		chapterDao.save(chapter);
+	}
+	
+	public void removeFanficById(int id) {
+		fanficDao.removeFanficById(id);
 	}
 	
 	public User getUserById(int id) {
@@ -127,12 +131,7 @@ public class FanficModel {
 	}
 
 	public Fanfic getFanficById(int id) {
-		for (Fanfic fanfic : fanficDao.getFanfics()) {
-			if (fanfic.getId() == id) {
-				return fanfic;
-			}
-		}
-		return null;
+		return fanficDao.getFanficById(id);
 	}
 
 }

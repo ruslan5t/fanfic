@@ -48,4 +48,16 @@ public class FanficDaoImpl implements FanficDao {
 		return persistenceQuery.getResultList();
 	}
 	
+	@Override
+	public void removeFanficById(int id) {
+		entityManager.getTransaction().begin();
+		entityManager.remove(getFanficById(id));
+		entityManager.getTransaction().commit();
+	}
+	
+	@Override
+	public Fanfic getFanficById(int id) {
+		return entityManager.find(Fanfic.class, id);
+	}
+	
 }

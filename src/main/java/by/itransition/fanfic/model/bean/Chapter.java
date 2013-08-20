@@ -17,10 +17,17 @@ import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
 
-import by.itransition.fanfic.model.FanficModel;
-
 @Entity
 @Indexed
+@AnalyzerDef(name = "ChapterAnalyzer",
+tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+filters = {
+	@TokenFilterDef(factory = LowerCaseFilterFactory.class),
+	@TokenFilterDef(factory = SnowballPorterFilterFactory.class, 
+		params = @Parameter(name = "language", value = "Russian")),
+	@TokenFilterDef(factory = SnowballPorterFilterFactory.class,
+		params = @Parameter(name = "language", value = "English"))
+})
 public class Chapter {
 
 	@Id
@@ -28,9 +35,11 @@ public class Chapter {
 	private int id;
 
 	@Field
+	@Analyzer(definition="ChapterAnalyzer")
 	private String name;
 
 	@Field
+	@Analyzer(definition="ChapterAnalyzer")
 	private String content;
 	
 	@ManyToOne
@@ -54,10 +63,6 @@ public class Chapter {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Fanfic getFanfic() {
