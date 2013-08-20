@@ -70,8 +70,6 @@ public class FanficModel {
 		List<Integer> answer = new ArrayList<Integer>();
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		Calendar calendar = Calendar.getInstance();
-		//calendar.clear(Calendar.HOUR);
-		//calendar.clear(Calendar.MINUTE);
 		calendar.clear(Calendar.SECOND);
 		calendar.clear(Calendar.MILLISECOND);
 		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
@@ -92,7 +90,7 @@ public class FanficModel {
 			calendar.add(Calendar.MINUTE, -1);
 		}
 		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
-			if (null != map.get(10 - minutesBeforeNow - 1)) {
+			if (null != map.get(minutesBeforeNow)) {
 				answer.add(map.get(minutesBeforeNow));
 			} else {
 				answer.add(0);
