@@ -1,9 +1,13 @@
 package by.itransition.fanfic.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.dao.FanficDao;
@@ -62,6 +66,28 @@ public class FanficModel {
 		return null;
 	}
 	
+	public List<Integer> getStatistic() {
+		List<Integer> answer = new ArrayList<Integer>();
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear(Calendar.HOUR);
+		calendar.clear(Calendar.MINUTE);
+		calendar.clear(Calendar.SECOND);
+		calendar.clear(Calendar.MILLISECOND);
+		for (int dayBeforeTodey = 0; dayBeforeTodey < 10; ++dayBeforeTodey) {
+			for (User user : userDao.getUsers()) {
+				if (user.getDateOfRegistration().equals(calendar.getTime())) {
+					map.put(10 - dayBeforeTodey, map.get(10 - dayBeforeTodey) + 1);
+				}
+			}
+			calendar.add(Calendar.DATE, -1);
+		}
+		for (int dayBeforeTodey = 0; dayBeforeTodey < 10; ++dayBeforeTodey) {
+			answer.add(map.get(10 - dayBeforeTodey - 1));
+		}
+		return answer;
+	}
+	
 	public List<Fanfic> searchFanfics(String searchQuery) {
 		List<Fanfic> answer = new ArrayList<Fanfic>();
 		for (Fanfic fanfic : fanficDao.search(searchQuery)) {
@@ -92,6 +118,7 @@ public class FanficModel {
 	}
 	
 	public void registerUser(User user) {
+		user.setDateOfRegistration(Calendar.getInstance().getTime());
 		userDao.register(user);
 	}
 

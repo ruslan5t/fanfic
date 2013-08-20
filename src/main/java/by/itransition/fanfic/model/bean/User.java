@@ -1,6 +1,7 @@
 package by.itransition.fanfic.model.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import by.itransition.fanfic.model.FanficModel;
+import org.hibernate.search.annotations.DateBridge;
+import org.hibernate.search.annotations.Resolution;
 
 @Entity
 public class User {
@@ -24,6 +26,9 @@ public class User {
 	private String password;
 
 	private String email;
+	
+	@DateBridge(resolution = Resolution.DAY)
+	private Date dateOfRegistration;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Fanfic> fanfics = new ArrayList<Fanfic>();
@@ -110,4 +115,12 @@ public class User {
 		return id;
 	}
 
+	public Date getDateOfRegistration() {
+		return dateOfRegistration;
+	}
+
+	public void setDateOfRegistration(Date dateOfRegistration) {
+		this.dateOfRegistration = dateOfRegistration;
+	}
+	
 }
