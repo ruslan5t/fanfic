@@ -11,13 +11,15 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
+<script
+	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/dx.chartjs.js" />"></script>
 <script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
+	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row">
 		<div class="span4">
