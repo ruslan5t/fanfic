@@ -74,7 +74,7 @@ public class FanficModel {
 		//calendar.clear(Calendar.MINUTE);
 		calendar.clear(Calendar.SECOND);
 		calendar.clear(Calendar.MILLISECOND);
-		for (int minuteBeforeNow = 0; minuteBeforeNow < 10; ++minuteBeforeNow) {
+		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
 			for (User user : userDao.getUsers()) {
 				Date userDate = user.getDateOfRegistration();
 				Calendar userCalendar = Calendar.getInstance();
@@ -82,18 +82,18 @@ public class FanficModel {
 				userCalendar.clear(Calendar.SECOND);
 				userCalendar.clear(Calendar.MILLISECOND);
 				if (userCalendar.getTime().equals(calendar.getTime())) {
-					if (null == map.get(10 - minuteBeforeNow)) {
-						map.put(10 - minuteBeforeNow, 1);
+					if (null == map.get(10 - minutesBeforeNow)) {
+						map.put(minutesBeforeNow, 1);
 					} else {
-						map.put(minuteBeforeNow, map.get(10 - minuteBeforeNow) + 1);
+						map.put(minutesBeforeNow, map.get(minutesBeforeNow) + 1);
 					}
 				}
 			}
 			calendar.add(Calendar.MINUTE, -1);
 		}
-		for (int minuteBeforeNow = 0; minuteBeforeNow < 10; ++minuteBeforeNow) {
-			if (null != map.get(10 - minuteBeforeNow - 1)) {
-				answer.add(map.get(10 - minuteBeforeNow - 1));
+		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
+			if (null != map.get(10 - minutesBeforeNow - 1)) {
+				answer.add(map.get(minutesBeforeNow));
 			} else {
 				answer.add(0);
 			}
