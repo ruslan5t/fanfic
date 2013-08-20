@@ -88,7 +88,6 @@ public class Fanfic {
 
 	public void setName(String name) {
 		this.name = name;
-		FanficModel.getInstance().save(this);
 	}
 
 	public String getDescription() {
@@ -97,7 +96,6 @@ public class Fanfic {
 
 	public void setDescription(String description) {
 		this.description = description;
-		FanficModel.getInstance().save(this);
 	}
 
 	public List <String> getTags() {
@@ -106,7 +104,6 @@ public class Fanfic {
 
 	public void setTags(List <String> tags) {
 		this.tags = tags;
-		FanficModel.getInstance().save(this);
 	}
 
 	public List <String> getCategories() {
@@ -115,7 +112,6 @@ public class Fanfic {
 
 	public void setCategories(List <String> categories) {
 		this.categories = categories;
-		FanficModel.getInstance().save(this);
 	}
 
 	public List <Chapter> getChapters() {
@@ -123,14 +119,11 @@ public class Fanfic {
 	}
 
 	public void addChapter(Chapter chapter) {
-		chapter.setFanfic(this);
 		chapters.add(chapter);
-		FanficModel.getInstance().save(this);
 	}
 
 	public void addComment(Comment comment) {
 		comments.add(comment);
-		FanficModel.getInstance().save(this);
 	}
 
 	public List<Comment> getComments() {
@@ -172,7 +165,6 @@ public class Fanfic {
 			this.rating += vote.getRating();
 		}
 		this.rating /= votes.size();
-		FanficModel.getInstance().save(this);
 	}
 
 	@Override
