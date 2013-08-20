@@ -24,7 +24,7 @@
 				</ul></li>
 			<c:if test="${isLogged}">
 				<li><a
-					href="${pageContext.servletContext.contextPath}/user/${currentUsername}">${currentUsername}</a></li>
+					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
 				<li><a href="${pageContext.servletContext.contextPath}/signOut">Sign
 						out</a></li>
 			</c:if>

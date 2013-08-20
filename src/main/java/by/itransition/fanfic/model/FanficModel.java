@@ -45,6 +45,10 @@ public class FanficModel {
 		chapterDao.save(chapter);
 	}
 	
+	public User getUserById(int id) {
+		return userDao.getUserById(id);
+	}
+	
 	public List<Fanfic> searchFanfics(String searchQuery) {
 		List<Fanfic> answer = new ArrayList<Fanfic>();
 		for (Fanfic fanfic : fanficDao.search(searchQuery)) {
@@ -70,12 +74,8 @@ public class FanficModel {
 		return answer;
 	}
 	
-	public void removeUserByName(String username) {
-		for (User user : userDao.getUsers()) {
-			if (user.getUsername().equals(username)) {
-				userDao.remove(user);
-			}
-		}
+	public void removeUserById(int id) {
+		userDao.remove(userDao.getUserById(id));
 	}
 	
 	public void registerUser(User user) {
@@ -88,15 +88,6 @@ public class FanficModel {
 
 	public boolean isRegistered(String username, String password) {
 		return null != userDao.login(username, password);
-	}
-
-	public User getUser(String username) {
-		for (User user : userDao.getUsers()) {
-			if (user.getUsername().equals(username)) {
-				return user;
-			}
-		}
-		return null;
 	}
 
 	public List<User> getAllUsers() {

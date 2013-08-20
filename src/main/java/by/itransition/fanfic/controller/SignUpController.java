@@ -1,6 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.print.PrintService;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,7 @@ public class SignUpController extends AbstractController {
 	public String createUser(@ModelAttribute("user") User user,
 			BindingResult bindingResult, HttpServletRequest request) {
 		FanficModel.getInstance().registerUser(user);
-		request.getSession().setAttribute("username", user.getUsername());		
+		request.getSession().setAttribute("userId", user.getId());		
 		return "redirect:/";
 	}
 }

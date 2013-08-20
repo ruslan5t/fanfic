@@ -22,9 +22,7 @@ public class EditChapterController extends AbstractController {
 			@PathVariable("chapterId") int chapterId,
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		Fanfic editingFanfic = FanficModel.getInstance().getFanficById(fanficId);
 		Chapter newChapter = new Chapter();
-		copyChapter(newChapter, editingFanfic.getChapterById(chapterId));
 		model.addAttribute("newChapter", newChapter);
 		model.addAttribute("editingFanficId", fanficId);
 		model.addAttribute("editingChapterId", chapterId);

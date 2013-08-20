@@ -23,8 +23,8 @@ public class SetFanficRatingController {
 	String setFanficRating(@PathVariable("fanficId") int fanficId,
 			@PathVariable("userRating") int userRating,
 			Model model, HttpServletRequest request) {
-		User user = FanficModel.getInstance().getUser((String)
-				request.getSession().getAttribute("username"));
+		User user = FanficModel.getInstance().getUserById((Integer)
+				request.getSession().getAttribute("userId"));
 		Fanfic fanfic = FanficModel.getInstance().getFanficById(fanficId);
 		fanfic.makeVote(userRating, user);
 		return Double.toString(fanfic.getRating());

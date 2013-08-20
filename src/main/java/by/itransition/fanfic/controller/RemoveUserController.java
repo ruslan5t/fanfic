@@ -14,10 +14,10 @@ import by.itransition.fanfic.model.FanficModel;
 @RequestMapping("/removeUser")
 public class RemoveUserController {
 
-	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
-	public String user(@PathVariable("username") String username,
+	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+	public String user(@PathVariable("userId") int userId,
 			Model model, HttpServletRequest request){
-		FanficModel.getInstance().removeUserByName(username);
+		FanficModel.getInstance().removeUserById(userId);
 		return "redirect:/allUsers";
 	}
 }

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import by.itransition.fanfic.dao.UserDao;
+import by.itransition.fanfic.model.bean.Fanfic;
 import by.itransition.fanfic.model.bean.User;
 
 public class UserDaoImpl implements UserDao {
@@ -14,12 +15,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User login(String username, String password) {
-		User user = entityManager.find(User.class, username);
-		if (null != user && user.getPassword().equals(password)) {
-			return user;
-		} else {
-			return null;
+		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
+		for (User user : query.getResultList()) {
+			if (user.getUsername().equals(username)	&& user.getPassword().equals(password)) {
+				return user;
+			}
 		}
+		return null;
 	}
 
 	@Override
@@ -57,4 +59,10 @@ public class UserDaoImpl implements UserDao {
 		entityManager.remove(user);
 		entityManager.getTransaction().commit();
 	}
+	
+	@Override
+	public User getUserById(int id) {
+		return entityManager.find(User.class, id);
+	}
+
 }

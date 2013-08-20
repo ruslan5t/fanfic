@@ -17,4 +17,7 @@ public interface UserDao {
 	void deleteAll();
 	
 	void remove(User user);
+	
+	User getUserById(int id);
+
 }

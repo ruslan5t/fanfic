@@ -28,9 +28,9 @@ public class CreateFanficController extends AbstractController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createFanfic(@ModelAttribute("newFanfic") Fanfic fanfic,
 			BindingResult bindingResult, HttpServletRequest request) {
-		User user = FanficModel.getInstance().getUser(
-				(String)request.getSession().getAttribute("username"));
+		User user = FanficModel.getInstance().getUserById(
+				(Integer)request.getSession().getAttribute("userId"));
 		user.addFanfic(fanfic);
-		return "redirect:/user/" + user.getUsername();
+		return "redirect:/user/" + user.getId();
 	}
 }

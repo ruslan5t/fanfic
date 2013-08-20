@@ -4,15 +4,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import by.itransition.fanfic.model.FanficModel;
+import by.itransition.fanfic.model.bean.User;
+
 public class AbstractController {
 
 	protected void settingModel(Model model, HttpServletRequest request) {
-		String username = (String)request.getSession().getAttribute("username");
-		if (username != null) {
+		Integer userId = (Integer)request.getSession().getAttribute("userId");
+		if (userId != null) {
 			model.addAttribute("isLogged", true);
-			model.addAttribute("currentUsername", username);
+			User currentUser = FanficModel.getInstance().getUserById(userId);
+			model.addAttribute("currentUserId", userId);
+			model.addAttribute("currentUsername", currentUser.getUsername());
 			//if (FanficModel.getInstance().getUser(username).isAdmin()) {
-			if (username.equals("Admin")) {
+			if (currentUser.getUsername().equals("Admin")) {
 				model.addAttribute("isAdmin", true);
 			}
 		}

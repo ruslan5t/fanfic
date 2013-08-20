@@ -12,23 +12,32 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.SnowballPorterFilterFactory;
 import org.apache.solr.analysis.StandardTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
+import org.hibernate.search.annotations.Index;
 
 import by.itransition.fanfic.model.FanficModel;
 
 @Entity
 @Indexed
-@AnalyzerDef(name = "FanficAnalyzer",
-	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-	filters = { @TokenFilterDef(factory = LowerCaseFilterFactory.class) }
-)
+@AnalyzerDef(name = "ru",
+tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+filters = {
+  @TokenFilterDef(factory = LowerCaseFilterFactory.class),
+  @TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
+    @Parameter(name = "language", value = "Russian")
+  })
+})
+@Analyzer(impl=RussianAnalyzer.class)
 public class Fanfic {
 
 	@Id
@@ -37,12 +46,12 @@ public class Fanfic {
 
 	private double rating;
 
-	@Field
-	@Analyzer
+	@Field(index = Index.YES)
+	@Analyzer(definition="ru")
 	private String name;
 
-	@Field
-	@Analyzer
+	@Field(index = Index.YES)
+	@Analyzer(definition="ru")
 	private String description;
 
 	//@Field(bridge = @FieldBridge(impl=CollectionToCSVBridge.class))

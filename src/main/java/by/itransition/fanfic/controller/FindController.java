@@ -15,15 +15,13 @@ import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/find")
-public class FindController {
+public class FindController extends AbstractController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void setFanficRating(Model model, HttpServletRequest request) {
-		System.out.println("Start");
-		for (Fanfic fanfic : FanficModel.getInstance()
-				.searchFanfics(request.getParameter("searchRequest"))) {
-			System.out.println(fanfic.getName());
-		}
-		System.out.println("End");
+	public String setFanficRating(Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		model.addAttribute("foundedFanfics", FanficModel.getInstance()
+				.searchFanfics(request.getParameter("searchRequest")));
+		return "find";
 	}
 }

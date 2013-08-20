@@ -12,7 +12,7 @@ public class SignOutController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String signOut( HttpServletRequest request ){
-		request.getSession().setAttribute("username", null);
+		request.getSession().setAttribute("userId", null);
 		return "redirect:/";
 	}
 }

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
 	media="screen">
@@ -28,7 +28,7 @@
 		<a id="hrefToConvertedFile"></a>
 	</div>
 	<c:if
-		test="${fanfic.getAuthor().getUsername().equals(currentUsername)}">
+		test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 		<div class="row offset1">
 			<a 
 				href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
@@ -45,7 +45,7 @@
 		<div class="span1">Author:</div>
 		<div class="span2">
 			<a
-				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getUsername()}">
+				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 				${fanfic.getAuthor().getUsername()} </a>
 		</div>
 	</div>

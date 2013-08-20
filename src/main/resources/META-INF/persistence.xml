@@ -21,6 +21,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.search.default.directory_provider" value="ram" />
 			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes" />
+			<property name="hibernate.connection.autocommit" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -13,6 +13,7 @@ import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
 
@@ -20,13 +21,6 @@ import by.itransition.fanfic.model.FanficModel;
 
 @Entity
 @Indexed
-@AnalyzerDef(name = "ChapterAnalizer",
-	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-	filters = {
-		@TokenFilterDef(factory = LowerCaseFilterFactory.class),
-		@TokenFilterDef(factory = SnowballPorterFilterFactory.class)
-	}
-)
 public class Chapter {
 
 	@Id
@@ -34,11 +28,9 @@ public class Chapter {
 	private int id;
 
 	@Field
-	@Analyzer
 	private String name;
 
 	@Field
-	@Analyzer
 	private String content;
 	
 	@ManyToOne

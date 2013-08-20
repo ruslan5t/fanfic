@@ -15,11 +15,11 @@ import by.itransition.fanfic.model.bean.User;
 @RequestMapping("/user")
 public class UserController extends AbstractController {
 
-	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
-	public String user(@PathVariable("username") String username,
+	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+	public String user(@PathVariable("userId") int userId,
 			Model model, HttpServletRequest request){
 		settingModel(model, request);
-		User user = FanficModel.getInstance().getUser(username);
+		User user = FanficModel.getInstance().getUserById(userId);
 		model.addAttribute("showedUser", user);
 		return "user";
 	}
