@@ -29,7 +29,7 @@ public class FanficDaoImpl implements FanficDao {
 	}
 	
 	@Override
-	public List<Fanfic> getFanfics() {
+	public List<Fanfic> getAllFanfics() {
 		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT u FROM Fanfic u", Fanfic.class);
 		return query.getResultList();
 	}

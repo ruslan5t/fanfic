@@ -8,7 +8,7 @@ public interface FanficDao {
 
 	void addFanfic(Fanfic fanfic);
 	
-	List<Fanfic> getFanfics();
+	List<Fanfic> getAllFanfics();
 
 	void save(Fanfic fanfic);
 	

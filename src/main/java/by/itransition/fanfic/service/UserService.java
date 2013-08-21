@@ -9,13 +9,17 @@ public interface UserService {
 	User login(String username, String password);
 
 	void register(User user);
-	
-	List<User> getUsers();
-	
+
+	List<User> getAllUsers();
+
 	void save(User user);
-	
+
 	void remove(User user);
-	
+
 	User getUserById(int id);
+	
+	User getUserByName(String name);
+	
+	void removeUserById(int id);
 
 }

@@ -10,12 +10,14 @@ public interface UserDao {
 
 	void register(User user);
 	
-	List<User> getUsers();
+	List<User> getAllUsers();
 	
 	void save(User user);
 	
 	void remove(User user);
 	
 	User getUserById(int id);
+	
+	User getUserByName(String name);
 
 }

@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<User> getUsers() {
+	public List<User> getAllUsers() {
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
 		return query.getResultList();
 	}
@@ -58,6 +58,19 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserById(int id) {
 		return entityManager.find(User.class, id);
+	}
+	
+	@Override
+	public User getUserByName(String name) {
+		TypedQuery<User> query = entityManager.createQuery(
+				"SELECT u FROM User u WHERE u.username = :name", User.class);
+		query.setParameter("name", name);
+		List<User> result = query.getResultList();
+		if (0 < result.size()) {
+			return result.get(0);
+		} else {
+			return null;
+		}
 	}
 
 }

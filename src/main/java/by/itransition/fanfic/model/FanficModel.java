@@ -58,12 +58,7 @@ public class FanficModel {
 	}
 	
 	public User getUserByName(String username) {
-		for (User user : userDao.getUsers()) {
-			if (user.getUsername().equals(username)) {
-				return user;
-			}
-		}
-		return null;
+		return userDao.getUserByName(username);
 	}
 	
 	public List<Integer> getStatistic() {
@@ -73,7 +68,7 @@ public class FanficModel {
 		calendar.clear(Calendar.SECOND);
 		calendar.clear(Calendar.MILLISECOND);
 		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
-			for (User user : userDao.getUsers()) {
+			for (User user : userDao.getAllUsers()) {
 				Date userDate = user.getDateOfRegistration();
 				Calendar userCalendar = Calendar.getInstance();
 				userCalendar.setTime(userDate);
@@ -116,7 +111,7 @@ public class FanficModel {
 	
 	public List<Fanfic> getFanficsByCategory(String category) {
 		List<Fanfic> answer = new ArrayList<Fanfic>();
-		for (Fanfic fanfic : fanficDao.getFanfics()) {
+		for (Fanfic fanfic : fanficDao.getAllFanfics()) {
 			if (fanfic.getCategories().contains(category)) {
 				answer.add(fanfic);
 			}
@@ -134,7 +129,7 @@ public class FanficModel {
 	}
 
 	public List<Fanfic> getAllFanfics() {
-		return fanficDao.getFanfics();
+		return fanficDao.getAllFanfics();
 	}
 
 	public boolean isRegistered(String username, String password) {
@@ -142,11 +137,11 @@ public class FanficModel {
 	}
 
 	public List<User> getAllUsers() {
-		return userDao.getUsers();
+		return userDao.getAllUsers();
 	}
 
 	public List<Fanfic> getBestFanfics(int count) {
-		List<Fanfic> fanfics = fanficDao.getFanfics();
+		List<Fanfic> fanfics = fanficDao.getAllFanfics();
 		Collections.sort(fanfics, new Comparator<Fanfic>() {
 			@Override
 			public int compare(Fanfic first, Fanfic second) {

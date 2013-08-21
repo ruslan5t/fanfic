@@ -29,7 +29,7 @@ public class ChapterDaoImpl implements ChapterDao {
 	}
 
 	@Override
-	public List<Chapter> getChapters() {
+	public List<Chapter> getAllChapters() {
 		TypedQuery<Chapter> query = entityManager.createQuery("SELECT u FROM Chapter u", Chapter.class);
 		return query.getResultList();
 	}
