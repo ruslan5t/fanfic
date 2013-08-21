@@ -11,7 +11,7 @@ $(function() {
 	
 	function setStatistics(statistics) {
 		var statisticsJSON = $.parseJSON(statistics);
-		$.plot("#chartContainer", [ statisticsJSON ], {
+		$("#chartContainer").plot([ statisticsJSON ], {
 			series: {
 				bars: {
 					show: true,
