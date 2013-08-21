@@ -20,7 +20,7 @@ public class AboutController  extends VisitPageController {
 	public String getAbout(Model model, HttpServletRequest request) {
 		settingModel(model, request);
 		//List<User> allUsers = FanficModel.getInstance().getAllUsers();
-		//model.addAttribute("allUsers", allUsers);
+		//model
 		return "about";
 	}
 }
