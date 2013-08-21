@@ -20,7 +20,6 @@ public class VisitPageController {
 			if (currentUser.getUsername().equals("Admin")) {
 				model.addAttribute("isAdmin", true);
 			}
-			int a;
 		}
 		else {
 			model.addAttribute("isLogged", false);
