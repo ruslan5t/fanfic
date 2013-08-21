@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset7">
-			<form:form method="POST" modelAttribute="user" class="inputDialog">
+			<form:form method="POST" modelAttribute="user">
 				<p>
 					<form:input path="email" placeholder="Email" />
 				</p>

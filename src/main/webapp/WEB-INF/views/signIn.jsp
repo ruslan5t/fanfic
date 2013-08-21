@@ -19,7 +19,7 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset7">
 		<div class="span3">
-			<form:form method="post" modelAttribute="user" class="inputDialog">
+			<form:form method="post" modelAttribute="user">
 				<div class="row">
 					<div class="span3">
 						<form:input path="username" placeholder="Username" />
