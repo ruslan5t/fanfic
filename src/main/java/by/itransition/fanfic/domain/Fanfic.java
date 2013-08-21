@@ -23,7 +23,7 @@ import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
 
-
+@Entity
 @Indexed
 @AnalyzerDef(name = "FanficAnalyzer",
 	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),

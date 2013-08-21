@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.model.bean.User;
 
 public class VisitPageController {
 

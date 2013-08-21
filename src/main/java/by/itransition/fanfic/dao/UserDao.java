@@ -2,7 +2,7 @@ package by.itransition.fanfic.dao;
 
 import java.util.List;
 
-import by.itransition.fanfic.model.bean.User;
+import by.itransition.fanfic.domain.User;
 
 public interface UserDao {
 

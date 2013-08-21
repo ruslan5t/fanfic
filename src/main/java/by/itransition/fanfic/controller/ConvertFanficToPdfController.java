@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.petebevin.markdown.MarkdownFilter;
-import com.petebevin.markdown.MarkdownProcessor;
-
+import by.itransition.fanfic.domain.Chapter;
+import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.model.bean.Chapter;
-import by.itransition.fanfic.model.bean.Fanfic;
+
+import com.petebevin.markdown.MarkdownProcessor;
 
 @Controller
 @RequestMapping("/convertFanficToPdf")

@@ -15,9 +15,9 @@ import by.itransition.fanfic.dao.UserDao;
 import by.itransition.fanfic.dao.impl.ChapterDaoImpl;
 import by.itransition.fanfic.dao.impl.FanficDaoImpl;
 import by.itransition.fanfic.dao.impl.UserDaoImpl;
-import by.itransition.fanfic.model.bean.Chapter;
-import by.itransition.fanfic.model.bean.Fanfic;
-import by.itransition.fanfic.model.bean.User;
+import by.itransition.fanfic.domain.Chapter;
+import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.User;
 
 public class FanficModel {
 

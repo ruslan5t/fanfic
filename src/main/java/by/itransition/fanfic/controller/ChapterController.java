@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.petebevin.markdown.MarkdownProcessor;
-
+import by.itransition.fanfic.domain.Chapter;
+import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.model.bean.Chapter;
-import by.itransition.fanfic.model.bean.Fanfic;
+
+import com.petebevin.markdown.MarkdownProcessor;
 
 @Controller
 @RequestMapping("/chapter")

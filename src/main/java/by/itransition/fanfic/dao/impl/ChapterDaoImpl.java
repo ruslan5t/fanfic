@@ -9,13 +9,16 @@ import javax.persistence.TypedQuery;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.ChapterDao;
-import by.itransition.fanfic.model.bean.Chapter;
-import by.itransition.fanfic.model.bean.Fanfic;
+import by.itransition.fanfic.domain.Chapter;
 
+@Repository
 public class ChapterDaoImpl implements ChapterDao {
 
+	@Autowired
 	private EntityManager entityManager = HibernateUtil.getEntityManager();
 	
 	@Override

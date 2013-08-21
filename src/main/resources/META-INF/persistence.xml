@@ -5,11 +5,11 @@
 	version="1.0">
 
 	<persistence-unit name="PersistenceUnit">
-		<class>by.itransition.fanfic.model.bean.Comment</class>
-		<class>by.itransition.fanfic.model.bean.Chapter</class>
-		<class>by.itransition.fanfic.model.bean.User</class>
-		<class>by.itransition.fanfic.model.bean.Fanfic</class>
-		<class>by.itransition.fanfic.model.bean.Vote</class>
+		<class>by.itransition.fanfic.domain.Comment</class>
+		<class>by.itransition.fanfic.domain.Chapter</class>
+		<class>by.itransition.fanfic.domain.User</class>
+		<class>by.itransition.fanfic.domain.Fanfic</class>
+		<class>by.itransition.fanfic.domain.Vote</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ruslan" />

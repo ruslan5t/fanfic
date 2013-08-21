@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Resolution;
 
-
+@Entity
 public class User {
 	
 	@Id

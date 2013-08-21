@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.model.bean.Fanfic;
-import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/setFanficRating")

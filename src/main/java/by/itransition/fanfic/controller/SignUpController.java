@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.model.bean.User;
 
 @Controller
 @RequestMapping("/signUp")

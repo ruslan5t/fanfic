@@ -5,14 +5,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import by.itransition.fanfic.dao.UserDao;
-import by.itransition.fanfic.model.bean.Fanfic;
-import by.itransition.fanfic.model.bean.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import by.itransition.fanfic.dao.UserDao;
+import by.itransition.fanfic.domain.User;
+
+@Repository
 public class UserDaoImpl implements UserDao {
 
+	@Autowired
 	private EntityManager entityManager = HibernateUtil.getEntityManager();
-
+	
 	@Override
 	public User login(String username, String password) {
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
