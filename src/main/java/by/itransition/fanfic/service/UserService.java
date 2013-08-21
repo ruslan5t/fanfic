@@ -8,7 +8,7 @@ public interface UserService {
 
 	User login(String username, String password);
 
-	void register(User user);
+	int register(User user);
 
 	List<User> getAllUsers();
 
@@ -21,5 +21,7 @@ public interface UserService {
 	User getUserByName(String name);
 	
 	void removeUserById(int id);
+	
+	void confirmRegistration(int id);
 
 }

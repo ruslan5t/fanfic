@@ -1,6 +1,5 @@
 package by.itransition.fanfic.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,38 +9,45 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Resolution;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String username;
+	private String name;
 
 	private String password;
 
 	private String email;
-	
+
 	@DateBridge(resolution = Resolution.DAY)
 	private Date dateOfRegistration;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Fanfic> fanfics = new ArrayList<Fanfic>();
-	
+	private List<Fanfic> fanfics;
+
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Comment> comments = new ArrayList<Comment>();
+	private List<Comment> comments;
+
+	@OneToMany
+	private List<Tag> tags;
+
+	@OneToMany
+	private List<Category> categories;
 
 	public String getUsername() {
-		return username;
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -92,7 +98,7 @@ public class User {
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result
-				+ ((username == null) ? 0 : username.hashCode());
+				+ ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -108,7 +114,7 @@ public class User {
 			return false;
 		}
 		User other = (User) obj;
-		return username.equals(other.getUsername());
+		return name.equals(other.getUsername());
 	}
 
 	public int getId() {
@@ -122,5 +128,26 @@ public class User {
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
 	}
-	
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	@PrePersist
+	private void onCreate() {
+		dateOfRegistration = new Date();
+	}
+
 }

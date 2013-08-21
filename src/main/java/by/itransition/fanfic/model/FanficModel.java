@@ -124,8 +124,7 @@ public class FanficModel {
 	}
 	
 	public void registerUser(User user) {
-		user.setDateOfRegistration(Calendar.getInstance().getTime());
-		userDao.register(user);
+		userDao.save(user);
 	}
 
 	public List<Fanfic> getAllFanfics() {

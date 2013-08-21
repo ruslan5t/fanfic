@@ -29,13 +29,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void register(User user) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(user);
-		entityManager.getTransaction().commit();
-	}
-
-	@Override
 	public List<User> getAllUsers() {
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
 		return query.getResultList();

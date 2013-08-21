@@ -9,9 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.dao.FanficDao;
+import by.itransition.fanfic.dao.UnregisteredUserDao;
 import by.itransition.fanfic.dao.UserDao;
 import by.itransition.fanfic.dao.impl.ChapterDaoImpl;
 import by.itransition.fanfic.dao.impl.FanficDaoImpl;
+import by.itransition.fanfic.dao.impl.UnregisteredUserDaoImpl;
 import by.itransition.fanfic.dao.impl.UserDaoImpl;
 
 @Configuration
@@ -30,6 +32,11 @@ public class AppConfig {
 	@Bean
 	public ChapterDao chapterDao() {
 		return new ChapterDaoImpl();
+	}
+	
+	@Bean
+	public UnregisteredUserDao unregisteredUserDao() {
+		return new UnregisteredUserDaoImpl();
 	}
 	
 	@Bean

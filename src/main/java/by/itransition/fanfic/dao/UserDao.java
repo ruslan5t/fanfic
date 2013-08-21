@@ -7,8 +7,6 @@ import by.itransition.fanfic.domain.User;
 public interface UserDao {
 
 	User login(String username, String password);
-
-	void register(User user);
 	
 	List<User> getAllUsers();
 	
