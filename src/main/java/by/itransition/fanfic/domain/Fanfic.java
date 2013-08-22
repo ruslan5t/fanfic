@@ -49,10 +49,10 @@ public class Fanfic {
 	@Analyzer(definition="FanficAnalyzer")
 	private String description;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Tag> tags = new ArrayList<Tag>();
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Category> categories = new ArrayList<Category>();
 
 	@OneToMany(cascade = CascadeType.ALL)

@@ -18,17 +18,17 @@ import by.itransition.fanfic.domain.Fanfic;
 
 @Repository
 public class FanficDaoImpl implements FanficDao {
-	
+
 	@Autowired
 	private EntityManager entityManager = HibernateUtil.getEntityManager();
-	
+
 	@Override
 	public void addFanfic(Fanfic fanfic) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(fanfic);
 		entityManager.getTransaction().commit();
 	}
-	
+
 	@Override
 	public List<Fanfic> getAllFanfics() {
 		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT f FROM Fanfic f", Fanfic.class);
@@ -41,7 +41,7 @@ public class FanficDaoImpl implements FanficDao {
 		entityManager.persist(fanfic);
 		entityManager.getTransaction().commit();
 	}
-	
+
 	@Override
 	public List<Fanfic> search(String searchQuery) {
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
@@ -52,19 +52,19 @@ public class FanficDaoImpl implements FanficDao {
 		Query persistenceQuery = fullTextEntityManager.createFullTextQuery(query, Fanfic.class);
 		return persistenceQuery.getResultList();
 	}
-	
+
 	@Override
 	public void removeFanficById(int id) {
 		entityManager.getTransaction().begin();
 		entityManager.remove(getFanficById(id));
 		entityManager.getTransaction().commit();
 	}
-	
+
 	@Override
 	public Fanfic getFanficById(int id) {
 		return entityManager.find(Fanfic.class, id);
 	}
-	
+
 	@Override
 	public List<Fanfic> getFanficsByCategory(Category category) {
 		TypedQuery<Fanfic> query = entityManager.createQuery(
@@ -73,5 +73,5 @@ public class FanficDaoImpl implements FanficDao {
 		query.setParameter("category", category);
 		return query.getResultList();
 	}
-	
+
 }

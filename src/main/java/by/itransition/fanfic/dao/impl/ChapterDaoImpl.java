@@ -20,7 +20,7 @@ public class ChapterDaoImpl implements ChapterDao {
 
 	@Autowired
 	private EntityManager entityManager = HibernateUtil.getEntityManager();
-	
+
 	@Override
 	public void addChapter(Chapter chapter) {
 		entityManager.getTransaction().begin();
@@ -44,12 +44,12 @@ public class ChapterDaoImpl implements ChapterDao {
 		Query persistenceQuery = fullTextEntityManager.createFullTextQuery(query, Chapter.class);
 		return persistenceQuery.getResultList();
 	}
-	
+
 	@Override
 	public void save(Chapter chapter) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(chapter);
 		entityManager.getTransaction().commit();
 	}
-	
+
 }

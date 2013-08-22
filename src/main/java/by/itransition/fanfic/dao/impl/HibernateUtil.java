@@ -8,7 +8,7 @@ import org.hibernate.search.jpa.Search;
 public class HibernateUtil {
 
 	private static EntityManager entityManager;
-	
+
 	public static EntityManager getEntityManager() {
 		if (null == entityManager) {
 			entityManager = Persistence.createEntityManagerFactory("PersistenceUnit").createEntityManager();
@@ -20,5 +20,5 @@ public class HibernateUtil {
 		}
 		return entityManager;
 	}
-	
+
 }

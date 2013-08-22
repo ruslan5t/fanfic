@@ -10,7 +10,7 @@ import by.itransition.fanfic.domain.UnregisteredUser;
 
 @Repository
 public class UnregisteredUserDaoImpl implements UnregisteredUserDao {
-	
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -24,7 +24,7 @@ public class UnregisteredUserDaoImpl implements UnregisteredUserDao {
 	@Override
 	public UnregisteredUser getUnregisteredUserById(int id) {
 		return entityManager.find(UnregisteredUser.class, id);
-		
+
 	}
 
 	@Override
@@ -33,5 +33,5 @@ public class UnregisteredUserDaoImpl implements UnregisteredUserDao {
 		entityManager.remove(unregisteredUser);
 		entityManager.getTransaction().commit();
 	}
-	
+
 }

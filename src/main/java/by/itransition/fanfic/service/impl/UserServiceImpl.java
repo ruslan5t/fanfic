@@ -23,8 +23,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User login(String username, String password) {
-		return userDao.login(username, password);
+	public User login(String name, String password) {
+		User user = userDao.getUserByName(name);
+		if (null != user && user.getPassword().equals(password)) {
+			return user;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -91,9 +96,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public boolean isRegistered(String name, String password) {
-		return null != userDao.login(name, password);
+		User user = userDao.getUserByName(name);
+		return null != user && user.getPassword().equals(password);
 	}
-	
+
 	@Override
 	@Transactional
 	public boolean isRegistered(String name) {
