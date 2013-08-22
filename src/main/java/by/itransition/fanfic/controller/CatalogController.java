@@ -1,5 +1,6 @@
 package by.itransition.fanfic.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.domain.Fanfic;
-import by.itransition.fanfic.model.FanficModel;
 import by.itransition.fanfic.service.FanficService;
 
 @Controller
@@ -33,8 +33,10 @@ public class CatalogController extends VisitPageController {
 	public String getComedy(@PathVariable("category") String category,
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		List<Fanfic> fanfics = FanficModel.getInstance()
-				.getFanficsByCategory(category);
+		//List<Fanfic> fanfics = fanficService.getFanficsByCategory(category);
+		//List<Fanfic> fanfics = FanficModel.getInstance()
+		//		.getFanficsByCategory(category);
+		List<Fanfic> fanfics = new ArrayList<Fanfic>();
 		model.addAttribute("allFanfics", fanfics);
 		return "catalog";
 	}

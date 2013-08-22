@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +36,7 @@ import org.hibernate.search.annotations.TokenizerDef;
 public class Fanfic {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private double rating;
@@ -50,13 +49,11 @@ public class Fanfic {
 	@Analyzer(definition="FanficAnalyzer")
 	private String description;
 
-	//@Field(bridge = @FieldBridge(impl=CollectionToCSVBridge.class))
-	@ElementCollection
-	private List<String> tags = new ArrayList<String>();
+	@OneToMany
+	private List<Tag> tags = new ArrayList<Tag>();
 
-	//@Field(bridge = @FieldBridge(impl=CollectionToCSVBridge.class))
-	@ElementCollection
-	private List<String> categories = new ArrayList<String>();
+	@OneToMany
+	private List<Category> categories = new ArrayList<Category>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Chapter> chapters = new ArrayList<Chapter>();
@@ -92,22 +89,6 @@ public class Fanfic {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List <String> getTags() {
-		return tags;
-	}
-
-	public void setTags(List <String> tags) {
-		this.tags = tags;
-	}
-
-	public List <String> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List <String> categories) {
-		this.categories = categories;
 	}
 
 	public List <Chapter> getChapters() {
@@ -216,6 +197,22 @@ public class Fanfic {
 			}
 		}
 		return null;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 
 }

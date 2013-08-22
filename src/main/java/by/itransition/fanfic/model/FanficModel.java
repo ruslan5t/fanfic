@@ -36,29 +36,9 @@ public class FanficModel {
 	public static FanficModel getInstance() {
 		return fanficModel;
 	}
-
-	public void save(User user) {
-		userDao.save(user);
-	}
-
-	public void save(Fanfic fanfic) {
-		fanficDao.save(fanfic);
-	}
-	
-	public void save(Chapter chapter) {
-		chapterDao.save(chapter);
-	}
-	
-	public void removeFanficById(int id) {
-		fanficDao.removeFanficById(id);
-	}
 	
 	public User getUserById(int id) {
 		return userDao.getUserById(id);
-	}
-	
-	public User getUserByName(String username) {
-		return userDao.getUserByName(username);
 	}
 	
 	public List<Integer> getStatistic() {
@@ -108,36 +88,6 @@ public class FanficModel {
 		}
 		return answer;
 	}
-	
-	public List<Fanfic> getFanficsByCategory(String category) {
-		List<Fanfic> answer = new ArrayList<Fanfic>();
-		for (Fanfic fanfic : fanficDao.getAllFanfics()) {
-			if (fanfic.getCategories().contains(category)) {
-				answer.add(fanfic);
-			}
-		}
-		return answer;
-	}
-	
-	public void removeUserById(int id) {
-		userDao.remove(userDao.getUserById(id));
-	}
-	
-	public void registerUser(User user) {
-		userDao.save(user);
-	}
-
-	public List<Fanfic> getAllFanfics() {
-		return fanficDao.getAllFanfics();
-	}
-
-	public boolean isRegistered(String username, String password) {
-		return null != userDao.login(username, password);
-	}
-
-	public List<User> getAllUsers() {
-		return userDao.getAllUsers();
-	}
 
 	public List<Fanfic> getBestFanfics(int count) {
 		List<Fanfic> fanfics = fanficDao.getAllFanfics();
@@ -160,10 +110,6 @@ public class FanficModel {
 		} else {
 			return fanfics.subList(0, count);
 		}
-	}
-
-	public Fanfic getFanficById(int id) {
-		return fanficDao.getFanficById(id);
 	}
 
 }

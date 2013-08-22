@@ -88,4 +88,10 @@ public class UserServiceImpl implements UserService {
 		userDao.remove(getUserById(id));
 	}
 
+	@Override
+	@Transactional
+	public boolean isRegistered(String name, String password) {
+		return null != userDao.login(name, password);
+	}
+
 }

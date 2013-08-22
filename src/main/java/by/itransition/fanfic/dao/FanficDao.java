@@ -2,6 +2,7 @@ package by.itransition.fanfic.dao;
 
 import java.util.List;
 
+import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 
 public interface FanficDao {
@@ -17,5 +18,7 @@ public interface FanficDao {
 	void removeFanficById(int id);
 	
 	Fanfic getFanficById(int id);
+	
+	List<Fanfic> getFanficsByCategory(Category category);
 	
 }

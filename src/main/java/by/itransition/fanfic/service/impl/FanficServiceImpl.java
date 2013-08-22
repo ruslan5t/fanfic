@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.itransition.fanfic.dao.FanficDao;
+import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
 
@@ -50,6 +51,12 @@ public class FanficServiceImpl implements FanficService {
 	@Transactional
 	public Fanfic getFanficById(int id) {
 		return fanficDao.getFanficById(id);
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByCategory(Category category) {
+		return fanficDao.getFanficsByCategory(category);
 	}
 
 }

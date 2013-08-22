@@ -3,6 +3,7 @@ package by.itransition.fanfic.controller;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import by.itransition.fanfic.domain.Chapter;
 import by.itransition.fanfic.domain.Fanfic;
-import by.itransition.fanfic.model.FanficModel;
+import by.itransition.fanfic.service.FanficService;
 
 import com.petebevin.markdown.MarkdownProcessor;
 
@@ -20,11 +21,13 @@ import com.petebevin.markdown.MarkdownProcessor;
 @RequestMapping("/convertFanficToPdf")
 public class ConvertFanficToPdfController {
 
+	@Autowired
+	private FanficService fanficService;
+	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public  @ResponseBody
 	String convertFanficToPdf(@PathVariable("fanficId") int fanficId) {
-		Fanfic convertingFanfic = FanficModel.getInstance()
-				.getFanficById(fanficId);
+		Fanfic convertingFanfic = fanficService.getFanficById(fanficId);
 		RestTemplate restTemplate = new RestTemplate();
 		String url = "http://do.convertapi.com/Web2Pdf/json?" +
 				"storefile=true&OutputFileName=Fanfic&PageNo=true" +

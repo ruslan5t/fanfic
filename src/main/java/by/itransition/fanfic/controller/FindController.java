@@ -16,7 +16,6 @@ public class FindController extends VisitPageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String setFanficRating(Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		System.out.println(request.getParameter("searchRequest"));
 		model.addAttribute("foundedFanfics", FanficModel.getInstance()
 				.searchFanfics(request.getParameter("searchRequest")));
 		return "find";

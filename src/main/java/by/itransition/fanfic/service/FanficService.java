@@ -2,6 +2,7 @@ package by.itransition.fanfic.service;
 
 import java.util.List;
 
+import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 
 public interface FanficService {
@@ -17,5 +18,7 @@ public interface FanficService {
 	void removeFanficById(int id);
 
 	Fanfic getFanficById(int id);
+	
+	List<Fanfic> getFanficsByCategory(Category category);
 
 }

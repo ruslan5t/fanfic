@@ -23,5 +23,7 @@ public interface UserService {
 	void removeUserById(int id);
 	
 	void confirmRegistration(int id);
+	
+	boolean isRegistered(String name, String password);
 
 }

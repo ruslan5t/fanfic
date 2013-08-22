@@ -1,5 +1,6 @@
 package by.itransition.fanfic.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import org.hibernate.search.annotations.Resolution;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	private String name;
@@ -31,16 +32,10 @@ public class User {
 	private Date dateOfRegistration;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Fanfic> fanfics;
+	private List<Fanfic> fanfics = new ArrayList<Fanfic>();
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Comment> comments;
-
-	@OneToMany
-	private List<Tag> tags;
-
-	@OneToMany
-	private List<Category> categories;
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	public String getUsername() {
 		return name;
@@ -127,22 +122,6 @@ public class User {
 
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
-	}
-
-	public List<Tag> getTags() {
-		return tags;
-	}
-
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
-	}
-
-	public List<Category> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
 	}
 
 	@PrePersist

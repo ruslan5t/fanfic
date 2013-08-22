@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.FanficDao;
+import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 
 @Repository
@@ -30,7 +31,7 @@ public class FanficDaoImpl implements FanficDao {
 	
 	@Override
 	public List<Fanfic> getAllFanfics() {
-		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT u FROM Fanfic u", Fanfic.class);
+		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT f FROM Fanfic f", Fanfic.class);
 		return query.getResultList();
 	}
 
@@ -62,6 +63,15 @@ public class FanficDaoImpl implements FanficDao {
 	@Override
 	public Fanfic getFanficById(int id) {
 		return entityManager.find(Fanfic.class, id);
+	}
+	
+	@Override
+	public List<Fanfic> getFanficsByCategory(Category category) {
+		TypedQuery<Fanfic> query = entityManager.createQuery(
+				"SELECT f FROM Fanfic f WHERE :category MEMBER OF f.categories",
+				Fanfic.class);
+		query.setParameter("category", category);
+		return query.getResultList();
 	}
 	
 }
