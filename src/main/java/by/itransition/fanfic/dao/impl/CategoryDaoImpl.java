@@ -1,5 +1,6 @@
 package by.itransition.fanfic.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,6 +29,24 @@ public class CategoryDaoImpl implements CategoryDao {
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public List<Category> getAllCategories() {
+		if (null == getCategoryByName("Camedy")) {
+			List<Category> categories = new ArrayList<Category>();
+			categories.add(new Category("Camedy"));
+			categories.add(new Category("Drama"));
+			categories.add(new Category("Triller"));
+			entityManager.getTransaction().begin();
+			for (Category category : categories) {
+				entityManager.persist(category);
+			}
+			entityManager.getTransaction().commit();
+		}
+		TypedQuery<Category> query = entityManager.createQuery(
+				"SELECT c FROM Category c", Category.class);
+		return query.getResultList();
 	}
 	
 }

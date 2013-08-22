@@ -23,4 +23,24 @@ public class TagDaoImpl implements TagDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public Tag getTagByName(String name) {
+		TypedQuery<Tag> query = entityManager.createQuery(
+				"SELECT t FROM Tag t WHERE t.name = :name", Tag.class);
+		query.setParameter("name", name);
+		List<Tag> result = query.getResultList();
+		if (0 < result.size()) {
+			return result.get(0);
+		} else {
+			return null;
+		}
+	}
+	
+	@Override
+	public void save(Tag tag) {
+		entityManager.getTransaction().begin();
+		entityManager.persist(tag);
+		entityManager.getTransaction().commit();
+	}
+	
 }

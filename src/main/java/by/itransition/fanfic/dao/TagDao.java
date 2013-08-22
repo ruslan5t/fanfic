@@ -8,4 +8,8 @@ public interface TagDao {
 
 	List<Tag> getAllTags();
 	
+	Tag getTagByName(String name);
+	
+	void save(Tag tag);
+	
 }

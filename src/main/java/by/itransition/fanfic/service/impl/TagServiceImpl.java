@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Tag;
@@ -16,8 +17,21 @@ public class TagServiceImpl implements TagService {
 	private TagDao tagDao;
 	
 	@Override
+	@Transactional
 	public List<Tag> getAllTags() {
 		return tagDao.getAllTags();
+	}
+	
+	@Override
+	@Transactional
+	public Tag getTagByName(String name) {
+		Tag tag = tagDao.getTagByName(name);
+		if (null == tag) {
+			tag = new Tag(name);
+			tagDao.save(tag);
+			
+		}
+		return tag;
 	}
 	
 }
