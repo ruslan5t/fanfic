@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.Field;
+
 @Entity
 public class Category {
 
@@ -12,6 +15,8 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
+	@Field
+	@Analyzer(definition="FanficAnalyzer")
 	private String name;
 
 	public int getId() {

@@ -18,6 +18,7 @@ import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
 import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
@@ -25,13 +26,13 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Entity
 @Indexed
 @AnalyzerDef(name = "FanficAnalyzer",
-	tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-	filters = {
-		@TokenFilterDef(factory = LowerCaseFilterFactory.class),
-		@TokenFilterDef(factory = SnowballPorterFilterFactory.class, 
-			params = @Parameter(name = "language", value = "Russian")),
-		@TokenFilterDef(factory = SnowballPorterFilterFactory.class,
-			params = @Parameter(name = "language", value = "English"))
+tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+filters = {
+	@TokenFilterDef(factory = LowerCaseFilterFactory.class),
+	@TokenFilterDef(factory = SnowballPorterFilterFactory.class, 
+	params = @Parameter(name = "language", value = "Russian")),
+	@TokenFilterDef(factory = SnowballPorterFilterFactory.class,
+	params = @Parameter(name = "language", value = "English"))
 })
 public class Fanfic {
 
@@ -47,14 +48,17 @@ public class Fanfic {
 
 	@Field
 	@Analyzer(definition="FanficAnalyzer")
-	private String description;
+	private String  description;
 
+	@IndexedEmbedded
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Tag> tags = new ArrayList<Tag>();
 
+	@IndexedEmbedded
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Category> categories = new ArrayList<Category>();
 
+	@IndexedEmbedded
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Chapter> chapters = new ArrayList<Chapter>();
 
@@ -118,7 +122,7 @@ public class Fanfic {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void makeVote(int rating, User user) {
 		Vote newVote = null;
 		for (Vote vote : votes) {
@@ -189,7 +193,7 @@ public class Fanfic {
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
-	
+
 	public Chapter getChapterById(int id) {
 		for (Chapter chapter : chapters) {
 			if (chapter.getId() == id) {

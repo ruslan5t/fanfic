@@ -47,8 +47,9 @@ public class FanficDaoImpl implements FanficDao {
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
 		QueryBuilder queryBuilder =
 				fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Fanfic.class).get();
-		org.apache.lucene.search.Query query = queryBuilder
-				.keyword().onFields("name", "description").matching(searchQuery).createQuery();
+		org.apache.lucene.search.Query query = queryBuilder.keyword()
+				.onFields("name", "description", "tags.name", "categories.name", "chapters.name", "chapters.content")
+				.matching(searchQuery).createQuery();
 		Query persistenceQuery = fullTextEntityManager.createFullTextQuery(query, Fanfic.class);
 		return persistenceQuery.getResultList();
 	}

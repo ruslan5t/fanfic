@@ -6,28 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.apache.solr.analysis.LowerCaseFilterFactory;
-import org.apache.solr.analysis.SnowballPorterFilterFactory;
-import org.apache.solr.analysis.StandardTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
-import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Parameter;
-import org.hibernate.search.annotations.TokenFilterDef;
-import org.hibernate.search.annotations.TokenizerDef;
 
 @Entity
-@Indexed
-@AnalyzerDef(name = "ChapterAnalyzer",
-tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
-filters = {
-	@TokenFilterDef(factory = LowerCaseFilterFactory.class),
-	@TokenFilterDef(factory = SnowballPorterFilterFactory.class, 
-		params = @Parameter(name = "language", value = "Russian")),
-	@TokenFilterDef(factory = SnowballPorterFilterFactory.class,
-		params = @Parameter(name = "language", value = "English"))
-})
 public class Chapter {
 
 	@Id
@@ -35,11 +17,11 @@ public class Chapter {
 	private int id;
 
 	@Field
-	@Analyzer(definition="ChapterAnalyzer")
+	@Analyzer(definition="FanficAnalyzer")
 	private String name;
 
 	@Field
-	@Analyzer(definition="ChapterAnalyzer")
+	@Analyzer(definition="FanficAnalyzer")
 	private String content;
 	
 	@ManyToOne

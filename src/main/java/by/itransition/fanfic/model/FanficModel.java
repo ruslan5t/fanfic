@@ -9,13 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.dao.FanficDao;
 import by.itransition.fanfic.dao.UserDao;
-import by.itransition.fanfic.dao.impl.ChapterDaoImpl;
 import by.itransition.fanfic.dao.impl.FanficDaoImpl;
 import by.itransition.fanfic.dao.impl.UserDaoImpl;
-import by.itransition.fanfic.domain.Chapter;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.User;
 
@@ -26,12 +23,6 @@ public class FanficModel {
 	private UserDao userDao = new UserDaoImpl();
 
 	private FanficDao fanficDao = new FanficDaoImpl();
-
-	private ChapterDao chapterDao = new ChapterDaoImpl();
-
-	private FanficModel() {
- 
-	}
 
 	public static FanficModel getInstance() {
 		return fanficModel;
@@ -73,27 +64,11 @@ public class FanficModel {
 		}
 		return answer;
 	}
-	
-	public List<Fanfic> searchFanfics(String searchQuery) {
-		List<Fanfic> answer = new ArrayList<Fanfic>();
-		for (Fanfic fanfic : fanficDao.search(searchQuery)) {
-			if (!answer.contains(fanfic)) {
-				answer.add(fanfic);
-			}
-		}
-		for (Chapter chapter : chapterDao.search(searchQuery)) {
-			if (!answer.contains(chapter.getFanfic())) {
-				answer.add(chapter.getFanfic());
-			}
-		}
-		return answer;
-	}
 
 	public List<Fanfic> getBestFanfics(int count) {
 		List<Fanfic> fanfics = fanficDao.getAllFanfics();
 		Collections.sort(fanfics, new Comparator<Fanfic>() {
-			@Override
-			public int compare(Fanfic first, Fanfic second) {
+ 			public int compare(Fanfic first, Fanfic second) {
 				if (first.getRating() > second.getRating()) {
 					return 1;
 				} else {
