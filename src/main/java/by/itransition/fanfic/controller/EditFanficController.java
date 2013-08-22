@@ -15,7 +15,7 @@ import by.itransition.fanfic.service.FanficService;
 
 @Controller
 @RequestMapping("/editFanfic")
-public class EditFanficController extends VisitPageController {
+public class EditFanficController extends InputFanficController {
 
 	@Autowired
 	private FanficService fanficService;
@@ -39,6 +39,7 @@ public class EditFanficController extends VisitPageController {
 			@ModelAttribute("newFanfic") Fanfic newFanfic,
 			HttpServletRequest request) {
 		Fanfic editingFanfic = fanficService.getFanficById(editingFanficId);
+		correctFanfic(newFanfic);
 		copyFanfic(editingFanfic, newFanfic);
 		fanficService.save(editingFanfic);
 		return "redirect:/fanfic/" + editingFanficId;

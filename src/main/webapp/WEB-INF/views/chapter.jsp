@@ -10,8 +10,13 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
+<link href="<c:url value="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />"
+	rel="stylesheet" media="screen">
+<script
+	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="<c:url value="http://code.jquery.com/ui/1.10.3/jquery-ui.js" />"></script>
+<script src="<c:url value="/resources/js/chapter.js" />"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
@@ -21,6 +26,12 @@
 			href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
 			Edit </a>
 	</div>
-	<div class="row offset1">${chapterParsedContent}</div>
+	<div class="row offset1">
+		<div class="span12">
+			<div id="showChapterPlace">
+					${chapterParsedContent}
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -19,3 +19,8 @@ select.categories {
 	float: left;
 	margin-left: 5px;
 }
+
+#showChapterPlace {
+	margin: 0 auto;
+	border: 1px solid;
+}

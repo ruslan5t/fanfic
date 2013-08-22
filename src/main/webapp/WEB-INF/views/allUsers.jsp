@@ -18,9 +18,9 @@
 	<c:forEach items="${allUsers}" var="user">
 		<div class="row offset1">
 			<a
-				href="${pageContext.servletContext.contextPath}/user/${user.getUsername()}">
+				href="${pageContext.servletContext.contextPath}/user/${user.getId()}">
 				${user.getUsername()} </a> <a
-				href="${pageContext.servletContext.contextPath}/removeUser/${user.getUsername()}">
+				href="${pageContext.servletContext.contextPath}/removeUser/${user.getId()}">
 				Remove </a>
 		</div>
 	</c:forEach>

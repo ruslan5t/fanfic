@@ -43,7 +43,9 @@ $(function() {
 	}
 	
 	function setHrefToConvertedFile(hrefToConvertedFile) {
-		$("#hrefToConvertedFile").attr("href", hrefToConvertedFile);
-		$("#hrefToConvertedFile").text("Download");
+        var $iframe = $("<iframe></iframe");
+        $iframe.attr("src", hrefToConvertedFile);
+        $iframe.css("display", "none");
+        $("body").append($iframe);
 	}
 });

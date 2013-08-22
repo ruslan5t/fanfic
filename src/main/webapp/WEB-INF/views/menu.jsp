@@ -13,14 +13,13 @@
 					<li><a
 						href="${pageContext.servletContext.contextPath}/catalog">all</a></li>
 					<li class="divider"></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath}/catalog/comedy">comedy</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath}/catalog/tragedy">tragedy</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath}/catalog/drama">drama</a></li>
-					<li><a
-						href="${pageContext.servletContext.contextPath}/catalog/fantasy">fantasy</a></li>
+					<c:forEach items="${allCategories}" var="category">
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/catalog/${category.getName()}">
+						${category.getName()}
+						</a>
+						</li>
+					</c:forEach>
 				</ul></li>
 			<c:if test="${isLogged}">
 				<li><a

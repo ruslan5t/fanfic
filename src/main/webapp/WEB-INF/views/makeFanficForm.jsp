@@ -21,10 +21,6 @@
 </div>
 <div class="row offset7">
 	<form:label path="categories">Categories:</form:label>
-	<form:select path="categories" class="catigories">
-		<form:option value="comedy">comedy</form:option>
-		<form:option value="tragedy">tragedy</form:option>
-		<form:option value="drama">drama</form:option>
-		<form:option value="fantasy">fantasy</form:option>
+	<form:select path="categories" items="${allCategories}" class="catigories">
 	</form:select>
 </div>

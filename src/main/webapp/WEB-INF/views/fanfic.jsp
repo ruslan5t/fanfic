@@ -26,7 +26,6 @@
 	<div class="row offset1">
 		<h2>${fanfic.getName()}</h2>
 		<button id="convertToPdf">convert to pdf</button>
-		<a id="hrefToConvertedFile"></a>
 	</div>
 	<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 		<div class="row offset1">
