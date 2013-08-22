@@ -11,24 +11,30 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
+<script
+	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset7">
-			<form:form method="POST" modelAttribute="user">
+		<form:form method="POST" modelAttribute="user">
+			<p>
+				<form:input path="email" placeholder="Email" />
+			</p>
+			<p>
+				<form:input path="username" placeholder="Username" />
+			</p>
+			<p>
+				<form:password path="password" placeholder="Password" />
+			</p>
+			<c:if test="${not empty error}">
 				<p>
-					<form:input path="email" placeholder="Email" />
+					<form:label path="">User with this name is already registered.</form:label>
 				</p>
-				<p>
-					<form:input path="username" placeholder="Username" />
-				</p>
-				<p>
-					<form:password path="password" placeholder="Password" />
-				</p>
-				<input type="submit" value="Register" />
-			</form:form>
+			</c:if>
+			<input type="submit" value="Register" />
+		</form:form>
 	</div>
 </body>
 </html>

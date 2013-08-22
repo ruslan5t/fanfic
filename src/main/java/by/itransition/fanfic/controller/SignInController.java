@@ -29,8 +29,7 @@ public class SignInController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String signInUser(@ModelAttribute("user") User user,
 			BindingResult bindingResult, Model model, HttpServletRequest request) {
-		boolean isUserRegistered = userService.isRegistered(user.getUsername(), user.getPassword());
-		if (isUserRegistered) {
+		if (userService.isRegistered(user.getUsername(), user.getPassword())) {
 			request.getSession().setAttribute("userId",
 					userService.getUserByName(user.getUsername()).getId());
 			return "redirect:/";
