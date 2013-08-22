@@ -20,5 +20,7 @@ public interface FanficService {
 	Fanfic getFanficById(int id);
 	
 	List<Fanfic> getFanficsByCategory(Category category);
+	
+	List<Fanfic> getFanficsByCategoryName(String name);
 
 }

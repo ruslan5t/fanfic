@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.itransition.fanfic.dao.CategoryDao;
 import by.itransition.fanfic.dao.FanficDao;
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
@@ -16,6 +17,9 @@ public class FanficServiceImpl implements FanficService {
 
 	@Autowired
 	private FanficDao fanficDao;
+	
+	@Autowired
+	private CategoryDao categoryDao;
 
 	@Override
 	@Transactional
@@ -57,6 +61,12 @@ public class FanficServiceImpl implements FanficService {
 	@Transactional
 	public List<Fanfic> getFanficsByCategory(Category category) {
 		return fanficDao.getFanficsByCategory(category);
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByCategoryName(String name) {
+		return fanficDao.getFanficsByCategory(categoryDao.getCategoryByName(name));
 	}
 
 }
