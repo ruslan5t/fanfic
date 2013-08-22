@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
 
@@ -30,14 +31,10 @@ public class CatalogController extends VisitPageController {
 	}
 	
 	@RequestMapping(value = "/{category}", method = RequestMethod.GET)
-	public String getComedy(@PathVariable("category") String category,
+	public String getComedy(@PathVariable("category") String categoryName,
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		//List<Fanfic> fanfics = fanficService.getFanficsByCategory(category);
-		//List<Fanfic> fanfics = FanficModel.getInstance()
-		//		.getFanficsByCategory(category);
-		List<Fanfic> fanfics = new ArrayList<Fanfic>();
-		model.addAttribute("allFanfics", fanfics);
+		model.addAttribute("allFanfics", fanficService.getFanficsByCategoryName(categoryName));
 		return "catalog";
 	}
 }
