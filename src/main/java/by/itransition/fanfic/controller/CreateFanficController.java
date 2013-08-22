@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.domain.Fanfic;
-import by.itransition.fanfic.domain.Tag;
 import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.service.UserService;
 
@@ -33,9 +32,6 @@ public class CreateFanficController extends VisitPageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createFanfic(@ModelAttribute("newFanfic") Fanfic fanfic,
 			BindingResult bindingResult, HttpServletRequest request) {
-		for (Tag tag : fanfic.getTags()) {
-			System.out.println(tag.getName());
-		}
 		User user = userService.getUserById(
 				(Integer)request.getSession().getAttribute("userId"));
 		user.addFanfic(fanfic);

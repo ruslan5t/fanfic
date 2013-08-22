@@ -13,3 +13,9 @@ select.categories {
 #chartContainer {
 	height: 300px;
 }
+
+.tag {
+	border: 1px solid;
+	float: left;
+	margin-left: 5px;
+}

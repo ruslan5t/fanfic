@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Tag;
+import by.itransition.fanfic.service.TagService;
 
 @Service
-public class TagServiceImpl implements TagDao {
+public class TagServiceImpl implements TagService {
 
 	@Autowired
 	private TagDao tagDao;

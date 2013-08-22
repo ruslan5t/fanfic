@@ -11,7 +11,8 @@
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">
-<script src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
+<script
+	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.raty.min.js" />"></script>
 <script src="<c:url value="/resources/js/fanfic.js" />"></script>
@@ -27,13 +28,11 @@
 		<button id="convertToPdf">convert to pdf</button>
 		<a id="hrefToConvertedFile"></a>
 	</div>
-	<c:if
-		test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+	<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 		<div class="row offset1">
-			<a 
+			<a
 				href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
-				Edit
-			</a>
+				Edit </a>
 		</div>
 		<div class="row offset1">
 			<a
@@ -63,7 +62,7 @@
 		<div class="span1">Tags:</div>
 		<div class="span2">
 			<c:forEach items="${fanfic.getTags()}" var="tag">
-			${tag}
+				<div class="tag">${tag.getName()}</div>
 			</c:forEach>
 		</div>
 	</div>
