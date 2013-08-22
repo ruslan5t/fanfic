@@ -18,6 +18,14 @@ public class Category {
 	@Field
 	@Analyzer(definition="FanficAnalyzer")
 	private String name;
+	
+	public Category() {
+		
+	}
+	
+	public Category(String name) {
+		setName(name);
+	}
 
 	public int getId() {
 		return id;
