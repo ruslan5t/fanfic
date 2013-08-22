@@ -93,5 +93,11 @@ public class UserServiceImpl implements UserService {
 	public boolean isRegistered(String name, String password) {
 		return null != userDao.login(name, password);
 	}
+	
+	@Override
+	@Transactional
+	public boolean isRegistered(String name) {
+		return null != userDao.getUserByName(name);
+	}
 
 }

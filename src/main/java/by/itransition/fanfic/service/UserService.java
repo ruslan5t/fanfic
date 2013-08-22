@@ -25,5 +25,7 @@ public interface UserService {
 	void confirmRegistration(int id);
 	
 	boolean isRegistered(String name, String password);
+	
+	boolean isRegistered(String name);
 
 }
