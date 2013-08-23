@@ -75,8 +75,14 @@ public class FanficServiceImpl implements FanficService {
 	
 	@Override
 	@Transactional
-	public List<Fanfic> getFanficsByTagName(String name) {
-		return fanficDao.getFanficsByTag(tagDao.getTagByName(name));
+	public List<Fanfic> getFanficsByCategoryId(int id) {
+		return fanficDao.getFanficsByCategory(categoryDao.getCategoryById(id));
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByTagId(int id) {
+		return fanficDao.getFanficsByTag(tagDao.getTagById(id));
 	}
 	
 	@Override

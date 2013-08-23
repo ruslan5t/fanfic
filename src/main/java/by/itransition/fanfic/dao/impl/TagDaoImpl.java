@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Tag;
+import by.itransition.fanfic.domain.User;
 
 @Repository
 public class TagDaoImpl implements TagDao {
@@ -41,6 +42,11 @@ public class TagDaoImpl implements TagDao {
 		entityManager.getTransaction().begin();
 		entityManager.persist(tag);
 		entityManager.getTransaction().commit();
+	}
+	
+	@Override
+	public Tag getTagById(int id) {
+		return entityManager.find(Tag.class, id);
 	}
 	
 }

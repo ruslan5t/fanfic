@@ -23,7 +23,9 @@ public interface FanficService {
 
 	List<Fanfic> getFanficsByCategoryName(String name);
 	
-	List<Fanfic> getFanficsByTagName(String name);
+	List<Fanfic> getFanficsByCategoryId(int id);
+	
+	List<Fanfic> getFanficsByTagId(int id);
 
 	List<Fanfic> getFanficsByDate(int first, int count);
 

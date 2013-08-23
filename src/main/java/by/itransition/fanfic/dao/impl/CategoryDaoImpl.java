@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.CategoryDao;
 import by.itransition.fanfic.domain.Category;
+import by.itransition.fanfic.domain.Tag;
 
 @Repository
 public class CategoryDaoImpl implements CategoryDao {
@@ -47,6 +48,11 @@ public class CategoryDaoImpl implements CategoryDao {
 		TypedQuery<Category> query = entityManager.createQuery(
 				"SELECT c FROM Category c", Category.class);
 		return query.getResultList();
+	}
+	
+	@Override
+	public Category getCategoryById(int id) {
+		return entityManager.find(Category.class, id);
 	}
 	
 }

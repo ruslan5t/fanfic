@@ -10,6 +10,8 @@ public interface TagDao {
 	
 	Tag getTagByName(String name);
 	
+	Tag getTagById(int id);
+	
 	void save(Tag tag);
 	
 }
