@@ -68,5 +68,11 @@ public class FanficServiceImpl implements FanficService {
 	public List<Fanfic> getFanficsByCategoryName(String name) {
 		return fanficDao.getFanficsByCategory(categoryDao.getCategoryByName(name));
 	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByNewest(int first, int count) {
+		return fanficDao.getFanficsByNewest(first, count);
+	}
 
 }

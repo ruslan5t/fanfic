@@ -22,5 +22,7 @@ public interface FanficService {
 	List<Fanfic> getFanficsByCategory(Category category);
 	
 	List<Fanfic> getFanficsByCategoryName(String name);
+	
+	List<Fanfic> getFanficsByNewest(int first, int count);
 
 }

@@ -74,5 +74,13 @@ public class FanficDaoImpl implements FanficDao {
 		query.setParameter("category", category);
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<Fanfic> getFanficsByNewest(int first, int count) {
+		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT f FROM Fanfic f", Fanfic.class);
+		query.setFirstResult(first);
+		query.setMaxResults(count);
+		return query.getResultList();
+	}
 
 }
