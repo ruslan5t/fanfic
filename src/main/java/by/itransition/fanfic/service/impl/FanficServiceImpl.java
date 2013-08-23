@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import by.itransition.fanfic.dao.CategoryDao;
 import by.itransition.fanfic.dao.FanficDao;
+import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
@@ -21,6 +22,9 @@ public class FanficServiceImpl implements FanficService {
 	@Autowired
 	private CategoryDao categoryDao;
 
+	@Autowired
+	private TagDao tagDao;
+	
 	@Override
 	@Transactional
 	public void addFanfic(Fanfic fanfic) {
@@ -67,6 +71,12 @@ public class FanficServiceImpl implements FanficService {
 	@Transactional
 	public List<Fanfic> getFanficsByCategoryName(String name) {
 		return fanficDao.getFanficsByCategory(categoryDao.getCategoryByName(name));
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByTagName(String name) {
+		return fanficDao.getFanficsByTag(tagDao.getTagByName(name));
 	}
 	
 	@Override

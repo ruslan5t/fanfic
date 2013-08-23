@@ -4,6 +4,7 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.Tag;
 
 public interface FanficDao {
 
@@ -20,6 +21,8 @@ public interface FanficDao {
 	Fanfic getFanficById(int id);
 	
 	List<Fanfic> getFanficsByCategory(Category category);
+	
+	List<Fanfic> getFanficsByTag(Tag tag);
 	
 	List<Fanfic> getFanficsByDate(int first, int count);
 	

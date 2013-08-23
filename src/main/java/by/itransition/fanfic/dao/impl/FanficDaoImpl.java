@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.FanficDao;
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.Tag;
 
 @Repository
 public class FanficDaoImpl implements FanficDao {
@@ -89,6 +90,15 @@ public class FanficDaoImpl implements FanficDao {
 				Fanfic.class);
 		query.setFirstResult(first);
 		query.setMaxResults(count);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Fanfic> getFanficsByTag(Tag tag) {
+		TypedQuery<Fanfic> query = entityManager.createQuery(
+				"SELECT f FROM Fanfic f WHERE :tag MEMBER OF f.tags",
+				Fanfic.class);
+		query.setParameter("category", tag);
 		return query.getResultList();
 	}
 
