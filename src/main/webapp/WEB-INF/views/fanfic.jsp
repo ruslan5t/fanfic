@@ -2,7 +2,8 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -25,18 +26,18 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset1">
 		<h2>${fanfic.getName()}</h2>
-		<button id="convertToPdf">convert to pdf</button>
+		<button id="convertToPdf"><spring:message code="convertToPdf" /></button>
 	</div>
 	<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 		<div class="row offset1">
 			<a
 				href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
-				Edit </a>
+				<spring:message code="edit" /> </a>
 		</div>
 		<div class="row offset1">
 			<a
 				href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
-				Add chapter</a>
+				<spring:message code="addChapter" /></a>
 		</div>
 	</c:if>
 	<div class="row offset1">
@@ -82,13 +83,13 @@
 		<div class="row offset1">${comment.getContent()}</div>
 	</c:forEach>
 	<c:if test="${isLogged}">
-		<div class="row offset1">Add comment:</div>
+		<div class="row offset1"><spring:message code="addComment" />:</div>
 		<div class="row offset1">
 			<form
 				action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
 				method="post">
 				<textarea name="newComment"></textarea>
-				<input type="submit" value="Add comment" />
+				<input type="submit" value="<spring:message code="addComment" />" />
 			</form>
 		</div>
 	</c:if>

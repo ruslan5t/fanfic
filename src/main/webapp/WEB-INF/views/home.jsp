@@ -22,7 +22,7 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset1">
 		<div class="span7">
-			<div class="pageTitle">Main page</div>
+			<div class="pageTitle"><spring:message code="mainPage" /></div>
 			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
 				<div class="row">
