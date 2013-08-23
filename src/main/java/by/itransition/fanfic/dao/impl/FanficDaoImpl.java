@@ -98,7 +98,7 @@ public class FanficDaoImpl implements FanficDao {
 		TypedQuery<Fanfic> query = entityManager.createQuery(
 				"SELECT f FROM Fanfic f WHERE :tag MEMBER OF f.tags",
 				Fanfic.class);
-		query.setParameter("category", tag);
+		query.setParameter("tag", tag);
 		return query.getResultList();
 	}
 
