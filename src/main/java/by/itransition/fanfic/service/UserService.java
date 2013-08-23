@@ -27,5 +27,7 @@ public interface UserService {
 	boolean isRegistered(String name, String password);
 	
 	boolean isRegistered(String name);
+	
+	List<Integer> getStatistics();
 
 }

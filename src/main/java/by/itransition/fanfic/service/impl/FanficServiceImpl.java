@@ -71,8 +71,14 @@ public class FanficServiceImpl implements FanficService {
 	
 	@Override
 	@Transactional
-	public List<Fanfic> getFanficsByNewest(int first, int count) {
-		return fanficDao.getFanficsByNewest(first, count);
+	public List<Fanfic> getFanficsByDate(int first, int count) {
+		return fanficDao.getFanficsByDate(first, count);
 	}
 
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByRating(int first, int count) {
+		return fanficDao.getFanficsByDate(first, count);
+	}
+	
 }

@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.itransition.fanfic.domain.Tag;
-import by.itransition.fanfic.model.FanficModel;
-import by.itransition.fanfic.service.FanficService;
 import by.itransition.fanfic.service.TagService;
 
 @Controller

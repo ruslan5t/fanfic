@@ -1,6 +1,11 @@
 package by.itransition.fanfic.service.impl;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,6 +109,41 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public boolean isRegistered(String name) {
 		return null != userDao.getUserByName(name);
+	}
+	
+	@Override
+	@Transactional
+	public List<Integer> getStatistics() {
+		List<Integer> answer = new ArrayList<Integer>();
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear(Calendar.SECOND);
+		calendar.clear(Calendar.MILLISECOND);
+		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
+			for (User user : userDao.getAllUsers()) {
+				Date userDate = user.getDateOfRegistration();
+				Calendar userCalendar = Calendar.getInstance();
+				userCalendar.setTime(userDate);
+				userCalendar.clear(Calendar.SECOND);
+				userCalendar.clear(Calendar.MILLISECOND);
+				if (userCalendar.getTime().equals(calendar.getTime())) {
+					if (null == map.get(minutesBeforeNow)) {
+						map.put(minutesBeforeNow, 1);
+					} else {
+						map.put(minutesBeforeNow, map.get(minutesBeforeNow) + 1);
+					}
+				}
+			}
+			calendar.add(Calendar.MINUTE, -1);
+		}
+		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
+			if (null != map.get(minutesBeforeNow)) {
+				answer.add(map.get(minutesBeforeNow));
+			} else {
+				answer.add(0);
+			}
+		}
+		return answer;
 	}
 
 }

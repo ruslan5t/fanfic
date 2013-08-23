@@ -21,6 +21,8 @@ public interface FanficDao {
 	
 	List<Fanfic> getFanficsByCategory(Category category);
 	
-	List<Fanfic> getFanficsByNewest(int first, int count);
+	List<Fanfic> getFanficsByDate(int first, int count);
+	
+	List<Fanfic> getFanficsByRating(int first, int count); 
 	
 }

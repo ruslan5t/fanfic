@@ -18,11 +18,13 @@ public interface FanficService {
 	void removeFanficById(int id);
 
 	Fanfic getFanficById(int id);
-	
+
 	List<Fanfic> getFanficsByCategory(Category category);
-	
+
 	List<Fanfic> getFanficsByCategoryName(String name);
-	
-	List<Fanfic> getFanficsByNewest(int first, int count);
+
+	List<Fanfic> getFanficsByDate(int first, int count);
+
+	List<Fanfic> getFanficsByRating(int first, int count);
 
 }
