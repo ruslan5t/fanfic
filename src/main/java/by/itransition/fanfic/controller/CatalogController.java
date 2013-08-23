@@ -30,11 +30,19 @@ public class CatalogController extends VisitPageController {
 		return "catalog";
 	}
 	
-	@RequestMapping(value = "/{category}", method = RequestMethod.GET)
-	public String getComedy(@PathVariable("category") String categoryName,
+	@RequestMapping(value = "/category/{categoryId}", method = RequestMethod.GET)
+	public String getFanficsByCategory(@PathVariable("categoryId") int categoryId,
 			Model model, HttpServletRequest request) {
 		settingModel(model, request);
-		model.addAttribute("allFanfics", fanficService.getFanficsByCategoryName(categoryName));
+		model.addAttribute("allFanfics", fanficService.getFanficsByCategoryId(categoryId));
+		return "catalog";
+	}
+	
+	@RequestMapping(value = "/tag/{tagId}", method = RequestMethod.GET)
+	public String getFanficsByTag(@PathVariable("tagId") int tagId,
+			Model model, HttpServletRequest request) {
+		settingModel(model, request);
+		model.addAttribute("allFanfics", fanficService.getFanficsByTagId(tagId));
 		return "catalog";
 	}
 }

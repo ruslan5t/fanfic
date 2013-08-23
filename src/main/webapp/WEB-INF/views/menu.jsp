@@ -15,7 +15,7 @@
 					<li class="divider"></li>
 					<c:forEach items="${allCategories}" var="category">
 						<li>
-						<a href="${pageContext.servletContext.contextPath}/catalog/${category.getName()}">
+						<a href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
 						${category.getName()}
 						</a>
 						</li>

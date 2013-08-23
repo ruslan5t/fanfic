@@ -53,8 +53,8 @@
 		<div class="span2">
 			<c:forEach items="${fanfic.getCategories()}" var="category">
 				<a
-					href="${pageContext.servletContext.contextPath}/catalog/${category}">
-					${category} </a>
+					href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
+					${category.getName()} </a>
 			</c:forEach>
 		</div>
 	</div>

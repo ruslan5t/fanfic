@@ -20,7 +20,12 @@ select.categories {
 	margin-left: 5px;
 }
 
-#showChapterPlace {
+#resizableChapterPlace {
 	margin: 0 auto;
 	border: 1px solid;
+	min-width: 75px;
+}
+
+#textChapterPlace {
+	overflow: auto;
 }

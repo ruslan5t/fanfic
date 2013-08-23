@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.service.FanficService;
+import by.itransition.fanfic.service.TagService;
 
 /**
  * Handles requests for the application home page.
@@ -26,9 +27,13 @@ public class HomeController extends VisitPageController {
 	@Autowired
 	private FanficService fanficService;
 	
+	@Autowired
+	private TagService tagService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		settingModel(model, request);
+		model.addAttribute("allTags", tagService.getAllTags());
 		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 10));
 		return "home";
 	}

@@ -37,10 +37,10 @@
 		<div class="span7">
 			<div id="tagcloud" class="row">
 				<ul>
-					<c:forEach items="${allCategories}" var="category">
+					<c:forEach items="${allTags}" var="tag">
 						<li>
-						<a href="${pageContext.servletContext.contextPath}/catalog/${category.getName()}">
-						${category.getName()}
+						<a href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+						${tag.getName()}
 						</a>
 						</li>
 					</c:forEach>
