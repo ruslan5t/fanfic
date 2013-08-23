@@ -23,12 +23,14 @@
 			<form:form method="post" modelAttribute="user">
 				<div class="row">
 					<div class="span3">
-						<form:input path="username" placeholder="<spring:message code="username" />" />
+						<spring:message code="username" var="usernameTranslate" />
+						<form:input path="username" placeholder="${usernameTranslate}" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="span3">
-						<form:password path="password" placeholder="<spring:message code="password" />" />
+						<spring:message code="password" var="passwordTranslate" />
+						<form:password path="password" placeholder="${passwordTranslate}" />
 					</div>
 				</div>
 				<c:if test="${not empty error}">
@@ -42,7 +44,8 @@
 				</c:if>
 				<div class="row">
 					<div class="span1">
-						<input type="submit" value="Sign in">
+						<spring:message code="signIn" var="signInTranslate" />
+						<input type="submit" value="${signInTranslate}">
 					</div>
 					<div class="span2">
 						<a href="signUp"><spring:message code="registerNow" /></a>

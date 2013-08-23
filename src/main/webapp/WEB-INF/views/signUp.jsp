@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,20 +21,26 @@
 	<div class="row offset7">
 		<form:form method="POST" modelAttribute="user">
 			<p>
-				<form:input path="email" placeholder="Email" />
+				<spring:message code="email" var="emailTranslate" />
+				<form:input path="email" placeholder="${emailTranslate}" />
 			</p>
 			<p>
-				<form:input path="username" placeholder="Username" />
+				<spring:message code="username" var="usernameTranslate" />
+				<form:input path="username" placeholder="${usernameTranslate }" />
 			</p>
 			<p>
-				<form:password path="password" placeholder="Password" />
+				<spring:message code="password" var="passwordTranslate" />
+				<form:password path="password" placeholder="${passwordTranslate}" />
 			</p>
 			<c:if test="${not empty error}">
 				<p>
-					<form:label path="">User with this name is already registered.</form:label>
+					<form:label path="">
+						<spring:message code="userWithThisNameIsAlreadyRegistered" />.
+					</form:label>
 				</p>
 			</c:if>
-			<input type="submit" value="Register" />
+			<spring:message code="register" var="registerTranslate" />
+			<input type="submit" value="${registerTranslate}" />
 		</form:form>
 	</div>
 </body>

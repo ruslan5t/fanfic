@@ -22,7 +22,8 @@
 		method="POST" modelAttribute="newChapter">
 		<jsp:include page="makeChapterForm.jsp"></jsp:include>
 		<div class="row offset7">
-			<input type="submit" value="<spring:message code="editChapter" />" />
+			<spring:message code="editChapter" var="editChapterTranslate" />
+			<input type="submit" value="${editChapterTranslate}" />
 		</div>
 	</form:form>
 </body>

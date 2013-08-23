@@ -89,7 +89,8 @@
 				action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
 				method="post">
 				<textarea name="newComment"></textarea>
-				<input type="submit" value="<spring:message code="addComment" />" />
+				<spring:message code="addComment" var="addCommentTranslate" />
+				<input type="submit" value="${addCommentTranslate}" />
 			</form>
 		</div>
 	</c:if>

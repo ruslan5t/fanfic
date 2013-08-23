@@ -22,7 +22,8 @@
 		method="post" modelAttribute="newFanfic">
 		<jsp:include page="makeFanficForm.jsp"></jsp:include>
 		<div class="row offset7">
-			<input type="submit" value="<spring:message code="editFanfic" />">
+		<spring:message code="editFanfic" var="editFanficTranslate" />
+			<input type="submit" value="${editFanficTranslate}">
 		</div>
 	</form:form>
 </body>

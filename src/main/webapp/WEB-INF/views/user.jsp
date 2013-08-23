@@ -2,7 +2,8 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -17,7 +18,7 @@
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset1">
-		<div class="pageTitle">User profile</div>
+		<div class="pageTitle"><spring:message code="userProfile" /></div>
 	</div>
 	<div class="row offset1">
 		<hr />
@@ -30,12 +31,12 @@
 	<c:if test="${showedUser.getId().equals(currentUserId)}">
 		<div class="row offset1">
 			<a href="${pageContext.servletContext.contextPath}/createFanfic">
-				Create fanfic </a>
+				<spring:message code="createFanfic" /> </a>
 		</div>
 	</c:if>
 	<div class="row offset1">
 		<h3>
-			<b>Fanfics:</b>
+			<b><spring:message code="fanfics" />:</b>
 		</h3>
 	</div>
 	<c:forEach items="${showedUser.getFanfics()}" var="fanfic">

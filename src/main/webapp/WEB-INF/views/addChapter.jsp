@@ -20,7 +20,8 @@
 	<form:form method="POST" modelAttribute="chapter">
 		<jsp:include page="makeChapterForm.jsp"></jsp:include>
 		<div class="row offset7">
-			<input type="submit" value="<spring:message code="addChapter" />" />
+			<spring:message code="addChapter" var="addChapterTranslate" />
+			<input type="submit" value="${addChapterTranslate}" />
 		</div>
 	</form:form>
 </body>
