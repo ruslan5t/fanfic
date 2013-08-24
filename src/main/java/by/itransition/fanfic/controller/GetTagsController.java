@@ -22,7 +22,7 @@ public class GetTagsController {
 	@Autowired
 	private TagService tagService;
 	
-	@RequestMapping(method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(method = RequestMethod.POST)//, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody
 	String getTags(Model model, HttpServletRequest request) {
 		List<Tag> tags = tagService.getAllTags();
