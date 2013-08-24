@@ -21,7 +21,7 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<form:form method="POST" modelAttribute="chapter">
 			<jsp:include page="makeChapterForm.jsp"></jsp:include>
-			<div class="row offset7">
+			<div class="row offset4">
 				<spring:message code="addChapter" var="addChapterTranslate" />
 				<input type="submit" value="${addChapterTranslate}" />
 			</div>

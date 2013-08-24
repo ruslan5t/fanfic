@@ -24,7 +24,7 @@
 			action="${pageContext.servletContext.contextPath}/editFanfic/${editingFanficId}"
 			method="post" modelAttribute="newFanfic">
 			<jsp:include page="makeFanficForm.jsp"></jsp:include>
-			<div class="row offset7">
+			<div class="row offset4">
 				<spring:message code="editFanfic" var="editFanficTranslate" />
 				<input type="submit" value="${editFanficTranslate}">
 			</div>

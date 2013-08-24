@@ -23,7 +23,7 @@
 			action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
 			method="POST" modelAttribute="newChapter">
 			<jsp:include page="makeChapterForm.jsp"></jsp:include>
-			<div class="row offset7">
+			<div class="row offset4">
 				<spring:message code="editChapter" var="editChapterTranslate" />
 				<input type="submit" value="${editChapterTranslate}" />
 			</div>
