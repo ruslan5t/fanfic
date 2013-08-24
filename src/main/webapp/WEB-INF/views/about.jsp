@@ -14,16 +14,20 @@
 	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.flot.js" />"></script>
-<script src="<c:url value="/resources/js/jquery.flot.categories.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/jquery.flot.categories.min.js" />"></script>
 <script src="<c:url value="/resources/js/about.js" />"></script>
 </head>
 <body>
-	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset6">
-		<div class="span3">
-			<div class="span5">
-				<div id="chartContainer"></div>
+	<div class="pageContainer">
+		<div id="contextPath"
+			value="${pageContext.servletContext.contextPath}"></div>
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div class="row offset2">
+			<div class="span3">
+				<div class="span5">
+					<div id="chartContainer"></div>
+				</div>
 			</div>
 		</div>
 	</div>

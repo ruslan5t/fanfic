@@ -20,36 +20,39 @@
 <script src="<c:url value="/resources/js/catalog.js" />"></script>
 </head>
 <body>
-	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
-	<div id="countItems" value="${countItems}"></div>
-	<div id="pageNumber" value="${pageNumber}"></div>
-	<div id="countOnPage" value="${countOnPage}"></div>
-	<div id="addressPastCatalog" value="${addressPastCatalog}"></div>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset1">
-		<div class="pageTitle">
-			<spring:message code="catalog" />
+	<div class="pageContainer">
+		<div id="contextPath"
+			value="${pageContext.servletContext.contextPath}"></div>
+		<div id="countItems" value="${countItems}"></div>
+		<div id="pageNumber" value="${pageNumber}"></div>
+		<div id="countOnPage" value="${countOnPage}"></div>
+		<div id="addressPastCatalog" value="${addressPastCatalog}"></div>
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div class="row offset1">
+			<div class="pageTitle">
+				<spring:message code="catalog" />
+			</div>
 		</div>
-	</div>
-	<div class="row offset1">
-		<hr />
-	</div>
-	<div class="row offset1">
-		<div class="span12">
-			<c:forEach items="${allFanfics}" var="fanfic">
-				<div class="row">
-					<div class="span12">
-						<a
-							href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-							${fanfic.getName()} </a>
+		<div class="row offset1">
+			<hr />
+		</div>
+		<div class="row offset1">
+			<div class="span12">
+				<c:forEach items="${allFanfics}" var="fanfic">
+					<div class="row">
+						<div class="span12">
+							<a
+								href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+								${fanfic.getName()} </a>
+						</div>
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
-	</div>
-	<div class="row offset1">
-		<div class="span11">
-			<div id="pagination"></div>
+		<div class="row offset1">
+			<div class="span11">
+				<div id="pagination"></div>
+			</div>
 		</div>
 	</div>
 </body>

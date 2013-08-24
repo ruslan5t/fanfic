@@ -16,19 +16,21 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<c:forEach items="${allUsers}" var="user">
-		<div class="row offset1">
-			<a
-				href="${pageContext.servletContext.contextPath}/user/${user.getId()}">
-				${user.getUsername()} </a>
-			<form method="post"
-				action="${pageContext.servletContext.contextPath}/removeUser/${user.getId()}">
-				<button>
-					<spring:message code="remove" />
-				</button>
-			</form>
-		</div>
-	</c:forEach>
+	<div class="pageContainer">
+		<jsp:include page="menu.jsp"></jsp:include>
+		<c:forEach items="${allUsers}" var="user">
+			<div class="row offset1">
+				<a
+					href="${pageContext.servletContext.contextPath}/user/${user.getId()}">
+					${user.getUsername()} </a>
+				<form method="post"
+					action="${pageContext.servletContext.contextPath}/removeUser/${user.getId()}">
+					<button>
+						<spring:message code="remove" />
+					</button>
+				</form>
+			</div>
+		</c:forEach>
+	</div>
 </body>
 </html>

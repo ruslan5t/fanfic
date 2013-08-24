@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,41 +17,43 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset7">
-		<div class="span3">
-			<form:form method="post" modelAttribute="user">
-				<div class="row">
-					<div class="span3">
-						<spring:message code="username" var="usernameTranslate" />
-						<form:input path="username" placeholder="${usernameTranslate}" />
-					</div>
-				</div>
-				<div class="row">
-					<div class="span3">
-						<spring:message code="password" var="passwordTranslate" />
-						<form:password path="password" placeholder="${passwordTranslate}" />
-					</div>
-				</div>
-				<c:if test="${not empty error}">
+	<div class="pageContainer">
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div class="row offset4">
+			<div class="span3">
+				<form:form method="post" modelAttribute="user">
 					<div class="row">
 						<div class="span3">
-							<form:label path="">
-							<spring:message code="incorrectUsernameOrPassword" />.
-							</form:label>
+							<spring:message code="username" var="usernameTranslate" />
+							<form:input path="username" placeholder="${usernameTranslate}" />
 						</div>
 					</div>
-				</c:if>
-				<div class="row">
-					<div class="span1">
-						<spring:message code="signIn" var="signInTranslate" />
-						<input type="submit" value="${signInTranslate}">
+					<div class="row">
+						<div class="span3">
+							<spring:message code="password" var="passwordTranslate" />
+							<form:password path="password" placeholder="${passwordTranslate}" />
+						</div>
 					</div>
-					<div class="span2">
-						<a href="signUp"><spring:message code="registerNow" /></a>
+					<c:if test="${not empty error}">
+						<div class="row">
+							<div class="span3">
+								<form:label path="">
+									<spring:message code="incorrectUsernameOrPassword" />.
+							</form:label>
+							</div>
+						</div>
+					</c:if>
+					<div class="row">
+						<div class="span1">
+							<spring:message code="signIn" var="signInTranslate" />
+							<input type="submit" value="${signInTranslate}">
+						</div>
+						<div class="span2">
+							<a href="signUp"><spring:message code="registerNow" /></a>
+						</div>
 					</div>
-				</div>
-			</form:form>
+				</form:form>
+			</div>
 		</div>
 	</div>
 </body>

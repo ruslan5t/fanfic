@@ -23,40 +23,42 @@
 <script src="<c:url value="/resources/js/chapter.js" />"></script>
 </head>
 <body>
-	<jsp:include page="menu.jsp"></jsp:include>
-	<div class="row offset1">${chapter.getName()}</div>
-	<div class="row offset1">
-		<a
-			href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
-			<spring:message code="edit" />
-		</a>
-	</div>
-	<div class="row offset1">
-		<select id="fontSizes"></select>
-	</div>
-	<div class="row offset1">
-		<div class="span12">
-			<div id="resizableChapterPlace">
-				<div id="textChapterPlace">${chapterParsedContent}</div>
+	<div class="pageContainer">
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div class="row offset1">${chapter.getName()}</div>
+		<div class="row offset1">
+			<a
+				href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
+				<spring:message code="edit" />
+			</a>
+		</div>
+		<div class="row offset1">
+			<select id="fontSizes"></select>
+		</div>
+		<div class="row offset1">
+			<div class="span12">
+				<div id="resizableChapterPlace">
+					<div id="textChapterPlace">${chapterParsedContent}</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row offset1">
-		<c:if test="${!isFirstChapter}">
-			<div class="span1">
-				<a
-					href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
-					Prev</a>
-			</div>
-		</c:if>
-		<c:if test="${!isLastChapter}">
-			<div class="span1">
-				<a
-					href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
-					Next</a>
-			</div>
-		</c:if>
+		<div class="row offset1">
+			<c:if test="${!isFirstChapter}">
+				<div class="span1">
+					<a
+						href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
+						Prev</a>
+				</div>
+			</c:if>
+			<c:if test="${!isLastChapter}">
+				<div class="span1">
+					<a
+						href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
+						Next</a>
+				</div>
+			</c:if>
+		</div>
 	</div>
 </body>
 </html>

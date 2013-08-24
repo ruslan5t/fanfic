@@ -29,3 +29,12 @@ select.categories {
 #textChapterPlace {
 	overflow: auto;
 }
+
+.pageContainer {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.sidePanel {
+	border-left: 1px solid black;
+}
