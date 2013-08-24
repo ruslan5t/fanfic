@@ -1,5 +1,8 @@
 package by.itransition.fanfic.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -29,9 +32,11 @@ public class ConvertFanficToPdfController {
 	String convertFanficToPdf(@PathVariable("fanficId") int fanficId) {
 		Fanfic convertingFanfic = fanficService.getFanficById(fanficId);
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "http://do.convertapi.com/Web2Pdf/json?" +
+		String url = "http://do.convertapi.com/Web2Pdf" +
 				"storefile=true&OutputFileName=Fanfic&PageNo=true" +
 				"&curl=" + convertToBook(convertingFanfic);
+		Map<String, Object> vars = new HashMap<String, Object>();
+		
 		String jsonStr = restTemplate.postForObject(url, null, String.class);
 		JSONObject responseOfService = null;
 		JSONParser parser = new JSONParser();

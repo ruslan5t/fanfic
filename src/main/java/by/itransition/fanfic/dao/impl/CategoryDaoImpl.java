@@ -34,11 +34,14 @@ public class CategoryDaoImpl implements CategoryDao {
 	
 	@Override
 	public List<Category> getAllCategories() {
-		if (null == getCategoryByName("Camedy")) {
+		if (null == getCategoryByName("detective")) {
 			List<Category> categories = new ArrayList<Category>();
-			categories.add(new Category("Camedy"));
-			categories.add(new Category("Drama"));
-			categories.add(new Category("Triller"));
+			categories.add(new Category("detective"));
+			categories.add(new Category("novel"));
+			categories.add(new Category("fantasy"));
+			categories.add(new Category("scientific"));
+			categories.add(new Category("prose"));
+			categories.add(new Category("documentary"));
 			entityManager.getTransaction().begin();
 			for (Category category : categories) {
 				entityManager.persist(category);
