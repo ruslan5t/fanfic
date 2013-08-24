@@ -21,7 +21,7 @@ public class ChapterController extends VisitPageController {
 
 	@Autowired
 	private FanficService fanficService;
-	
+
 	@RequestMapping(value = "/{fanficId}/{chapterId}",
 			method = RequestMethod.GET)
 	public String getChapter(@PathVariable("fanficId") int fanficId,
@@ -35,6 +35,32 @@ public class ChapterController extends VisitPageController {
 		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
 		model.addAttribute("chapterParsedContent", 
 				markdownProcessor.markdown(chapter.getContent()));
+		model.addAttribute("isFirstChapter",
+				fanfic.isFirstChapter(chapter));
+		model.addAttribute("isLastChapter",
+				fanfic.isLastChapter(chapter));
 		return "chapter";
 	}
+
+	@RequestMapping(value = "/prev/{fanficId}/{chapterId}",
+			method = RequestMethod.GET)
+	public String getPrevChapter(@PathVariable("fanficId") int fanficId,
+			@PathVariable("chapterId") int chapterId,
+			Model model, HttpServletRequest request) {
+		Fanfic fanfic = fanficService.getFanficById(fanficId);
+		return "redirect:/chapter/" + fanfic.getId() + "/"
+		+ fanfic.getPrevChapter(fanfic.getChapterById(chapterId)).getId();
+	}
+
+	@RequestMapping(value = "/next/{fanficId}/{chapterId}",
+			method = RequestMethod.GET)
+	public String getNextChapter(@PathVariable("fanficId") int fanficId,
+			@PathVariable("chapterId") int chapterId,
+			Model model, HttpServletRequest request) {
+		Fanfic fanfic = fanficService.getFanficById(fanficId);
+		return "redirect:/chapter/" + fanfic.getId() + "/" 
+		+ fanfic.getNextChapter(fanfic.getChapterById(chapterId)).getId();
+	}
+
+
 }

@@ -123,6 +123,15 @@ public class User {
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
 	}
+	
+	public void removeFanficById(int id) {
+		for (Fanfic fanfic : fanfics) {
+			if (fanfic.getId() == id) {
+				fanfics.remove(fanfic);
+				break;
+			}
+		}
+	}
 
 	@PrePersist
 	private void onCreate() {

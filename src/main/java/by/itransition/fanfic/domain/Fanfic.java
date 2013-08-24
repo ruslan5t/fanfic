@@ -169,12 +169,15 @@ public class Fanfic {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (null == obj) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Fanfic other = (Fanfic) obj;
 		return id == other.getId();
 	}
@@ -219,5 +222,32 @@ public class Fanfic {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+	
+	public boolean isLastChapter(Chapter chapter) {
+		return chapters.size() - 1 == chapters.indexOf(chapter);
+	}
+	
+	public boolean isFirstChapter(Chapter chapter) {
+		return 0 == chapters.indexOf(chapter);
+	}
+	
+	public Chapter getNextChapter(Chapter chapter) {
+		return chapters.get(chapters.indexOf(chapter) + 1);
+	}
+	
+	public Chapter getPrevChapter(Chapter chapter) {
+		return chapters.get(chapters.indexOf(chapter) - 1);
+	}
+	
+	public void removeChapterById(int id) {
+		for (Chapter chapter : chapters) {
+			if (chapter.getId() == id) {
+				chapters.remove(chapter);
+				break;
+			}
+		}
+	}
+	
+	
 
 }

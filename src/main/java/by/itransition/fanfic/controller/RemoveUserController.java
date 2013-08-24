@@ -18,7 +18,7 @@ public class RemoveUserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{userId}", method = RequestMethod.POST)
 	public String user(@PathVariable("userId") int userId,
 			Model model, HttpServletRequest request){
 		userService.removeUserById(userId);

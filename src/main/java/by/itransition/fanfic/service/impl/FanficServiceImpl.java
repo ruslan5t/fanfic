@@ -63,26 +63,26 @@ public class FanficServiceImpl implements FanficService {
 	
 	@Override
 	@Transactional
-	public List<Fanfic> getFanficsByCategory(Category category) {
-		return fanficDao.getFanficsByCategory(category);
+	public List<Fanfic> getFanficsByCategory(Category category, int first, int count) {
+		return fanficDao.getFanficsByCategory(category, first, count);
 	}
 	
 	@Override
 	@Transactional
-	public List<Fanfic> getFanficsByCategoryName(String name) {
-		return fanficDao.getFanficsByCategory(categoryDao.getCategoryByName(name));
+	public List<Fanfic> getFanficsByCategoryName(String name, int first, int count) {
+		return fanficDao.getFanficsByCategory(categoryDao.getCategoryByName(name), first, count);
 	}
 	
 	@Override
 	@Transactional
 	public List<Fanfic> getFanficsByCategoryId(int id) {
-		return fanficDao.getFanficsByCategory(categoryDao.getCategoryById(id));
+		return fanficDao.getFanficsByCategory(categoryDao.getCategoryById(id), 0, Integer.MAX_VALUE);
 	}
 	
 	@Override
 	@Transactional
-	public List<Fanfic> getFanficsByTagId(int id) {
-		return fanficDao.getFanficsByTag(tagDao.getTagById(id));
+	public List<Fanfic> getFanficsByCategoryId(int id, int first, int count) {
+		return fanficDao.getFanficsByCategory(categoryDao.getCategoryById(id), first, count);
 	}
 	
 	@Override
@@ -95,6 +95,18 @@ public class FanficServiceImpl implements FanficService {
 	@Transactional
 	public List<Fanfic> getFanficsByRating(int first, int count) {
 		return fanficDao.getFanficsByDate(first, count);
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByTagId(int id, int first, int count) {
+		return fanficDao.getFanficsByTag(tagDao.getTagById(id), first, count);
+	}
+	
+	@Override
+	@Transactional
+	public List<Fanfic> getFanficsByTagId(int id) {
+		return fanficDao.getFanficsByTag(tagDao.getTagById(id), 0, Integer.MAX_VALUE);
 	}
 	
 }

@@ -1,10 +1,21 @@
 package by.itransition.fanfic.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,10 +40,13 @@ public class ConvertFanficToPdfController {
 	String convertFanficToPdf(@PathVariable("fanficId") int fanficId) {
 		Fanfic convertingFanfic = fanficService.getFanficById(fanficId);
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "http://do.convertapi.com/Web2Pdf/json?" +
-				"storefile=true&OutputFileName=Fanfic&PageNo=true" +
-				"&curl=" + convertToBook(convertingFanfic);
-		String jsonStr = restTemplate.postForObject(url, null, String.class);
+		String url = "http://do.convertapi.com/Web2Pdf/json";
+		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+		map.add("curl", convertToBook(convertingFanfic));
+		map.add("storefile", "true");
+		map.add("OutputFileName", "Fanfic");
+		map.add("PageNo", "true");
+		String jsonStr = restTemplate.postForObject(url, map, String.class);
 		JSONObject responseOfService = null;
 		JSONParser parser = new JSONParser();
 		try {

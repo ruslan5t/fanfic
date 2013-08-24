@@ -22,10 +22,9 @@ $(function() {
 			}
 		})
 		.autocomplete({
-			minLength: 0,
 			source: function( request, response ) {
 				response( $.ui.autocomplete.filter(
-						tagsJSON, extractLast( request.term ) ) );
+						tagsJSON, extractLast(request.term)).splice(0, 10));
 			},
 			focus: function() {
 				return false;
@@ -34,7 +33,7 @@ $(function() {
 				var terms = split( this.value );
 				terms.pop();
 				terms.push( ui.item.value );
-				terms.push( "" );
+				terms.push("");
 				this.value = terms.join( ", " );
 				return false;
 			}

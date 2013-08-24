@@ -19,16 +19,20 @@ public interface FanficService {
 
 	Fanfic getFanficById(int id);
 
-	List<Fanfic> getFanficsByCategory(Category category);
-
-	List<Fanfic> getFanficsByCategoryName(String name);
+	List<Fanfic> getFanficsByCategory(Category category, int first, int count);
 	
 	List<Fanfic> getFanficsByCategoryId(int id);
+
+	List<Fanfic> getFanficsByCategoryName(String name, int first, int count);
 	
-	List<Fanfic> getFanficsByTagId(int id);
+	List<Fanfic> getFanficsByCategoryId(int id, int firts, int count);
 
 	List<Fanfic> getFanficsByDate(int first, int count);
 
 	List<Fanfic> getFanficsByRating(int first, int count);
+	
+	List<Fanfic> getFanficsByTagId(int id, int first, int count);
+	
+	List<Fanfic> getFanficsByTagId(int id);
 
 }

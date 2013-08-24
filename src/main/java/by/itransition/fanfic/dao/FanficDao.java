@@ -20,9 +20,9 @@ public interface FanficDao {
 	
 	Fanfic getFanficById(int id);
 	
-	List<Fanfic> getFanficsByCategory(Category category);
+	List<Fanfic> getFanficsByCategory(Category category, int first, int count);
 	
-	List<Fanfic> getFanficsByTag(Tag tag);
+	List<Fanfic> getFanficsByTag(Tag tag, int first, int count);
 	
 	List<Fanfic> getFanficsByDate(int first, int count);
 	
