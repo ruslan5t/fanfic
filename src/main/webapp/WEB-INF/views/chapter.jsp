@@ -41,5 +41,22 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row offset1">
+		<c:if test="${!isFirstChapter}">
+			<div class="span1">
+				<a
+					href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
+					Prev</a>
+			</div>
+		</c:if>
+		<c:if test="${!isLastChapter}">
+			<div class="span1">
+				<a
+					href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
+					Next</a>
+			</div>
+		</c:if>
+	</div>
 </body>
 </html>

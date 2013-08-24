@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,18 +26,22 @@
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="row offset1">
 		<h2>${fanfic.getName()}</h2>
-		<button id="convertToPdf"><spring:message code="convertToPdf" /></button>
+		<button id="convertToPdf">
+			<spring:message code="convertToPdf" />
+		</button>
 	</div>
 	<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 		<div class="row offset1">
 			<a
 				href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
-				<spring:message code="edit" /> </a>
+				<spring:message code="edit" />
+			</a>
 		</div>
 		<div class="row offset1">
 			<a
 				href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
-				<spring:message code="addChapter" /></a>
+				<spring:message code="addChapter" />
+			</a>
 		</div>
 	</c:if>
 	<div class="row offset1">
@@ -68,9 +72,21 @@
 	</div>
 	<c:forEach items="${fanfic.getChapters()}" var="chapter">
 		<div class="row offset1">
-			<a
-				href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
-				${chapter.getName()} </a>
+			<div class="span1">
+				<a
+					href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
+					${chapter.getName()} </a>
+			</div>
+			<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+				<div class="span1">
+					<form method="post"
+						action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
+						<button>
+							<spring:message code="remove" />
+						</button>
+					</form>
+				</div>
+			</c:if>
 		</div>
 	</c:forEach>
 	<div class="row offset1">
@@ -83,7 +99,10 @@
 		<div class="row offset1">${comment.getContent()}</div>
 	</c:forEach>
 	<c:if test="${isLogged}">
-		<div class="row offset1"><spring:message code="addComment" />:</div>
+		<div class="row offset1">
+			<spring:message code="addComment" />
+			:
+		</div>
 		<div class="row offset1">
 			<form
 				action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"

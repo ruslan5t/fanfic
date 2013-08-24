@@ -68,11 +68,13 @@ public class FanficDaoImpl implements FanficDao {
 	}
 
 	@Override
-	public List<Fanfic> getFanficsByCategory(Category category) {
+	public List<Fanfic> getFanficsByCategory(Category category, int first, int count) {
 		TypedQuery<Fanfic> query = entityManager.createQuery(
 				"SELECT f FROM Fanfic f WHERE :category MEMBER OF f.categories",
 				Fanfic.class);
 		query.setParameter("category", category);
+		query.setFirstResult(first);
+		query.setMaxResults(count);
 		return query.getResultList();
 	}
 	
@@ -94,11 +96,13 @@ public class FanficDaoImpl implements FanficDao {
 	}
 	
 	@Override
-	public List<Fanfic> getFanficsByTag(Tag tag) {
+	public List<Fanfic> getFanficsByTag(Tag tag, int first, int count) {
 		TypedQuery<Fanfic> query = entityManager.createQuery(
 				"SELECT f FROM Fanfic f WHERE :tag MEMBER OF f.tags",
 				Fanfic.class);
 		query.setParameter("tag", tag);
+		query.setFirstResult(first);
+		query.setMaxResults(count);
 		return query.getResultList();
 	}
 
