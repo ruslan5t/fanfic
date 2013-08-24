@@ -16,7 +16,7 @@
 					<c:forEach items="${allCategories}" var="category">
 						<li>
 						<a href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
-						${category.getName()}
+						<spring:message code="${category.getName()}" />
 						</a>
 						</li>
 					</c:forEach>

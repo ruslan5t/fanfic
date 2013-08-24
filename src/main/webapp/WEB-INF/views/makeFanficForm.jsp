@@ -22,6 +22,9 @@
 </div>
 <div class="row offset7">
 	<form:label path="categories"><spring:message code="categories" />:</form:label>
-	<form:select path="categories" items="${allCategories}" class="catigories">
+	<form:select path="categories" class="catigories">
+	<c:forEach items="${allCategories}" var="category">
+	<form:option value="${category.getName()}"><spring:message code="${category.getName()}" /></form:option>
+	</c:forEach>
 	</form:select>
 </div>
