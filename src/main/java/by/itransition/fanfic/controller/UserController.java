@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +18,8 @@ public class UserController extends VisitPageController {
 	private UserService userService;
 	
 	@RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-	public String user(@PathVariable("userId") int userId,
-			Model model, HttpServletRequest request){
-		settingModel(model, request);
+	public String user(@PathVariable("userId") int userId, Model model){
+		settingModel(model);
 		User user = userService.getUserById(userId);
 		model.addAttribute("showedUser", user);
 		return "user";

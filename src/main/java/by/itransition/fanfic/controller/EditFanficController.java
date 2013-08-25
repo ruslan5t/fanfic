@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +19,8 @@ public class EditFanficController extends InputFanficController {
 	private FanficService fanficService;
 	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
-	public String getFanficEditForm(@PathVariable("fanficId") int fanficId,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+	public String getFanficEditForm(@PathVariable("fanficId") int fanficId, Model model) {
+		settingModel(model);
 		Fanfic editingFanfic = fanficService.getFanficById(fanficId);
 		Fanfic newFanfic = new Fanfic();
 		copyFanfic(newFanfic, editingFanfic);
@@ -36,8 +33,7 @@ public class EditFanficController extends InputFanficController {
 	@RequestMapping(value="/{editingFanficId}", method = RequestMethod.POST)
 	public String editFanfic(
 			@PathVariable("editingFanficId") int editingFanficId,
-			@ModelAttribute("newFanfic") Fanfic newFanfic,
-			HttpServletRequest request) {
+			@ModelAttribute("newFanfic") Fanfic newFanfic) {
 		Fanfic editingFanfic = fanficService.getFanficById(editingFanficId);
 		correctFanfic(newFanfic);
 		copyFanfic(editingFanfic, newFanfic);

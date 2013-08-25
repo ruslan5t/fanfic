@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +17,7 @@ public class RemoveUserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/{userId}", method = RequestMethod.POST)
-	public String user(@PathVariable("userId") int userId,
-			Model model, HttpServletRequest request){
+	public String user(@PathVariable("userId") int userId, Model model){
 		userService.removeUserById(userId);
 		return "redirect:/allUsers";
 	}

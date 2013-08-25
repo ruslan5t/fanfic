@@ -2,8 +2,6 @@ package by.itransition.fanfic.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,9 +22,8 @@ public class GetTagsController {
 	@Autowired
 	private TagService tagService;
 
-	@RequestMapping(method = RequestMethod.POST)//, produces = "content-type=text/plain;charset=UTF-8")
-	public 
-	ResponseEntity<String> getTags(Model model, HttpServletRequest request) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<String> getTags(Model model) {
 		List<Tag> tags = tagService.getAllTags();
 		JSONArray tagNamesJSON = new JSONArray();
 		for (Tag tag : tags) {

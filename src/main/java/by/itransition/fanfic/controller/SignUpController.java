@@ -1,10 +1,6 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,16 +19,15 @@ public class SignUpController extends VisitPageController {
 	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getUserCreationForm(
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+	public String getUserCreationForm(Model model) {
+		settingModel(model);
 		model.addAttribute("user", new User());
 		return "signUp";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String createUser(@ModelAttribute("user") User user,
-			BindingResult bindingResult, HttpServletRequest request, Model model) {
+			BindingResult bindingResult, Model model) {
 		if (!userService.isRegistered(user.getUsername())) {
 			int registrationId = userService.register(user);
 			userService.confirmRegistration(registrationId);

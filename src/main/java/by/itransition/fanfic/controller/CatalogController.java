@@ -1,10 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import by.itransition.fanfic.domain.Category;
-import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
 
 @Controller
@@ -31,9 +24,8 @@ public class CatalogController extends VisitPageController {
 	}
 	
 	@RequestMapping(value = "/{pageNumber}", method = RequestMethod.GET)
-	public String getCatalog(@PathVariable("pageNumber") int pageNumber,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+	public String getCatalog(@PathVariable("pageNumber") int pageNumber, Model model) {
+		settingModel(model);
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByDate((pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
 		settingPagination(model, pageNumber, fanficService.getAllFanfics().size(),
@@ -48,9 +40,8 @@ public class CatalogController extends VisitPageController {
 	
 	@RequestMapping(value = "/category/{categoryId}/{pageNumber}", method = RequestMethod.GET)
 	public String getFanficsByCategory(@PathVariable("categoryId") int categoryId,
-			@PathVariable("pageNumber") int pageNumber,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+			@PathVariable("pageNumber") int pageNumber, Model model) {
+		settingModel(model);
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByCategoryId(
 						categoryId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
@@ -68,8 +59,8 @@ public class CatalogController extends VisitPageController {
 	@RequestMapping(value = "/tag/{tagId}/{pageNumber}", method = RequestMethod.GET)
 	public String getFanficsByTag(@PathVariable("tagId") int tagId,
 			@PathVariable("pageNumber") int pageNumber,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+			Model model) {
+		settingModel(model);
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByTagId(
 						tagId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));

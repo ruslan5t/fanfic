@@ -2,8 +2,6 @@ package by.itransition.fanfic.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +21,7 @@ public class GetStatisticsController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody
-	String getStatistics(Model model, HttpServletRequest request) {
+	String getStatistics(Model model) {
 		List<Integer> statistics = userService.getStatistics();
 		JSONArray statisticsJSON = new JSONArray();
 		for (int statisticsByTimeIndex = 0;

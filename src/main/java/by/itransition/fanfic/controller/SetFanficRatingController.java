@@ -1,8 +1,7 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,10 +28,9 @@ public class SetFanficRatingController {
 			method = RequestMethod.POST)
 	public @ResponseBody
 	String setFanficRating(@PathVariable("fanficId") int fanficId,
-			@PathVariable("userRating") int userRating,
-			Model model, HttpServletRequest request) {
-		User user = userService.getUserById((Integer)
-				request.getSession().getAttribute("userId"));
+			@PathVariable("userRating") int userRating, Model model) {
+		User user = userService.getUserByName(
+				SecurityContextHolder.getContext().getAuthentication().getName());
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		fanfic.makeVote(userRating, user);
 		fanficService.save(fanfic);

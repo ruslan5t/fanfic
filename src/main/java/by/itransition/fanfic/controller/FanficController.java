@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +17,8 @@ public class FanficController extends VisitPageController {
 	private FanficService fanficService;
 	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
-	public String getFanfic(@PathVariable("fanficId") int fanficId,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+	public String getFanfic(@PathVariable("fanficId") int fanficId, Model model) {
+		settingModel(model);
 		model.addAttribute("fanfic", fanficService.getFanficById(fanficId));
 		return "fanfic";
 	}

@@ -24,7 +24,7 @@
 			<c:if test="${isLogged}">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
-				<li><a href="${pageContext.servletContext.contextPath}/signOut">
+				<li><a href="<c:url value="/j_spring_security_logout" />">
 						<spring:message code="signOut" />
 				</a></li>
 			</c:if>

@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +23,8 @@ public class ChapterController extends VisitPageController {
 	@RequestMapping(value = "/{fanficId}/{chapterId}",
 			method = RequestMethod.GET)
 	public String getChapter(@PathVariable("fanficId") int fanficId,
-			@PathVariable("chapterId") int chapterId,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+			@PathVariable("chapterId") int chapterId, Model model) {
+		settingModel(model);
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		model.addAttribute("fanfic", fanfic);
 		Chapter chapter = fanfic.getChapterById(chapterId);
@@ -45,8 +42,7 @@ public class ChapterController extends VisitPageController {
 	@RequestMapping(value = "/prev/{fanficId}/{chapterId}",
 			method = RequestMethod.GET)
 	public String getPrevChapter(@PathVariable("fanficId") int fanficId,
-			@PathVariable("chapterId") int chapterId,
-			Model model, HttpServletRequest request) {
+			@PathVariable("chapterId") int chapterId, Model model) {
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		return "redirect:/chapter/" + fanfic.getId() + "/"
 		+ fanfic.getPrevChapter(fanfic.getChapterById(chapterId)).getId();
@@ -55,8 +51,7 @@ public class ChapterController extends VisitPageController {
 	@RequestMapping(value = "/next/{fanficId}/{chapterId}",
 			method = RequestMethod.GET)
 	public String getNextChapter(@PathVariable("fanficId") int fanficId,
-			@PathVariable("chapterId") int chapterId,
-			Model model, HttpServletRequest request) {
+			@PathVariable("chapterId") int chapterId, Model model) {
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		return "redirect:/chapter/" + fanfic.getId() + "/" 
 		+ fanfic.getNextChapter(fanfic.getChapterById(chapterId)).getId();

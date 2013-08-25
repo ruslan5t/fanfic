@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +23,8 @@ public class AddChapterController extends VisitPageController {
 	private FanficService fanficService;
 	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
-	public String getAddChapterForm(
-			@PathVariable("fanficId") int fanficId,
-			Model model, HttpServletRequest request) {
-		settingModel(model, request);
+	public String getAddChapterForm(@PathVariable("fanficId") int fanficId,	Model model) {
+		settingModel(model);
 		fanfic = fanficService.getFanficById(fanficId);
 		model.addAttribute("chapter", new Chapter());
 		return "addChapter";
@@ -36,7 +32,7 @@ public class AddChapterController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String createChapter(@ModelAttribute("chapter") Chapter chapter,
-			BindingResult bindingResult, HttpServletRequest request) {
+			BindingResult bindingResult) {
 		chapter.setContent(chapter.getContent());
 		fanfic.addChapter(chapter);
 		fanficService.save(fanfic);

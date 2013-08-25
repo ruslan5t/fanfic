@@ -13,7 +13,7 @@ public class AboutController  extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAbout(Model model, HttpServletRequest request) {
-		settingModel(model, request);
+		settingModel(model);
 		return "about";
 	}
 }
