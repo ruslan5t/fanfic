@@ -38,3 +38,8 @@ select.categories {
 .sidePanel {
 	border-left: 1px solid black;
 }
+
+.flag {
+	max-width: 20px;
+	max-height: 20px;
+}

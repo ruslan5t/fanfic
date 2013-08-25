@@ -42,11 +42,17 @@
 			<li><a href="${pageContext.servletContext.contextPath}/about">
 					<spring:message code="about" />
 			</a></li>
-			<li><a href="<spring:url value="?lang=en" />">English</a></li>
-			<li><a href="<spring:url value="?lang=ru" />">Russian</a></li>
 		</ul>
 		<form class="navbar-form pull-right"
 			action="${pageContext.servletContext.contextPath}/find" method="post">
+			<ul class="nav">
+				<li><a href="<spring:url value="?lang=en" />"> <img
+						class="flag" src="<c:url value="/resources/images/english.gif" />" />
+				</a></li>
+				<li><a href="<spring:url value="?lang=ru" />"> <img
+						class="flag" src="<c:url value="/resources/images/russian.gif" />" />
+				</a></li>
+			</ul>
 			<input type="text" class="form-control" placeholder="Search"
 				name="searchRequest">
 			<button type="submit" class="btn btn-default">Submit</button>
