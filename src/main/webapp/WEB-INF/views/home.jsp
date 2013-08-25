@@ -7,6 +7,8 @@
 <html>
 <head>
 <jsp:include page="minHeadBody.jsp"></jsp:include>
+<script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
+<script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
 	<div class="pageContainer">
