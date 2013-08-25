@@ -28,7 +28,7 @@
 	<filter>
 		<display-name>CharsetFilter</display-name>
 		<filter-name>CharsetFilter</filter-name>
-		<filter-class>by.itransition.fanfic.filter.CharsetFilter</filter-class>
+		<filter-class>by.itransition.fanfic.web.filter.CharsetFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>CharsetFilter</filter-name>
