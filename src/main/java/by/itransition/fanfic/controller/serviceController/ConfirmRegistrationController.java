@@ -19,7 +19,6 @@ public class ConfirmRegistrationController {
 	@RequestMapping(value = "/{registrationId}", method = RequestMethod.GET)
 	public String confirmRegistration(@PathVariable("registrationId") int registrationId) {
 		userService.confirmRegistration(registrationId);
-		int a;
 		return "redirect:/signIn";
 	}
 }
