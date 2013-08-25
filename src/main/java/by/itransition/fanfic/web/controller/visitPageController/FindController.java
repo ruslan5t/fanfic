@@ -1,4 +1,4 @@
-package by.itransition.fanfic.controller.visitPageController;
+package by.itransition.fanfic.web.controller.visitPageController;
 
 import java.util.ArrayList;
 import java.util.List;

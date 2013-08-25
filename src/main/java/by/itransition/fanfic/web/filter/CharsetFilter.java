@@ -1,4 +1,4 @@
-package by.itransition.fanfic.filter;
+package by.itransition.fanfic.web.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;
