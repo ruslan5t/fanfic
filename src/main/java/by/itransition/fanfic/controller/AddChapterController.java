@@ -31,8 +31,7 @@ public class AddChapterController extends VisitPageController {
 	}
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
-	public String createChapter(@ModelAttribute("chapter") Chapter chapter,
-			BindingResult bindingResult) {
+	public String createChapter(@ModelAttribute("chapter") Chapter chapter) {
 		chapter.setContent(chapter.getContent());
 		fanfic.addChapter(chapter);
 		fanficService.save(fanfic);
