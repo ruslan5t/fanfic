@@ -22,11 +22,11 @@
 						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
 						${fanfic.getName()} </a>
 				</h2>
-				<h3>
+				<h4>
 					<a
 						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 						${fanfic.getAuthor().getUsername()} </a>
-				</h3>
+				</h4>
 			</c:forEach>
 		</div>
 		<div class="sidePanel span4">
