@@ -2,13 +2,16 @@ package by.itransition.fanfic.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
@@ -36,6 +39,9 @@ public class User {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Comment> comments = new ArrayList<Comment>();
+	
+	@ManyToMany
+	private Set<Role> roles = new HashSet<Role>();
 
 	public String getUsername() {
 		return name;
@@ -136,6 +142,18 @@ public class User {
 	@PrePersist
 	private void onCreate() {
 		dateOfRegistration = new Date();
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
+	public void addRole(Role role) {
+		roles.add(role);
 	}
 
 }

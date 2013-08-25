@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.itransition.fanfic.dao.RoleDao;
 import by.itransition.fanfic.dao.UnregisteredUserDao;
 import by.itransition.fanfic.dao.UserDao;
 import by.itransition.fanfic.domain.UnregisteredUser;
@@ -25,6 +26,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UnregisteredUserDao unregisteredUserDao;
+	
+	@Autowired
+	private RoleDao roleDao;
 
 	@Override
 	@Transactional
@@ -58,6 +62,7 @@ public class UserServiceImpl implements UserService {
 			user.setUsername(unregisteredUser.getName());
 			user.setEmail(unregisteredUser.getEmail());
 			user.setPassword(unregisteredUser.getPassword());
+			user.addRole(roleDao.getRoleByName("ROLE_USER"));
 			userDao.save(user);
 		}
 	}

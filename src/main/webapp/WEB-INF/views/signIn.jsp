@@ -21,17 +21,19 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div class="row offset4">
 			<div class="span3">
-				<form:form method="post" modelAttribute="user">
+				<form method="post" action="j_spring_security_check">
 					<div class="row">
 						<div class="span3">
 							<spring:message code="username" var="usernameTranslate" />
-							<form:input path="username" placeholder="${usernameTranslate}" />
+							<input id="j_username" name="j_username" type="text"
+								placeholder="${usernameTranslate}" />
 						</div>
 					</div>
 					<div class="row">
 						<div class="span3">
 							<spring:message code="password" var="passwordTranslate" />
-							<form:password path="password" placeholder="${passwordTranslate}" />
+							<input id="j_password" name="j_password" type="password"
+								placeholder="${passwordTranslate}" />
 						</div>
 					</div>
 					<c:if test="${not empty error}">
@@ -52,7 +54,7 @@
 							<a href="signUp"><spring:message code="registerNow" /></a>
 						</div>
 					</div>
-				</form:form>
+				</form>
 			</div>
 		</div>
 	</div>

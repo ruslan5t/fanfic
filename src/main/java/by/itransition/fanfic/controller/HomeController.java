@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,22 +22,25 @@ import by.itransition.fanfic.service.TagService;
  */
 @Controller
 public class HomeController extends VisitPageController {
-	
+
 	private static final Logger logger = 
 			LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	private FanficService fanficService;
-	
+
 	@Autowired
 	private TagService tagService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
+	
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(auth.isAuthenticated());
 		settingModel(model, request);
 		model.addAttribute("allTags", tagService.getAllTags());
 		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 10));
 		return "home";
 	}
-	
+
 }
