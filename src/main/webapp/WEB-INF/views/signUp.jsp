@@ -6,15 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
-	media="screen">
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet" media="screen">
-<script
-	src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />"></script>
-<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<jsp:include page="minHeadBody.jsp"></jsp:include>
 </head>
 <body>
 	<div class="pageContainer">
