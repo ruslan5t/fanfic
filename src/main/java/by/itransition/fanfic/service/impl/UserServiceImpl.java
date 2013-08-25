@@ -122,28 +122,30 @@ public class UserServiceImpl implements UserService {
 		List<Integer> answer = new ArrayList<Integer>();
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		Calendar calendar = Calendar.getInstance();
+		calendar.clear(Calendar.MINUTE);
 		calendar.clear(Calendar.SECOND);
 		calendar.clear(Calendar.MILLISECOND);
-		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
+		for (int hoursBeforeNow = 0; hoursBeforeNow < 10; ++hoursBeforeNow) {
 			for (User user : userDao.getAllUsers()) {
 				Date userDate = user.getDateOfRegistration();
 				Calendar userCalendar = Calendar.getInstance();
 				userCalendar.setTime(userDate);
+				userCalendar.clear(Calendar.MINUTE);
 				userCalendar.clear(Calendar.SECOND);
 				userCalendar.clear(Calendar.MILLISECOND);
 				if (userCalendar.getTime().equals(calendar.getTime())) {
-					if (null == map.get(minutesBeforeNow)) {
-						map.put(minutesBeforeNow, 1);
+					if (null == map.get(hoursBeforeNow)) {
+						map.put(hoursBeforeNow, 1);
 					} else {
-						map.put(minutesBeforeNow, map.get(minutesBeforeNow) + 1);
+						map.put(hoursBeforeNow, map.get(hoursBeforeNow) + 1);
 					}
 				}
 			}
-			calendar.add(Calendar.MINUTE, -1);
+			calendar.add(Calendar.HOUR, -1);
 		}
-		for (int minutesBeforeNow = 0; minutesBeforeNow < 10; ++minutesBeforeNow) {
-			if (null != map.get(minutesBeforeNow)) {
-				answer.add(map.get(minutesBeforeNow));
+		for (int hoursBeforeNow = 0; hoursBeforeNow < 10; ++hoursBeforeNow) {
+			if (null != map.get(hoursBeforeNow)) {
+				answer.add(map.get(hoursBeforeNow));
 			} else {
 				answer.add(0);
 			}

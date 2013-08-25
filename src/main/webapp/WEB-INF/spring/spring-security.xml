@@ -23,7 +23,7 @@
 		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/allUsers*" access="ROLE_ADMIN" />
-
+		<form-login login-page="/signIn" default-target-url="/" authentication-failure-url="/signIn/error"/>
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
 	</http>
 

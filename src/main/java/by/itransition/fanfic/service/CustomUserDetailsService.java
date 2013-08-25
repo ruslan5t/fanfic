@@ -24,7 +24,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) 
 				throws UsernameNotFoundException {
 		by.itransition.fanfic.domain.User user = userService.getUserByName(username);
-		System.out.println("Yes");
 		if (null == user) {
 			throw new UsernameNotFoundException(username);
 		}
