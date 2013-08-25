@@ -15,7 +15,7 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div class="span7">
 			<h2 class="pageTitle">
-				<spring:message code="mainPage" />
+				<spring:message code="mainPageTitle" />
 			</h2>
 			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
