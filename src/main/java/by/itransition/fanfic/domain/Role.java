@@ -7,6 +7,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Role {
+	
+	public final String ROLE_USER = "ROLE_USER";
+	
+	public final String ROLE_ADMIN = "ROLE_ADMIN";
+	
+	public final String ROLE_ANONYMOUS = "ROLE_ANONYMOUS";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
