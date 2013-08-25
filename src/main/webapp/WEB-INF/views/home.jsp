@@ -33,9 +33,13 @@
 					${fanfic.getDescription()}
 				</div>
 				<div class="tags">
-					Tags:
+					<spring:message code="tags" />:
 					<c:forEach items="${fanfic.getTags()}" var="tag">
-						<div class="tag">${ tag.getName() }</div>
+						<div class="tag">
+							<a href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+								${ tag.getName() }
+							</a>
+						</div>
 					</c:forEach>
 				</div>
 				<hr />

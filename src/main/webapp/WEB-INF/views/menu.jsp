@@ -2,7 +2,8 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <div class="navbar">
 	<div class="navbar-inner">
 		<ul class="nav">
@@ -46,7 +47,7 @@
 		</ul>
 		<form class="navbar-form pull-right"
 			action="${pageContext.servletContext.contextPath}/find" method="post">
-			<ul class="nav">
+			<ul class="nav flags">
 				<li><a href="<spring:url value="?lang=en" />"> <img
 						class="flag" src="<c:url value="/resources/images/english.gif" />" />
 				</a></li>
@@ -55,7 +56,7 @@
 				</a></li>
 			</ul>
 			<input type="text" class="form-control" placeholder="Search"
-				name="searchRequest">
+				name="searchRequest" />
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>

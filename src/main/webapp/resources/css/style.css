@@ -10,6 +10,10 @@
 	padding-top: 20px;
 }
 
+.postTitle :HOVER {
+	color: black;
+}
+
 select.categories {
 	multiple: multiple;
 }
@@ -37,7 +41,6 @@ select.categories {
 
 .tag {
 	display: inline;
-	border: 1px solid;
 	margin-left: 5px;
 }
 
@@ -63,4 +66,9 @@ resizableChapterPlace {
 .flag {
 	max-width: 20px;
 	max-height: 20px;
+	display: inline;
+}
+
+.flags {
+	display: inline;
 }
