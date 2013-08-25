@@ -20,36 +20,34 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<div class="pageContainer">
-			<jsp:include page="menu.jsp"></jsp:include>
-			<div class="span7 pageContent">
-				<h2 class="pageTitle">
-					<spring:message code="mainPage" />
+		<jsp:include page="menu.jsp"></jsp:include>
+		<div class="span7">
+			<h2 class="pageTitle">
+				<spring:message code="mainPage" />
+			</h2>
+			<hr />
+			<c:forEach items="${bestFanfics}" var="fanfic">
+				<h2>
+					<a
+						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+						${fanfic.getName()} </a>
 				</h2>
-				<hr />
-				<c:forEach items="${bestFanfics}" var="fanfic">
-					<h2>
-						<a
-							href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-							${fanfic.getName()} </a>
-					</h2>
-					<h3>
-						<a
-							href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
-							${fanfic.getAuthor().getUsername()} </a>
-					</h3>
-				</c:forEach>
-			</div>
-			<div class="sidePanel span4">
-				<div id="tagcloud" class="row">
-					<ul>
-						<c:forEach items="${allTags}" var="tag">
-							<li><a
-								href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
-									${tag.getName()} </a></li>
-						</c:forEach>
-					</ul>
-				</div>
+				<h3>
+					<a
+						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
+						${fanfic.getAuthor().getUsername()} </a>
+				</h3>
+			</c:forEach>
+		</div>
+		<div class="sidePanel span4">
+			<div id="tagcloud" class="row">
+				<ul>
+					<c:forEach items="${allTags}" var="tag">
+						<li><a
+							href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+								${tag.getName()} </a></li>
+					</c:forEach>
+				</ul>
 			</div>
 		</div>
 	</div>
