@@ -37,7 +37,16 @@
 						</div>
 					</c:if>
 					<div class="row">
-						<div class="span1">
+						<div class="span3">
+							<label for="j_rememberme"> 
+								<spring:message code="rememberMe" />
+							</label> 
+							<input id="j_remember"
+								name="_spring_security_remember_me" type="checkbox" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="span2">
 							<spring:message code="signIn" var="signInTranslate" />
 							<input type="submit" value="${signInTranslate}">
 						</div>
