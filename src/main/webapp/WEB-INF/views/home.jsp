@@ -13,22 +13,32 @@
 <body>
 	<div class="pageContainer">
 		<jsp:include page="menu.jsp"></jsp:include>
-		<div class="span7">
-			<h2 class="pageTitle">
+		<div class="span8">
+			<div class="pageTitle">
 				<spring:message code="mainPageTitle" />
-			</h2>
+			</div>
 			<hr />
 			<c:forEach items="${bestFanfics}" var="fanfic">
-				<h2>
+				<div class="postTitle">
 					<a
 						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
 						${fanfic.getName()} </a>
-				</h2>
-				<h4>
+				</div>
+				<div class="author">
 					<a
 						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 						${fanfic.getAuthor().getUsername()} </a>
-				</h4>
+				</div>
+				<div class="description">
+					${fanfic.getDescription()}
+				</div>
+				<div class="tags">
+					Tags:
+					<c:forEach items="${fanfic.getTags()}" var="tag">
+						<div class="tag">${ tag.getName() }</div>
+					</c:forEach>
+				</div>
+				<hr />
 			</c:forEach>
 		</div>
 		<div class="sidePanel span4">

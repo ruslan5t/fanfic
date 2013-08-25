@@ -1,26 +1,47 @@
 @CHARSET "UTF-8";
 
 .pageTitle {
-	height: 50px;
-	font-size: 2em;
-	color: rgb(15, 141, 217);
+	font-size: 3.2em;
+	padding: 20px;
+}
+
+.postTitle {
+	font-size: 2.2em;
+	padding-top: 20px;
 }
 
 select.categories {
 	multiple: multiple;
 }
 
+.author {
+	font-size: 1.0em;
+	padding: 10px;
+}
+
+.author a {
+	color: gray;	
+}
+
+.description {
+	padding-bottom: 10px;
+}
+
 #chartContainer {
 	height: 300px;
 }
 
+.tags {
+	display: inline;	
+}
+
 .tag {
+	display: inline;
 	border: 1px solid;
-	float: left;
 	margin-left: 5px;
 }
 
-#resizableChapterPlace {
+resizableChapterPlace {
 	margin: 0 auto;
 	border: 1px solid;
 	min-width: 75px;
