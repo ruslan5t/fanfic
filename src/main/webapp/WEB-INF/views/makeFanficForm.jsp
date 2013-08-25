@@ -28,3 +28,10 @@
 	</c:forEach>
 	</form:select>
 </div>
+<c:if test="${not empty emptyCategoriesError}">
+	<div class="row offset4">
+		<div class="span2">
+			<spring:message code="incorrectUsernameOrPassword" />
+		</div>
+	</div>
+</c:if>

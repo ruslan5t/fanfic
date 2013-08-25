@@ -29,7 +29,7 @@ public class CreateFanficController extends InputFanficController {
 	private TagService tagService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getFanficCreationForm(Model model){
+	public String getFanficCreationForm(Model model) {
 		settingModel(model);
 		model.addAttribute("newFanfic", new Fanfic());
 		return "createFanfic";
@@ -40,9 +40,20 @@ public class CreateFanficController extends InputFanficController {
 			BindingResult bindingResult) {
 		User user = userService.getUserByName(
 				SecurityContextHolder.getContext().getAuthentication().getName());
+		if (fanfic.getCategories() == null) {
+			return "redirect:/createFanfic/emptyCategoriesError";
+		}
 		correctFanfic(fanfic);
 		user.addFanfic(fanfic);
 		userService.save(user);
 		return "redirect:/user/" + user.getId();
+	}
+	
+	@RequestMapping(value = "/emptyCategoriesError", method = RequestMethod.GET)
+	public String getErrorMessage(Model model) {
+		settingModel(model);
+		model.addAttribute("newFanfic", new Fanfic());
+		model.addAttribute("emptyCategoriesError", true);
+		return "createFanfic";
 	}
 }
