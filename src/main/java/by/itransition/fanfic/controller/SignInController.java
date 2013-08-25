@@ -10,19 +10,21 @@ import by.itransition.fanfic.service.UserService;
 
 @Controller
 @RequestMapping("/signIn")
-public class SignInController {
+public class SignInController extends VisitPageController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	public String getSignIn() {
+	public String getSignIn(Model model) {
+		settingModel(model);
 		return "signIn";
 	}
-	
+
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public String getSignInError(Model model) {
-		model.addAttribute("error", true);
+	public String signInUser(Model model) {
+		settingModel(model);
+		model.addAttribute("wrongNameOrPasswordError", true);
 		return "signIn";
 	}
 }

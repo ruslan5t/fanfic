@@ -36,12 +36,11 @@
 								placeholder="${passwordTranslate}" />
 						</div>
 					</div>
-					<c:if test="${not empty error}">
+					<c:if test="${not empty wrongNameOrPasswordError}">
 						<div class="row">
 							<div class="span3">
-								<form:label path="">
-									<spring:message code="incorrectUsernameOrPassword" />.
-							</form:label>
+								<spring:message code="incorrectUsernameOrPassword" />
+								.
 							</div>
 						</div>
 					</c:if>
