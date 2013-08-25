@@ -17,22 +17,22 @@ import by.itransition.fanfic.service.FanficService;
 @RequestMapping("/addChapter")
 public class AddChapterController extends VisitPageController {
 	
-	private Fanfic fanfic;
-	
 	@Autowired
 	private FanficService fanficService;
 	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
 	public String getAddChapterForm(@PathVariable("fanficId") int fanficId,	Model model) {
 		settingModel(model);
-		fanfic = fanficService.getFanficById(fanficId);
 		model.addAttribute("chapter", new Chapter());
+		model.addAttribute("fanficId", fanficId);
 		return "addChapter";
 	}
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
-	public String createChapter(@ModelAttribute("chapter") Chapter chapter) {
+	public String createChapter(@PathVariable("fanficId") int fanficId,
+			@ModelAttribute("chapter") Chapter chapter) {
 		chapter.setContent(chapter.getContent());
+		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		fanfic.addChapter(chapter);
 		fanficService.save(fanfic);
 		return "redirect:/fanfic/" + fanfic.getId();

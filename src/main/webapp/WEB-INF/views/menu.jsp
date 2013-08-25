@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <div class="navbar">
 	<div class="navbar-inner">
 		<ul class="nav">
@@ -21,24 +22,24 @@
 						</a></li>
 					</c:forEach>
 				</ul></li>
-			<c:if test="${isLogged}">
+			<sec:authorize ifAllGranted="ROLE_USER">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
 				<li><a href="<c:url value="/j_spring_security_logout" />">
 						<spring:message code="signOut" />
 				</a></li>
-			</c:if>
-			<c:if test="${!isLogged}">
+			</sec:authorize>
+			<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
 				<li><a href="${pageContext.servletContext.contextPath}/signIn">
 						<spring:message code="signIn" />
 				</a></li>
-			</c:if>
-			<c:if test="${isAdmin}">
+			</sec:authorize>
+			<sec:authorize ifAllGranted="ROLE_ADMIN">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/allUsers"> <spring:message
 							code="allUsers" />
 				</a></li>
-			</c:if>
+			</sec:authorize>
 			<li><a href="${pageContext.servletContext.contextPath}/about">
 					<spring:message code="about" />
 			</a></li>

@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +23,12 @@
 <body>
 	<div class="pageContainer">
 		<div id="fanficId" value="${fanfic.getId()}"></div>
-		<div id="isLogged" value="${isLogged}"></div>
+		<sec:authorize ifAllGranted="ROLE_USER">
+			<div id="isLogged" value="true"></div>
+		</sec:authorize>
+		<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+			<div id="isLogged" value="false"></div>
+		</sec:authorize>
 		<div id="fanficRating" value="${fanfic.getRating()}"></div>
 		<div id="contextPath"
 			value="${pageContext.servletContext.contextPath}"></div>
@@ -101,7 +108,7 @@
 		<c:forEach items="${fanfic.getComments()}" var="comment">
 			<div class="row offset1">${comment.getContent()}</div>
 		</c:forEach>
-		<c:if test="${isLogged}">
+		<sec:authorize ifAllGranted="ROLE_USER">
 			<div class="row offset1">
 				<spring:message code="addComment" />
 				:
@@ -115,7 +122,7 @@
 					<input type="submit" value="${addCommentTranslate}" />
 				</form>
 			</div>
-		</c:if>
+		</sec:authorize>
 	</div>
 </body>
 </html>

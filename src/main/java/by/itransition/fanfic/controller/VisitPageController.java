@@ -30,13 +30,6 @@ public class VisitPageController {
 			User currentUser = userService.getUserByName(authentication.getName());
 			model.addAttribute("currentUserId", currentUser.getId());
 			model.addAttribute("currentUsername", currentUser.getUsername());
-			//if (FanficModel.getInstance().getUser(username).isAdmin()) {
-			if (currentUser.getUsername().equals("Admin")) {
-				model.addAttribute("isAdmin", true);
-			}
-		}
-		else {
-			model.addAttribute("isLogged", false);
 		}
 	}
 	

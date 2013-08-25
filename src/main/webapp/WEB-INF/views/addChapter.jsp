@@ -19,7 +19,8 @@
 <body>
 	<div class="pageContainer">
 		<jsp:include page="menu.jsp"></jsp:include>
-		<form:form method="POST" modelAttribute="chapter">
+		<form:form method="POST" modelAttribute="chapter"
+			action="${pageContext.servletContext.contextPath}/addChapter/${fanficId}">
 			<jsp:include page="makeChapterForm.jsp"></jsp:include>
 			<div class="row offset4">
 				<spring:message code="addChapter" var="addChapterTranslate" />
