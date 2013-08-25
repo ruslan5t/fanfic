@@ -50,9 +50,12 @@
 	</beans:bean>
 
 	<interceptors>
-		<beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<beans:bean
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 			<beans:property name="paramName" value="lang" />
 		</beans:bean>
 	</interceptors>
+
+
 
 </beans:beans>

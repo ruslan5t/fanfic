@@ -3,6 +3,8 @@ package by.itransition.fanfic.service;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import by.itransition.fanfic.domain.Role;
@@ -33,5 +36,4 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		return new User(user.getUsername(), user.getPassword(), authorities);
 	}
-	
 }

@@ -9,13 +9,20 @@
 	<http pattern="/css/**" security="none" />
 
 	<http auto-config="true">
-		<intercept-url pattern="/index*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/catalog*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/chapter*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/fanfic*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/find*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/home*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/user*" access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/index*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/catalog*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/chapter*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/fanfic*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/find*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/home*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/user*"
+			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
 		<intercept-url pattern="/addChapter*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/createFanfic*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/editChapter*" access="ROLE_ADMIN,ROLE_USER" />
@@ -23,15 +30,18 @@
 		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/allUsers*" access="ROLE_ADMIN" />
-		<form-login login-page="/signIn" default-target-url="/" authentication-failure-url="/signIn/error"/>
+		<form-login login-page="/signIn" default-target-url="/"
+			authentication-failure-url="/signIn/error" />
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
+		<remember-me/>
 	</http>
 
-	<beans:bean id="customUserDetailsService"
+
+	<beans:bean id="userDetailsService"
 		class="by.itransition.fanfic.service.CustomUserDetailsService" />
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailsService">
+		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
 
