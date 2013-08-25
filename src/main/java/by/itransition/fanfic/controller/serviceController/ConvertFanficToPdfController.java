@@ -1,4 +1,4 @@
-package by.itransition.fanfic.controller;
+package by.itransition.fanfic.controller.serviceController;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

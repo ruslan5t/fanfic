@@ -1,4 +1,4 @@
-package by.itransition.fanfic.controller;
+package by.itransition.fanfic.controller.visitPageController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package by.itransition.fanfic.controller;
+package by.itransition.fanfic.controller.visitPageController;
 
 import java.util.Locale;
 
