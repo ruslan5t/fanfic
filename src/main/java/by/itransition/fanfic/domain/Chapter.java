@@ -18,11 +18,12 @@ public class Chapter {
 
 	@Field
 	@Analyzer(definition = "FanficAnalyzer")
+	@Column(columnDefinition = "TEXT")
 	private String name;
 
 	@Field
 	@Analyzer(definition = "FanficAnalyzer")
-	@Column(length = 1024)
+	@Column(columnDefinition = "TEXT")
 	private String content;
 	
 	@ManyToOne

@@ -1,5 +1,6 @@
 package by.itransition.fanfic.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ public class Comment {
 	@ManyToOne
 	private Fanfic fanfic;
 	
+	@Column(columnDefinition = "TEXT")
 	private String content;
 
 	public User getAuthor() {
