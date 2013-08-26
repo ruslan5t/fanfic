@@ -1,6 +1,5 @@
 package by.itransition.fanfic.web.controller.visitPageController;
 
-import java.util.Collections;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
