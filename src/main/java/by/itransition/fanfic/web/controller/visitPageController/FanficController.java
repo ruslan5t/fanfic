@@ -22,6 +22,7 @@ public class FanficController extends VisitPageController {
 		settingModel(model);
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		model.addAttribute("fanfic", fanfic);
+		model.addAttribute("noChapters", fanfic.getChapters().size() == 0);
 		model.addAttribute("noComments", fanfic.getComments().size() == 0);
 		return "fanfic";
 	}

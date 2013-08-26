@@ -22,6 +22,7 @@ public class UserController extends VisitPageController {
 		settingModel(model);
 		User user = userService.getUserById(userId);
 		model.addAttribute("showedUser", user);
+		model.addAttribute("noFanfics", user.getFanfics().size() == 0);
 		return "user";
 	}
 }

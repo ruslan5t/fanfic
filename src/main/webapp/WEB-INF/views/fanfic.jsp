@@ -63,23 +63,29 @@
 			</c:if>
 			<hr />
 			<div class="content">
-				<button id="convertToPdf">
-					<spring:message code="convertToPdf" />
-				</button>
-				<div id="contentTitle">Содержание:</div>
-				<c:forEach items="${fanfic.getChapters()}" var="chapter">
-					<a
-						href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
-						${chapter.getName()} </a>
-					<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
-						<form method="post"
-							action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
-							<button>
-								<spring:message code="remove" />
-							</button>
-						</form>
-					</c:if>
-				</c:forEach>
+				<c:if test="${!noChapters}">
+					<button id="convertToPdf">
+						<spring:message code="convertToPdf" />
+					</button>
+
+					<div id="contentTitle">Содержание:</div>
+					<c:forEach items="${fanfic.getChapters()}" var="chapter">
+						<a
+							href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
+							${chapter.getName()} </a>
+						<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+							<form method="post"
+								action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
+								<button>
+									<spring:message code="remove" />
+								</button>
+							</form>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				<c:if test="${noChapters}">
+					No chapters
+				</c:if>
 				<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 					<a
 						href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
@@ -90,7 +96,7 @@
 			</div>
 			<hr />
 			<c:if test="${noComments}">
-				No comments.
+				<spring:message code="noComments" />
 			</c:if>
 			<c:if test="${!noComments}">
 				<div class="comments">

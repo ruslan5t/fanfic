@@ -51,7 +51,7 @@
 							<input type="submit" value="${signInTranslate}">
 						</div>
 						<div class="span2">
-							<a href="signUp"><spring:message code="registerNow" /></a>
+							<a href="${pageContext.servletContext.contextPath}/signUp"><spring:message code="registerNow" /></a>
 						</div>
 					</div>
 				</form>
