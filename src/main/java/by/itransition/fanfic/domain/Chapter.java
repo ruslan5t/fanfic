@@ -1,8 +1,8 @@
 package by.itransition.fanfic.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -13,15 +13,16 @@ import org.hibernate.search.annotations.Field;
 public class Chapter {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private int id;
 
 	@Field
-	@Analyzer(definition="FanficAnalyzer")
+	@Analyzer(definition = "FanficAnalyzer")
 	private String name;
 
 	@Field
-	@Analyzer(definition="FanficAnalyzer")
+	@Analyzer(definition = "FanficAnalyzer")
+	@Column(length = 1024)
 	private String content;
 	
 	@ManyToOne

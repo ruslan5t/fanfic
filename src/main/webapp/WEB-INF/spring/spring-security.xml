@@ -38,7 +38,7 @@
 
 
 	<beans:bean id="userDetailsService"
-		class="by.itransition.fanfic.service.CustomUserDetailsService" />
+		class="by.itransition.fanfic.service.impl.CustomUserDetailsService" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">

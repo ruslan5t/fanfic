@@ -1,4 +1,4 @@
-package by.itransition.fanfic.service;
+package by.itransition.fanfic.service.impl;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +16,7 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import by.itransition.fanfic.domain.Role;
+import by.itransition.fanfic.service.UserService;
 
 @Service("userDetailsService") 
 public class CustomUserDetailsService implements UserDetailsService {

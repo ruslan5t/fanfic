@@ -10,4 +10,6 @@ public interface CategoryService {
 	
 	Category getCategoryByName(String name);
 	
+	Category getCategoryById(int id);
+	
 }

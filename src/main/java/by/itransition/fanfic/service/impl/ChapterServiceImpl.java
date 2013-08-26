@@ -16,21 +16,25 @@ public class ChapterServiceImpl implements ChapterService {
 	@Autowired
 	private ChapterDao chapterDao;
 
+	@Override
 	@Transactional
 	public void addChapter(Chapter chapter) {
 		chapterDao.addChapter(chapter);
 	}
 
+	@Override
 	@Transactional
 	public List<Chapter> getAllChapters() {
 		return chapterDao.getAllChapters();
 	}
 
+	@Override
 	@Transactional
 	public List<Chapter> search(String searchQuery) {
 		return chapterDao.search(searchQuery);
 	}
 
+	@Override
 	@Transactional
 	public void save(Chapter chapter) {
 		chapterDao.save(chapter);

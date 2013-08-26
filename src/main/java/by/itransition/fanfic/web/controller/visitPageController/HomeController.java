@@ -26,7 +26,6 @@ public class HomeController extends VisitPageController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		settingModel(model);
-		model.addAttribute("allTags", tagService.getAllTags());
 		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 10));
 		return "home";
 	}

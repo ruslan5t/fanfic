@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import by.itransition.fanfic.domain.Role;
 import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.service.CategoryService;
+import by.itransition.fanfic.service.TagService;
 import by.itransition.fanfic.service.UserService;
 
 @Controller
@@ -17,6 +18,9 @@ public class VisitPageController {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private TagService tagService;
 
 	@Autowired
 	private UserService userService;
@@ -25,6 +29,7 @@ public class VisitPageController {
 		model.addAttribute("allCategories", categoryService.getAllCategories());
 		Authentication authentication = SecurityContextHolder
 				.getContext().getAuthentication();
+		model.addAttribute("allTags", tagService.getAllTags());
 		if(hasAuthority(authentication, Role.ROLE_USER)) {
 			model.addAttribute("isLogged", true);
 			User currentUser = userService.getUserByName(authentication.getName());

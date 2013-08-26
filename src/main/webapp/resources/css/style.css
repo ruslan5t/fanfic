@@ -1,12 +1,14 @@
 @CHARSET "UTF-8";
 
 .pageTitle {
-	font-size: 3.2em;
+	font-size: 2.5em;
+	line-height: 1.2;
 	padding: 20px;
 }
 
 .postTitle {
-	font-size: 2.2em;
+	font-size: 2.5em;
+	line-height: 1.2;
 	padding-top: 20px;
 }
 
@@ -55,12 +57,12 @@ resizableChapterPlace {
 }
 
 .pageContainer {
-	max-width: 1000px;
+	max-width: 1050px;
 	margin: 0 auto;
 }
 
 .sidePanel {
-	border-left: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 .flag {
@@ -71,4 +73,30 @@ resizableChapterPlace {
 
 .flags {
 	display: inline;
+}
+
+#tagcloud a {
+	text-decoration: none;	
+}
+
+.categories {
+	padding-left: 30px;
+}
+
+.categoriesTitle {
+
+}
+
+.categories ul {
+	list-style: none;
+	margin-left: 5px;
+}
+
+#convertToPdf {
+	display: block;
+	margin-left: auto;	
+}
+
+#contentTitle {
+	font-size: 1.5em;
 }

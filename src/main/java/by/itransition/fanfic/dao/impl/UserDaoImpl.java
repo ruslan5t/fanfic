@@ -15,7 +15,7 @@ import by.itransition.fanfic.domain.User;
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
-	private EntityManager entityManager = HibernateUtil.getEntityManager();
+	private EntityManager entityManager;
 
 	@Override
 	public List<User> getAllUsers() {

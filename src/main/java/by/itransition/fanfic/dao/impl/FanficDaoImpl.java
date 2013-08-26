@@ -21,7 +21,7 @@ import by.itransition.fanfic.domain.Tag;
 public class FanficDaoImpl implements FanficDao {
 
 	@Autowired
-	private EntityManager entityManager = HibernateUtil.getEntityManager();
+	private EntityManager entityManager;
 
 	@Override
 	public void addFanfic(Fanfic fanfic) {

@@ -7,13 +7,11 @@
 <html>
 <head>
 <jsp:include page="minHeadBody.jsp"></jsp:include>
-<script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
-<script src="<c:url value="/resources/js/home.js" />"></script>
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<div class="span8">
+		<jsp:include page="menu.jsp"/>
+		<div class="span9">
 			<div class="pageTitle">
 				<spring:message code="mainPageTitle" />
 			</div>
@@ -29,33 +27,22 @@
 						href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 						${fanfic.getAuthor().getUsername()} </a>
 				</div>
-				<div class="description">
-					${fanfic.getDescription()}
-				</div>
+				<div class="description">${fanfic.getDescription()}</div>
 				<div class="tags">
-					<spring:message code="tags" />:
+					<spring:message code="tags" />
+					:
 					<c:forEach items="${fanfic.getTags()}" var="tag">
 						<div class="tag">
-							<a href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
-								${ tag.getName() }
-							</a>
+							<a
+								href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+								${ tag.getName() } </a>
 						</div>
 					</c:forEach>
 				</div>
 				<hr />
 			</c:forEach>
 		</div>
-		<div class="sidePanel span4">
-			<div id="tagcloud" class="row">
-				<ul>
-					<c:forEach items="${allTags}" var="tag">
-						<li><a
-							href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
-								${tag.getName()} </a></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</div>
+		<jsp:include page="sidebar.jsp"/>
 	</div>
 </body>
 </html>

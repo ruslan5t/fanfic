@@ -19,7 +19,7 @@ import by.itransition.fanfic.domain.Chapter;
 public class ChapterDaoImpl implements ChapterDao {
 
 	@Autowired
-	private EntityManager entityManager = HibernateUtil.getEntityManager();
+	private EntityManager entityManager;
 
 	@Override
 	public void addChapter(Chapter chapter) {

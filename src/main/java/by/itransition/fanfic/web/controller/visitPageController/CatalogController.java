@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import by.itransition.fanfic.service.CategoryService;
 import by.itransition.fanfic.service.FanficService;
 
 @Controller
@@ -17,6 +18,9 @@ public class CatalogController extends VisitPageController {
 
 	@Autowired
 	private FanficService fanficService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCatalogFirstPage() {
@@ -30,6 +34,7 @@ public class CatalogController extends VisitPageController {
 				fanficService.getFanficsByDate((pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
 		settingPagination(model, pageNumber, fanficService.getAllFanfics().size(),
 				"");
+		model.addAttribute("category", "all");
 		return "catalog";
 	}
 	
@@ -45,6 +50,7 @@ public class CatalogController extends VisitPageController {
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByCategoryId(
 						categoryId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
+		model.addAttribute("category", categoryService.getCategoryById(categoryId).getName());
 		settingPagination(model, pageNumber,
 				fanficService.getFanficsByCategoryId(categoryId).size(),
 				"/category/" + categoryId);
