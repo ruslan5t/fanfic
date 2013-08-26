@@ -1,6 +1,11 @@
 package by.itransition.fanfic.web.controller.visitPageController;
 
+import java.util.ResourceBundle;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,9 +47,11 @@ public class SignUpController extends VisitPageController {
 //			SimpleMailMessage confirmRegistrationMessage = new SimpleMailMessage();
 //			confirmRegistrationMessage.setTo(user.getEmail());
 //			confirmRegistrationMessage.setFrom("roman-v1@mail.ru");
+//			ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
+//					LocaleContextHolder.getLocale());
 //			confirmRegistrationMessage.setText(
-//					"If you registered on fanfic website go to " +
-//							"http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
+//					resourceBundle.getString("ifYouRegisteredOnFanficLibraryWebsiteGoTo") +
+//					" http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
 //			mailSender.send(confirmRegistrationMessage);	
 			return "redirect:/messageSent";
 		}
