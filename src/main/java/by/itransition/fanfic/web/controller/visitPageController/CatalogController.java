@@ -36,8 +36,8 @@ public class CatalogController extends VisitPageController {
 		settingModel(model);
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByDate((pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
-		settingPagination(model, pageNumber, fanficService.getAllFanfics().size(),
-				"", "all");
+		settingPagination(model, pageNumber, fanficService.getAllFanfics().size(), "");
+		model.addAttribute("categoryName", "all");
 		return "catalog";
 	}
 	
@@ -55,7 +55,8 @@ public class CatalogController extends VisitPageController {
 						categoryId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
 		settingPagination(model, pageNumber,
 				fanficService.getFanficsByCategoryId(categoryId).size(),
-				"/category/" + categoryId,
+				"/category/" + categoryId);
+		model.addAttribute("categoryName",
 				categoryService.getCategoryById(categoryId).getName());
 		return "catalog";
 	}
@@ -73,17 +74,17 @@ public class CatalogController extends VisitPageController {
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByTagId(
 						tagId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
-//		settingPagination(model, pageNumber, fanficService.getFanficsByTagId(tagId).size(),
-//				"/tag/" + tagId, tagService.getTagById(tagId).getName());
-		return "catalog";
+		settingPagination(model, pageNumber, fanficService.getFanficsByTagId(tagId).size(),
+				"/tag/" + tagId);
+		model.addAttribute("tagName", tagService.getTagById(tagId).getName());
+		return "catalogTags";
 	}
 	
 	private void settingPagination(Model model, int pageNumber, int countItems,
-			String addressPastCatalog, String fanficsSetName) {
+			String addressPastCatalog) {
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("countItems", countItems);
 		model.addAttribute("addressPastCatalog", addressPastCatalog);
 		model.addAttribute("countOnPage", COUNT_ON_PAGE);
-		model.addAttribute("fanficsSetName", "");
 	}
 }
