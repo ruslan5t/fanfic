@@ -32,6 +32,12 @@ public class ChapterController extends VisitPageController {
 		MarkdownProcessor markdownProcessor = new MarkdownProcessor();
 		model.addAttribute("chapterParsedContent", 
 				markdownProcessor.markdown(chapter.getContent()));
+		if (!fanfic.isFirstChapter(chapter)) {
+			model.addAttribute("prevChapterName", fanfic.getPrevChapter(chapter).getName());
+		}
+		if (!fanfic.isLastChapter(chapter)) {
+			model.addAttribute("nextChapterName", fanfic.getNextChapter(chapter).getName());
+		}
 		model.addAttribute("isFirstChapter",
 				fanfic.isFirstChapter(chapter));
 		model.addAttribute("isLastChapter",

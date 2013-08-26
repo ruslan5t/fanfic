@@ -100,3 +100,7 @@ resizableChapterPlace {
 #contentTitle {
 	font-size: 1.5em;
 }
+
+.nextChapterLink {
+	float: right;
+}

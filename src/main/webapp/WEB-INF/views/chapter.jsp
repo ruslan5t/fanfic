@@ -35,20 +35,19 @@
 		</div>
 
 		<div class="row offset1">
-			<c:if test="${!isFirstChapter}">
-				<div class="span1">
+			<div class="span8">
+				<c:if test="${!isFirstChapter}">
 					<a
 						href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
-						Prev</a>
-				</div>
-			</c:if>
-			<c:if test="${!isLastChapter}">
-				<div class="span1">
-					<a
+						${prevChapterName}</a>
+				</c:if>
+				<c:if test="${!isLastChapter}">
+					<a class="nextChapterLink"
 						href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
-						Next</a>
-				</div>
-			</c:if>
+						${nextChapterName}</a>
+
+				</c:if>
+			</div>
 		</div>
 	</div>
 </body>

@@ -66,9 +66,7 @@
 				<button id="convertToPdf">
 					<spring:message code="convertToPdf" />
 				</button>
-				<div id="contentTitle">
-					Содержание:
-				</div>
+				<div id="contentTitle">Содержание:</div>
 				<c:forEach items="${fanfic.getChapters()}" var="chapter">
 					<a
 						href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
@@ -84,21 +82,22 @@
 				</c:forEach>
 			</div>
 			<hr />
-			Comments:
-			<c:forEach items="${fanfic.getComments()}" var="comment">
-				<div class="row offset1">${comment.getContent()}</div>
-			</c:forEach>
+			<c:if test="${noComments}">
+				No comments.
+			</c:if>
+			<c:if test="${!noComments}">
+				Comments:
+				<c:forEach items="${fanfic.getComments()}" var="comment">
+					<div class="row offset1">${comment.getContent()}</div>
+				</c:forEach>
+			</c:if>
 			<sec:authorize ifAllGranted="ROLE_USER">
-				<div class="row offset1">
-					<spring:message code="addComment" />
-					:
-				</div>
 				<div class="row offset1">
 					<form
 						action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
 						method="post">
-						<textarea name="newComment"></textarea>
 						<spring:message code="addComment" var="addCommentTranslate" />
+						<textarea name="newComment" placeholder="${addCommentTranslate}"></textarea>
 						<input type="submit" value="${addCommentTranslate}" />
 					</form>
 				</div>

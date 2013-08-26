@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
 
 @Controller
@@ -19,7 +20,9 @@ public class FanficController extends VisitPageController {
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
 	public String getFanfic(@PathVariable("fanficId") int fanficId, Model model) {
 		settingModel(model);
-		model.addAttribute("fanfic", fanficService.getFanficById(fanficId));
+		Fanfic fanfic = fanficService.getFanficById(fanficId);
+		model.addAttribute("fanfic", fanfic);
+		model.addAttribute("noComments", fanfic.getComments().size() == 0);
 		return "fanfic";
 	}
 }

@@ -23,7 +23,7 @@
 		<jsp:include page="menu.jsp" />
 		<div class="span9">
 			<div class="pageTitle">
-				<spring:message code="catalog" /> / <spring:message code="${category}"/>
+				<spring:message code="catalog" /> / <spring:message code="${fanficsSetName}"/>
 			</div>
 			<hr />
 			<div class="row offset1">

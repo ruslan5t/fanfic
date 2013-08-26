@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.service.CategoryService;
 import by.itransition.fanfic.service.FanficService;
+import by.itransition.fanfic.service.TagService;
 
 @Controller
 @RequestMapping("/catalog")
@@ -22,6 +23,9 @@ public class CatalogController extends VisitPageController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private TagService tagService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String getCatalogFirstPage() {
 		return "redirect:/catalog/1";
@@ -33,8 +37,7 @@ public class CatalogController extends VisitPageController {
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByDate((pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
 		settingPagination(model, pageNumber, fanficService.getAllFanfics().size(),
-				"");
-		model.addAttribute("category", "all");
+				"", "all");
 		return "catalog";
 	}
 	
@@ -50,10 +53,10 @@ public class CatalogController extends VisitPageController {
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByCategoryId(
 						categoryId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
-		model.addAttribute("category", categoryService.getCategoryById(categoryId).getName());
 		settingPagination(model, pageNumber,
 				fanficService.getFanficsByCategoryId(categoryId).size(),
-				"/category/" + categoryId);
+				"/category/" + categoryId,
+				categoryService.getCategoryById(categoryId).getName());
 		return "catalog";
 	}
 	
@@ -70,16 +73,17 @@ public class CatalogController extends VisitPageController {
 		model.addAttribute("allFanfics", 
 				fanficService.getFanficsByTagId(
 						tagId, (pageNumber - 1) * COUNT_ON_PAGE, COUNT_ON_PAGE));
-		settingPagination(model, pageNumber, fanficService.getFanficsByTagId(tagId).size(),
-				"/tag/" + tagId);
+//		settingPagination(model, pageNumber, fanficService.getFanficsByTagId(tagId).size(),
+//				"/tag/" + tagId, tagService.getTagById(tagId).getName());
 		return "catalog";
 	}
 	
 	private void settingPagination(Model model, int pageNumber, int countItems,
-			String addressPastCatalog) {
+			String addressPastCatalog, String fanficsSetName) {
 		model.addAttribute("pageNumber", pageNumber);
 		model.addAttribute("countItems", countItems);
 		model.addAttribute("addressPastCatalog", addressPastCatalog);
 		model.addAttribute("countOnPage", COUNT_ON_PAGE);
+		model.addAttribute("fanficsSetName", "");
 	}
 }

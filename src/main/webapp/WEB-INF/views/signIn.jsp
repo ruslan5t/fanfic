@@ -13,7 +13,7 @@
 		<jsp:include page="menu.jsp"></jsp:include>
 		<div class="row offset4">
 			<div class="span3">
-				<form method="post" action="j_spring_security_check">
+				<form method="post" action="${pageContext.servletContext.contextPath}/j_spring_security_check">
 					<div class="row">
 						<div class="span3">
 							<spring:message code="username" var="usernameTranslate" />

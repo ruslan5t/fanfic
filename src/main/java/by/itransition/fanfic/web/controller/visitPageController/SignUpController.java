@@ -46,7 +46,7 @@ public class SignUpController extends VisitPageController {
 //					"If you registered on fanfic website go to " +
 //							"http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
 //			mailSender.send(confirmRegistrationMessage);	
-			return "redirect:/";
+			return "redirect:/messageSent";
 		}
 		model.addAttribute("error", true);
 		return "signUp";
