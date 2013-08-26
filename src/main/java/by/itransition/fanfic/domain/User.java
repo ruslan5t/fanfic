@@ -33,7 +33,7 @@ public class User {
 	@DateBridge(resolution = Resolution.DAY)
 	private Date dateOfRegistration;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Fanfic> fanfics = new ArrayList<Fanfic>();
 
 	@OneToMany(cascade = CascadeType.ALL)

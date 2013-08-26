@@ -116,3 +116,12 @@ resizableChapterPlace {
 	border: 1px solid black;
 	min-height: 100px;
 }
+
+#scrollUp {
+	bottom: 20px;
+	right: 20px;
+	height: 38px;  /* Height of image */
+	width: 38px; /* Width of image */
+	background: url(../../resources/images/top.png) no-repeat;
+	outline: none;
+}

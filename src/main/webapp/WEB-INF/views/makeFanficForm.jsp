@@ -31,7 +31,7 @@
 <c:if test="${not empty emptyCategoriesError}">
 	<div class="row offset4">
 		<div class="span2">
-			<spring:message code="incorrectUsernameOrPassword" />
+			<spring:message code="notSelectedCategory" />
 		</div>
 	</div>
 </c:if>

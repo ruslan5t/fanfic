@@ -62,7 +62,7 @@ public class Fanfic {
 	private List<Category> categories = new ArrayList<Category>();
 
 	@IndexedEmbedded
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Chapter> chapters = new ArrayList<Chapter>();
 
 	@OneToMany(cascade = CascadeType.ALL)
