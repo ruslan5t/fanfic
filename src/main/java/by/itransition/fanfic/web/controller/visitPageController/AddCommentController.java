@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import by.itransition.fanfic.domain.Comment;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.service.FanficService;
+import by.itransition.fanfic.service.UserService;
 
 @Controller
 @RequestMapping("/addComment")
@@ -19,11 +20,16 @@ public class AddCommentController extends VisitPageController {
 	@Autowired
 	private FanficService fanficService;
 	
-	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
+	@Autowired
+	private UserService userService;
+	
+	@RequestMapping(value = "/{fanficId}/{authorId}", method = RequestMethod.POST)
 	public String addComment(@PathVariable("fanficId") int fanficId,
+			@PathVariable("authorId") int authorId,
 			HttpServletRequest request) {
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		Comment comment = new Comment();
+		comment.setAuthor(userService.getUserById(authorId));
 		comment.setContent((String)request.getParameter("newComment"));
 		fanfic.addComment(comment);
 		fanficService.save(fanfic);

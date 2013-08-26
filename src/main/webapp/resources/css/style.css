@@ -104,3 +104,15 @@ resizableChapterPlace {
 .nextChapterLink {
 	float: right;
 }
+
+.commentTextarea textarea {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 100px;
+}
+
+.comment {
+	border: 1px solid black;
+	min-height: 100px;
+}

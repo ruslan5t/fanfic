@@ -29,16 +29,6 @@
 		<div class="span9">
 			<div class="pageTitle">${fanfic.getName()}</div>
 			<hr />
-			<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
-				<a
-					href="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}">
-					<spring:message code="edit" />
-				</a>
-				<a
-					href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
-					<spring:message code="addChapter" />
-				</a>
-			</c:if>
 			Author: <a
 				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 				${fanfic.getAuthor().getUsername()} </a> <br />
@@ -61,6 +51,16 @@
 			<c:forEach items="${fanfic.getTags()}" var="tag">
 				<div class="tag">${tag.getName()}</div>
 			</c:forEach>
+			<br />
+			<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+				<form
+					action="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}"
+					method="get">
+					<button>
+						<spring:message code="edit" />
+					</button>
+				</form>
+			</c:if>
 			<hr />
 			<div class="content">
 				<button id="convertToPdf">
@@ -80,27 +80,42 @@
 						</form>
 					</c:if>
 				</c:forEach>
+				<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+					<a
+						href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
+						<spring:message code="addChapter" />
+					</a>
+					<br />
+				</c:if>
 			</div>
 			<hr />
 			<c:if test="${noComments}">
 				No comments.
 			</c:if>
 			<c:if test="${!noComments}">
-				Comments:
-				<c:forEach items="${fanfic.getComments()}" var="comment">
-					<div class="row offset1">${comment.getContent()}</div>
-				</c:forEach>
-			</c:if>
-			<sec:authorize ifAllGranted="ROLE_USER">
-				<div class="row offset1">
-					<form
-						action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}"
-						method="post">
-						<spring:message code="addComment" var="addCommentTranslate" />
-						<textarea name="newComment" placeholder="${addCommentTranslate}"></textarea>
-						<input type="submit" value="${addCommentTranslate}" />
-					</form>
+				<div class="comments">
+					Comments:
+					<c:forEach items="${fanfic.getComments()}" var="comment">
+						<div class="comment">
+							<a
+								href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
+								${fanfic.getAuthor().getUsername()} </a>: ${comment.getContent()}
+						</div>
+					</c:forEach>
 				</div>
+			</c:if>
+			<br />
+			<hr />
+			<sec:authorize ifAllGranted="ROLE_USER">
+				<form
+					action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}/${currentUserId}"
+					method="post">
+					<spring:message code="addComment" var="addCommentTranslate" />
+					<div class="commentTextarea">
+						<textarea name="newComment" placeholder="${addCommentTranslate}"></textarea>
+					</div>
+					<input type="submit" value="${addCommentTranslate}" />
+				</form>
 			</sec:authorize>
 		</div>
 		<jsp:include page="sidebar.jsp" />
