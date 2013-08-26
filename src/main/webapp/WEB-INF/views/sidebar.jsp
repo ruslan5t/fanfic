@@ -2,7 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<script src="<c:url value="/resources/js/home.js" />"></script>
+<script src="<c:url value="/resources/js/settingTagCloud.js" />"></script>
 <script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
 <div class="sidePanel span3">
 			<div id="tagcloud" class="row">

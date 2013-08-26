@@ -1,5 +1,6 @@
 package by.itransition.fanfic.web.controller.visitPageController;
 
+import java.util.Collections;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class HomeController extends VisitPageController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		settingModel(model);
-		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 10));
+		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 5));
 		return "home";
 	}
 

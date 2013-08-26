@@ -10,6 +10,7 @@
 <head>
 <jsp:include page="minHeadBody.jsp"></jsp:include>
 <script src="<c:url value="/resources/js/jquery.raty.min.js" />"></script>
+<script src="<c:url value="/resources/js/settingRating.js" />"></script>
 <script src="<c:url value="/resources/js/fanfic.js" />"></script>
 </head>
 <body>
@@ -21,10 +22,8 @@
 		<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
 			<div id="isLogged" value="false"></div>
 		</sec:authorize>
-		<div id="fanficRating" value="${fanfic.getRating()}"></div>
 		<div id="contextPath"
 			value="${pageContext.servletContext.contextPath}"></div>
-
 		<jsp:include page="menu.jsp" />
 		<div class="span9">
 			<div class="pageTitle">${fanfic.getName()}</div>
@@ -36,7 +35,8 @@
 				<tr>
 					<td>Rating:</td>
 					<td>
-						<div id="rating"></div>
+						<div class="rating"  fanficId="${fanfic.getId()}"  
+							rating="${fanfic.getRating()}"></div>
 					</td>
 				</tr>
 			</table>

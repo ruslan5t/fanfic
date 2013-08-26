@@ -2,15 +2,26 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
 <jsp:include page="minHeadBody.jsp"></jsp:include>
+<script src="<c:url value="/resources/js/jquery.raty.min.js" />"></script>
+<script src="<c:url value="/resources/js/settingRating.js" />"></script>
 </head>
 <body>
+	<sec:authorize ifAllGranted="ROLE_USER">
+		<div id="isLogged" value="true"></div>
+	</sec:authorize>
+	<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+		<div id="isLogged" value="false"></div>
+	</sec:authorize>
+	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"/>
+		<jsp:include page="menu.jsp" />
 		<div class="span9">
 			<div class="pageTitle">
 				<spring:message code="mainPageTitle" />
@@ -39,10 +50,12 @@
 						</div>
 					</c:forEach>
 				</div>
+				<div class="rating" fanficId="${fanfic.getId()}" 
+					rating="${fanfic.getRating()}"></div>
 				<hr />
 			</c:forEach>
 		</div>
-		<jsp:include page="sidebar.jsp"/>
+		<jsp:include page="sidebar.jsp" />
 	</div>
 </body>
 </html>
