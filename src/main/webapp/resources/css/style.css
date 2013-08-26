@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+body {
+	word-wrap: break-word;
+}
+
 .pageTitle {
 	font-size: 2.5em;
 	line-height: 1.2;

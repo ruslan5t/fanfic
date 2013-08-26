@@ -107,10 +107,10 @@
 								href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 								${fanfic.getAuthor().getUsername()} </a>: ${comment.getContent()}
 						</div>
+						<br />
 					</c:forEach>
 				</div>
 			</c:if>
-			<br />
 			<hr />
 			<sec:authorize ifAllGranted="ROLE_USER">
 				<form
