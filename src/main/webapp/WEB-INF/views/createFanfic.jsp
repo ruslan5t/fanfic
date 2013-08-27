@@ -10,14 +10,17 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<form:form method="post" modelAttribute="newFanfic">
-			<jsp:include page="makeFanficForm.jsp"></jsp:include>
-			<div class="row offset4">
-				<spring:message code="createFanfic" var="createFanficTranslate" />
-				<input type="submit" value="${createFanficTranslate}">
-			</div>
-		</form:form>
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<form:form method="post" modelAttribute="newFanfic">
+				<jsp:include page="makeFanficForm.jsp"></jsp:include>
+				<div class="row offset4">
+					<spring:message code="createFanfic" var="createFanficTranslate" />
+					<input type="submit" value="${createFanficTranslate}">
+				</div>
+			</form:form>
+		</div>
 	</div>
+	<jsp:include page="sidebar.jsp" />
 </body>
 </html>

@@ -17,11 +17,7 @@
 			</div>
 			<hr />
 			<spring:message code="name"/>: ${showedUser.getUsername()}
-			<c:if test="${showedUser.getId().equals(currentUserId)}">
-				<a href="${pageContext.servletContext.contextPath}/createFanfic">
-					<spring:message code="createFanfic" />
-				</a>
-			</c:if>
+			<br />
 			<c:if test="${!noFanfics}">
 				<h3>
 					<b><spring:message code="fanfics" />:</b>
@@ -43,6 +39,12 @@
 			</c:if>
 			<c:if test="${noFanfics}">
 				<spring:message code="noFanfics" />
+				<br />
+			</c:if>
+			<c:if test="${showedUser.getId().equals(currentUserId)}">
+				<a href="${pageContext.servletContext.contextPath}/createFanfic">
+					<spring:message code="createFanfic" />
+				</a>
 			</c:if>
 		</div>
 		<jsp:include page="sidebar.jsp" />

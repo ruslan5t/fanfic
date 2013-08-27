@@ -32,12 +32,14 @@
 						</label>
 						<spring:message code="signIn" var="signInTranslate" />
 						<input type="submit" value="${signInTranslate}"
-							class="btn btn-success" /> <br /> <a
-							href="${pageContext.servletContext.contextPath}/signUp"><spring:message
-								code="register" /></a>
+							class="btn btn-success" /> <br />
 					</form>
+					<a href="${pageContext.servletContext.contextPath}/signUp">
+						<spring:message	code="register" />
+					</a>
+					|
 					<a href="${pageContext.servletContext.contextPath}/forgetPassword">
-					<spring:message code="forgetPassword" />?
+						<spring:message code="forgetPassword" />?
 					</a>
 				</div>
 			</div>
