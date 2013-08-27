@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+
+body {
+	word-wrap: break-word;
+}
+
+.pageTitle {
+	font-size: 2.5em;
+	line-height: 1.2;
+	padding: 20px;
+}
+
+.postTitle {
+	font-size: 1.8em;
+	line-height: 1.2;
+	padding-top: 20px;
+}
+
+.postTitle :HOVER {
+	color: black;
+}
+
+select.categories {
+	multiple: multiple;
+}
+
+.author {
+	font-size: 1.0em;
+	padding: 10px;
+}
+
+.author a {
+	color: gray;	
+}
+
+.description {
+	padding-bottom: 10px;
+}
+
+#chartContainer {
+	height: 300px;
+}
+
+.tags {
+	display: inline;	
+}
+
+.tag {
+	display: inline;
+	margin-left: 5px;
+}
+
+resizableChapterPlace {
+	margin: 0 auto;
+	border: 1px solid;
+	min-width: 75px;
+}
+
+#textChapterPlace {
+	overflow: auto;
+}
+
+.pageContainer {
+	max-width: 1050px;
+	margin: 0 auto;
+}
+
+.sidePanel {
+	/*border: 1px solid black;*/
+}
+
+.flag {
+	max-width: 20px;
+	max-height: 20px;
+	display: inline;
+}
+
+.flags {
+	display: inline;
+}
+
+#tagcloud a {
+	text-decoration: none;	
+}
+
+.categories {
+	padding-left: 30px;
+}
+
+.categoriesTitle {
+
+}
+
+.categories ul {
+	list-style: none;
+	margin-left: 5px;
+}
+
+#convertToPdf {
+	display: block;
+	margin-left: auto;	
+}
+
+#contentTitle {
+	font-size: 1.5em;
+}
+
+.nextChapterLink {
+	float: right;
+}
+
+.commentTextarea textarea {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 100px;
+}
+
+.comment {
+	border: 1px solid black;
+	min-height: 100px;
+}
+
+#scrollUp {
+	bottom: 20px;
+	right: 20px;
+	height: 38px;  /* Height of image */
+	width: 38px; /* Width of image */
+	background: url(../../resources/images/top.png) no-repeat;
+	outline: none;
+}

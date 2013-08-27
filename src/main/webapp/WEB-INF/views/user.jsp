@@ -16,9 +16,7 @@
 				<spring:message code="userProfile" />
 			</div>
 			<hr />
-			<h3>
-				<b>${showedUser.getUsername()}</b>
-			</h3>
+			<spring:message code="name"/>: ${showedUser.getUsername()}
 			<c:if test="${showedUser.getId().equals(currentUserId)}">
 				<a href="${pageContext.servletContext.contextPath}/createFanfic">
 					<spring:message code="createFanfic" />

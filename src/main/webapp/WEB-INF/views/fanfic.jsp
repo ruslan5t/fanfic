@@ -28,14 +28,14 @@
 		<div class="span9">
 			<div class="pageTitle">${fanfic.getName()}</div>
 			<hr />
-			Author: <a
+			<spring:message code="author" />: <a
 				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 				${fanfic.getAuthor().getUsername()} </a> <br />
 			<table>
 				<tr>
-					<td>Rating:</td>
+					<td><spring:message code="rating"/>:</td>
 					<td>
-						<div class="rating"  fanficId="${fanfic.getId()}"  
+						<div class="rating" fanficId="${fanfic.getId()}"
 							rating="${fanfic.getRating()}"></div>
 					</td>
 				</tr>
@@ -47,9 +47,13 @@
 					<spring:message code="${category.getName()}" />
 				</a>
 			</c:forEach>
-			<br /> Tags:
+			<br /> <spring:message code="tags" />:
 			<c:forEach items="${fanfic.getTags()}" var="tag">
-				<div class="tag">${tag.getName()}</div>
+				<div class="tag">
+					<a
+						href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+						${ tag.getName() } </a>
+				</div>
 			</c:forEach>
 			<br />
 			<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
@@ -70,9 +74,11 @@
 
 					<div id="contentTitle">Содержание:</div>
 					<c:forEach items="${fanfic.getChapters()}" var="chapter">
-						<a
-							href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
-							${chapter.getName()} </a>
+						<div class="contentItem">
+							<a
+								href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
+								${chapter.getName()} </a>
+						</div>
 						<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 							<form method="post"
 								action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">

@@ -51,7 +51,8 @@
 					</c:forEach>
 				</div>
 				<div class="rating" fanficId="${fanfic.getId()}" 
-					rating="${fanfic.getRating()}"></div>
+					rating="${fanfic.getRating()}">
+				</div>
 				<hr />
 			</c:forEach>
 		</div>

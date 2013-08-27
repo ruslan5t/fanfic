@@ -49,13 +49,28 @@
 		<beans:property name="defaultLocale" value="en" />
 	</beans:bean>
 
-	<interceptors>
-		<beans:bean
-			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<beans:property name="paramName" value="lang" />
-		</beans:bean>
+
+	<beans:bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<beans:property name="basenamePrefix" value="theme-" />
+	</beans:bean>
+
+	<beans:bean id="themeChangeInterceptor"
+		class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+		<beans:property name="paramName" value="theme" />
+	</beans:bean>
+	<beans:bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.CookieThemeResolver">
+		<beans:property name="defaultThemeName" value="white" />
+	</beans:bean>
+
+	<interceptors>  
+        <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+              <beans:property name="paramName" value="lang" />
+        </beans:bean>
+        <beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+              <beans:property name="paramName" value="theme" />
+        </beans:bean>
 	</interceptors>
-
-
 
 </beans:beans>

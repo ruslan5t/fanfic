@@ -9,20 +9,6 @@
 		<ul class="nav">
 			<li><a href="${pageContext.servletContext.contextPath}/"><spring:message
 						code="mainPage" /></a></li>
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown"><spring:message code="catalog" /><b
-					class="caret"></b> </a>
-				<ul class="dropdown-menu">
-					<li><a
-						href="${pageContext.servletContext.contextPath}/catalog">all</a></li>
-					<li class="divider"></li>
-					<c:forEach items="${allCategories}" var="category">
-						<li><a
-							href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
-								<spring:message code="${category.getName()}" />
-						</a></li>
-					</c:forEach>
-				</ul></li>
 			<sec:authorize ifAllGranted="ROLE_USER">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
@@ -47,6 +33,14 @@
 		</ul>
 		<form class="navbar-form pull-right"
 			action="${pageContext.servletContext.contextPath}/find" method="post">
+			<ul class="nav">
+				<li>
+					<a href="<spring:url value="?theme=white" />">White</a>
+				</li>
+				<li>
+					<a href="<spring:url value="?theme=black" />">Black</a>
+				</li>
+			</ul>
 			<ul class="nav flags">
 				<li><a href="<spring:url value="?lang=en" />"> <img
 						class="flag" src="<c:url value="/resources/images/english.gif" />" />
@@ -57,7 +51,9 @@
 			</ul>
 			<input type="text" class="form-control" placeholder="Search"
 				name="searchRequest" />
-			<button type="submit" class="btn btn-default">Submit</button>
+			<button type="submit" class="btn btn-default">
+				<spring:message code="find"/>
+			</button>
 		</form>
 	</div>
 </div>

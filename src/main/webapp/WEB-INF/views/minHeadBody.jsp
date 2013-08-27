@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title><spring:message code="fanficLibrary" /></title>
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+<link href="/fanfic/resources/css/<spring:theme code='style'/>" rel="stylesheet"
 	media="screen">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" media="screen">

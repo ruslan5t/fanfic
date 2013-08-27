@@ -15,26 +15,20 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<div class="row offset1">${chapter.getName()}</div>
-		<div class="row offset1">
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<div class="pageTitle"><a
+						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+						${fanfic.getName()} </a> / ${chapter.getName()}</div>
 			<a
 				href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
-				<spring:message code="edit" />
+				<spring:message code="editChapter" />
 			</a>
-		</div>
-		<div class="row offset1">
 			<select id="fontSizes"></select>
-		</div>
-		<div class="row offset1">
-			<div class="span12">
-				<div id="resizableChapterPlace">
-					<div id="textChapterPlace">${chapterParsedContent}</div>
-				</div>
+			<div id="resizableChapterPlace">
+				<div id="textChapterPlace">${chapterParsedContent}</div>
 			</div>
-		</div>
 
-		<div class="row offset1">
 			<div class="span8">
 				<c:if test="${!isFirstChapter}">
 					<a
@@ -45,10 +39,10 @@
 					<a class="nextChapterLink"
 						href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
 						${nextChapterName}</a>
-
 				</c:if>
 			</div>
 		</div>
+		<jsp:include page="sidebar.jsp" />
 	</div>
 </body>
 </html>
