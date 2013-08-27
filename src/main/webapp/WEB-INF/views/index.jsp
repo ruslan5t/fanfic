@@ -57,6 +57,14 @@
 			</c:forEach>
 		</div>
 		<jsp:include page="sidebar.jsp" />
+		
+		<footer>
+			<div class="row">
+				<div class="span12">
+					&copy; Copyright 2013.
+				</div>
+			</div>
+		</footer>
 	</div>
 </body>
 </html>

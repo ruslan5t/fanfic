@@ -66,15 +66,11 @@ select.categories {
 }
 
 .sidePanel {
-	box-shadow: 0 0 5px;
-	padding: 10px;
-	background-color: rgba(0, 0, 0, 0.05);
+
 }
 
 .span9 {
-	box-shadow: 0 0 5px;
-	padding: 10px;
-	background-color: rgba(0, 0, 0, 0.05);
+
 }
 
 .flag {
@@ -88,20 +84,12 @@ select.categories {
 }
 
 #tagcloud a {
-	text-decoration: none;	
+	text-decoration: none;
+	font-style: oblique;
 }
 
 .categories {
-	padding-left: 30px;
-}
-
-.categoriesTitle {
-
-}
-
-.categories ul {
-	list-style: none;
-	margin-left: 5px;
+	padding-left: 10px;
 }
 
 #convertToPdf {
@@ -149,4 +137,14 @@ select.categories {
 .goToContentLink {
 	text-align: center;
 	display: block;
+}
+
+.sidebar-nav {
+	margin-top: 50px;
+}
+
+footer {
+	text-align: center;
+	display: block;
+	margin: 0 auto;
 }
