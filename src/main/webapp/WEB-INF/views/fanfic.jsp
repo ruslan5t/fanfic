@@ -129,6 +129,9 @@
 					<input type="submit" value="${addCommentTranslate}" />
 				</form>
 			</sec:authorize>
+			<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+				<spring:message code="signInToPostAComment" />
+			</sec:authorize>
 		</div>
 		<jsp:include page="sidebar.jsp" />
 	</div>

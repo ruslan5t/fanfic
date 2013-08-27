@@ -15,7 +15,7 @@ import by.itransition.fanfic.service.TagService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController extends VisitPageController {
+public class IndexController extends VisitPageController {
 
 	@Autowired
 	private FanficService fanficService;
@@ -27,7 +27,7 @@ public class HomeController extends VisitPageController {
 	public String home(Locale locale, Model model) {
 		settingModel(model);
 		model.addAttribute("bestFanfics", fanficService.getFanficsByRating(0, 5));
-		return "home";
+		return "index";
 	}
 
 }

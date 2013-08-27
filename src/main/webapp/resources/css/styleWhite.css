@@ -145,3 +145,8 @@ select.categories {
 	font-size: 1.2em;
 	line-height: 1.2;	
 }
+
+.goToContentLink {
+	text-align: center;
+	display: block;
+}
