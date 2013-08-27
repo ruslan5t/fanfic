@@ -19,6 +19,10 @@ $(function() {
 			xaxis: {
 				mode: "categories",
 				tickLength: 0
+			},
+			yaxis: {
+				min: 0,
+				minTickSize: 1
 			}
 		});
 	}

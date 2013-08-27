@@ -36,6 +36,9 @@
 							href="${pageContext.servletContext.contextPath}/signUp"><spring:message
 								code="register" /></a>
 					</form>
+					<a href="${pageContext.servletContext.contextPath}/forgetPassword">
+					<spring:message code="forgetPassword" />?
+					</a>
 				</div>
 			</div>
 		</div>
