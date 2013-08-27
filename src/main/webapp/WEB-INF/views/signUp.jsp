@@ -33,7 +33,7 @@
 					</p>
 				</c:if>
 				<spring:message code="register" var="registerTranslate" />
-				<input type="submit" value="${registerTranslate}" />
+				<input type="submit" value="${registerTranslate}" class="btn" />
 			</form:form>
 		</div>
 	</div>

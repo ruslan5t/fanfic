@@ -60,7 +60,7 @@
 				<form
 					action="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}"
 					method="get">
-					<button>
+					<button class="btn">
 						<spring:message code="edit" />
 					</button>
 				</form>
@@ -68,7 +68,7 @@
 			<hr />
 			<div class="content">
 				<c:if test="${!noChapters}">
-					<button id="convertToPdf">
+					<button id="convertToPdf" class="btn">
 						<spring:message code="convertToPdf" />
 					</button>
 
@@ -82,7 +82,7 @@
 						<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 							<form method="post"
 								action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
-								<button>
+								<button class="btn">
 									<spring:message code="remove" />
 								</button>
 							</form>
@@ -126,7 +126,7 @@
 					<div class="commentTextarea">
 						<textarea name="newComment" placeholder="${addCommentTranslate}"></textarea>
 					</div>
-					<input type="submit" value="${addCommentTranslate}" />
+					<input type="submit" value="${addCommentTranslate}" class="btn" />
 				</form>
 			</sec:authorize>
 			<sec:authorize ifAllGranted="ROLE_ANONYMOUS">

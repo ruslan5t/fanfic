@@ -17,7 +17,7 @@
 					${user.getUsername()} </a>
 				<form method="post"
 					action="${pageContext.servletContext.contextPath}/removeUser/${user.getId()}">
-					<button>
+					<button class="btn">
 						<spring:message code="remove" />
 					</button>
 				</form>

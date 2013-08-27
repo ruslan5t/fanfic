@@ -9,7 +9,10 @@
 <body>
 	<div class="pageContainer">
 		<jsp:include page="menu.jsp"></jsp:include>
-		<spring:message code="registrationIsConfirmed" />
+		<div class="span9">
+			<spring:message code="registrationIsConfirmed" />
+		</div>
+		<jsp:include page="sidebar.jsp" />
 	</div>
 </body>
 </html>

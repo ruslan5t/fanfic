@@ -16,7 +16,7 @@
 			<jsp:include page="makeChapterForm.jsp"></jsp:include>
 			<div class="row offset4">
 				<spring:message code="addChapter" var="addChapterTranslate" />
-				<input type="submit" value="${addChapterTranslate}" />
+				<input type="submit" value="${addChapterTranslate}" class="btn" />
 			</div>
 		</form:form>
 	</div>

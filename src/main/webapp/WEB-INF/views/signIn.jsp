@@ -31,8 +31,8 @@
 							type="checkbox" />
 						</label>
 						<spring:message code="signIn" var="signInTranslate" />
-						<input type="submit" value="${signInTranslate}"
-							class="btn btn-success" /> <br />
+						<input type="submit" value="${signInTranslate}" class="btn" />
+						<br />
 					</form>
 					<a href="${pageContext.servletContext.contextPath}/signUp">
 						<spring:message	code="register" />

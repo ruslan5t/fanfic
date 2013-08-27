@@ -49,7 +49,8 @@
 						class="flag" src="<c:url value="/resources/images/russian.gif" />" />
 				</a></li>
 			</ul>
-			<input type="text" class="form-control" placeholder="Search"
+			<spring:message code="search" var="searchTranslate" />
+			<input type="text" class="form-control" placeholder="${searchTranslate}"
 				name="searchRequest" />
 			<button type="submit" class="btn btn-default">
 				<spring:message code="find"/>

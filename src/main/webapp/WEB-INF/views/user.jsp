@@ -30,7 +30,7 @@
 					<c:if test="${showedUser.getId().equals(currentUserId)}">
 						<form method="post"
 							action="${pageContext.servletContext.contextPath}/removeFanfic/${fanfic.getId()}">
-							<button>
+							<button class="btn" >
 								<spring:message code="remove" />
 							</button>
 						</form>

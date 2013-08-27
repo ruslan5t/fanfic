@@ -16,7 +16,7 @@
 				<jsp:include page="makeFanficForm.jsp"></jsp:include>
 				<div class="row offset4">
 					<spring:message code="createFanfic" var="createFanficTranslate" />
-					<input type="submit" value="${createFanficTranslate}">
+					<input type="submit" value="${createFanficTranslate}" class="btn" />
 				</div>
 			</form:form>
 		</div>
