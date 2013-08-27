@@ -1,0 +1,5 @@
+
+$ ->
+	$.scrollUp({
+		scrollImg: true
+	})

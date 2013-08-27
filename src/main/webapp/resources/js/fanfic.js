@@ -1,23 +1,19 @@
 
 $(function() {
-
-	var fanficId = $("#fanficId").attr("value");
-	var contextPath = $("#contextPath").attr("value");
-	
-	$("#convertToPdf").on("click", convertFanficToPdf);
-	
-	function convertFanficToPdf() {
-		$.ajax({
-			url: contextPath + "/convertFanficToPdf/" + fanficId,
-			type: "post",
-			success: setHrefToConvertedFile 
-		});
-	}
-	
-	function setHrefToConvertedFile(hrefToConvertedFile) {
-        var $iframe = $("<iframe></iframe>");
-        $iframe.attr("src", hrefToConvertedFile);
-        $iframe.css("display", "none");
-        $("body").append($iframe);
-	}
+  var convertFanficToPdf, setHrefToConvertedFile;
+  setHrefToConvertedFile = function(hrefToConvertedFile) {
+    var $iframe;
+    $iframe = $("<iframe></iframe>");
+    $iframe.attr("src", hrefToConvertedFile);
+    $iframe.css("display", "none");
+    return $("body").append($iframe);
+  };
+  convertFanficToPdf = function() {
+    return $.ajax({
+      url: $("#contextPath").attr("value") + "/convertFanficToPdf/" + $("#fanficId").attr("value"),
+      type: "post",
+      success: setHrefToConvertedFile
+    });
+  };
+  return $("#convertToPdf").on("click", convertFanficToPdf);
 });

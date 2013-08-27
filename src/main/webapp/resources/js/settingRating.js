@@ -1,42 +1,41 @@
-
 $(function() {
-	var $rating = $(".rating");
-	var contextPath = $("#contextPath").attr("value");
-	var baseRatyOptions = {
-		path: contextPath + "/resources/js/img/"
-	};
-	if ($("#isLogged").attr("value") === "true") {
-		$rating.each(function() {
-			var rating = $(this).attr("rating");
-			$(this).raty($.extend({
-				click: setUsersRating,
-				score: rating
-			}, baseRatyOptions));
-		});
-	}
-	else {
-		$rating.each(function() {
-			var rating = $(this).attr("rating");
-			$(this).raty($.extend({
-				readOnly: true,
-				score: rating
-			}, baseRatyOptions));
-		});
-	}
-
-	function setUsersRating(rating) {
-		var $ratingElement = $(this);
-		$.ajax({
-			url: contextPath + "/setFanficRating/" 
-				+ $ratingElement.attr("fanficId") + "/" + rating,
-			type: "post",
-			success: function(fanficRating) {
-				setFanficRating(fanficRating, $ratingElement);
-			}
-		});
-	}
-
-	function setFanficRating(fanficRating, $ratingElement) {
-		$ratingElement.raty("score", fanficRating);
-	}
+  var $rating, baseRatyOptions, contextPath, setFanficRating, setUsersRating;
+  $rating = $(".rating");
+  contextPath = $("#contextPath").attr("value");
+  baseRatyOptions = {
+    path: contextPath + "/resources/js/img/"
+  };
+  setFanficRating = function(fanficRating, $ratingElement) {
+    return $ratingElement.raty("score", fanficRating);
+  };
+  setUsersRating = function(rating) {
+    var $ratingElement;
+    $ratingElement = $(this);
+    return $.ajax({
+      url: contextPath + "/setFanficRating/" + $ratingElement.attr("fanficId") + "/" + rating,
+      type: "post",
+      success: function(fanficRating) {
+        return setFanficRating(fanficRating, $ratingElement);
+      }
+    });
+  };
+  if ($("#isLogged").attr("value") === "true") {
+    return $rating.each(function() {
+      var rating;
+      rating = $(this).attr("rating");
+      return $(this).raty($.extend({
+        click: setUsersRating,
+        score: rating
+      }, baseRatyOptions));
+    });
+  } else {
+    return $rating.each(function() {
+      var rating;
+      rating = $(this).attr("rating");
+      return $(this).raty($.extend({
+        readOnly: true,
+        score: rating
+      }, baseRatyOptions));
+    });
+  }
 });

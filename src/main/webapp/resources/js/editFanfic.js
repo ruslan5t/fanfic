@@ -1,5 +1,6 @@
 
 $(function() {
-	var $tags = $("#tags");
-	$tags.attr("value", $tags.attr("value").replace(",", ", "));;
+  var $tags;
+  $tags = $("#tags");
+  return $tags.attr("value", $tags.attr("value").replace(",", ", "));
 });

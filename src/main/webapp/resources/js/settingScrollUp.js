@@ -1,6 +1,6 @@
 
 $(function() {
-	$.scrollUp({
-		scrollImg: true
-	});
+  return $.scrollUp({
+    scrollImg: true
+  });
 });
