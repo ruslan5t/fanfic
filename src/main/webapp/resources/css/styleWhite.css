@@ -61,7 +61,7 @@ select.categories {
 }
 
 .pageContainer {
-	max-width: 1050px;
+	max-width: 1100px;
 	margin: 0 auto;
 }
 
@@ -81,6 +81,12 @@ select.categories {
 
 .flags {
 	display: inline;
+}
+
+#tagcloud {
+	margin-left: 10px;
+	margin-top: -30px;
+	margin-bottom: -55px;
 }
 
 #tagcloud a {
@@ -131,7 +137,8 @@ select.categories {
 
 .contentItem {
 	font-size: 1.2em;
-	line-height: 1.2;	
+	line-height: 1.2;
+	display: inline;
 }
 
 .goToContentLink {
@@ -144,7 +151,42 @@ select.categories {
 }
 
 footer {
+	padding-bottom: 10px;
 	text-align: center;
 	display: block;
 	margin: 0 auto;
+}
+
+.remove {
+	margin-top: -5px;
+	background: none;
+	border: 0;
+	color: red;
+}
+
+.remove:HOVER div {
+	font-weight: bold;
+}
+
+form {
+	display: inline;
+}
+
+.delimiter {
+	padding-top: 7px;
+	font-size: 1.3em;
+}
+
+.descriptionCreate {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 100px;
+}
+
+.chapterCreate {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 350px;
 }

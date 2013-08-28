@@ -28,26 +28,29 @@
 		<div class="span9">
 			<div class="pageTitle">${fanfic.getName()}</div>
 			<hr />
-			<spring:message code="author" />: <a
+			<spring:message code="author" />
+			: <a
 				href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
 				${fanfic.getAuthor().getUsername()} </a> <br />
 			<table>
 				<tr>
-					<td><spring:message code="rating"/>:</td>
+					<td><spring:message code="rating" />:</td>
 					<td>
 						<div class="rating" fanficId="${fanfic.getId()}"
 							rating="${fanfic.getRating()}"></div>
 					</td>
 				</tr>
 			</table>
-			Categories:
+			<spring:message code="categories"/>:
 			<c:forEach items="${fanfic.getCategories()}" var="category">
 				<a
 					href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
 					<spring:message code="${category.getName()}" />
 				</a>
 			</c:forEach>
-			<br /> <spring:message code="tags" />:
+			<br />
+			<spring:message code="tags" />
+			:
 			<c:forEach items="${fanfic.getTags()}" var="tag">
 				<div class="tag">
 					<a
@@ -72,7 +75,9 @@
 						<spring:message code="convertToPdf" />
 					</button>
 
-					<div id="contentTitle">Содержание:</div>
+					<div id="contentTitle">
+						<spring:message code="content"/>:
+					</div>
 					<c:forEach items="${fanfic.getChapters()}" var="chapter">
 						<div class="contentItem">
 							<a
@@ -82,23 +87,25 @@
 						<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 							<form method="post"
 								action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
-								<button class="btn">
-									<spring:message code="remove" />
+								<button class="remove">
+									<div>x</div>
 								</button>
 							</form>
 						</c:if>
+						<br />
 					</c:forEach>
 				</c:if>
 				<c:if test="${noChapters}">
 					No chapters
 				</c:if>
 				<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+					<br />
 					<a
 						href="${pageContext.servletContext.contextPath}/addChapter/${fanfic.getId()}">
 						<spring:message code="addChapter" />
 					</a>
-					<br />
 				</c:if>
+				<br />
 			</div>
 			<hr />
 			<c:if test="${noComments}">
@@ -106,7 +113,7 @@
 			</c:if>
 			<c:if test="${!noComments}">
 				<div class="comments">
-					Comments:
+					<spring:message code="comments"/>:
 					<c:forEach items="${fanfic.getComments()}" var="comment">
 						<div class="comment">
 							<a
@@ -134,6 +141,7 @@
 			</sec:authorize>
 		</div>
 		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

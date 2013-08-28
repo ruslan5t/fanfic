@@ -2,21 +2,10 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <hr />
-<div class="row offset1">
-	<div class="span12">
-		<c:forEach items="${allFanfics}" var="fanfic">
-			<div class="row">
-				<div class="span12">
-					<a
-						href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-						${fanfic.getName()} </a>
-				</div>
-			</div>
-		</c:forEach>
-	</div>
-</div>
-<div class="row offset1">
-	<div class="span11">
-		<div id="pagination"></div>
-	</div>
-</div>
+<c:forEach items="${allFanfics}" var="fanfic">
+	<a
+		href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+		${fanfic.getName()} </a>
+	<br />
+</c:forEach>
+<div id="pagination"></div>

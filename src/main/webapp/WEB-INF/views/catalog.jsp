@@ -13,15 +13,16 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="catalogJSVariables.jsp"></jsp:include>
+		<jsp:include page="catalogJSVariables.jsp"/>
 		<jsp:include page="menu.jsp" />
 		<div class="span9">
 			<div class="pageTitle">
 				<spring:message code="catalog" /> / <spring:message code="${categoryName}"/>
 			</div>
-			<jsp:include page="showCatalogFanfics.jsp"></jsp:include>
+			<jsp:include page="showCatalogFanfics.jsp"/>
 		</div>
 		<jsp:include page="sidebar.jsp"/>
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

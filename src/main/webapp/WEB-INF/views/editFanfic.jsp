@@ -11,16 +11,18 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<form:form
-			action="${pageContext.servletContext.contextPath}/editFanfic/${editingFanficId}"
-			method="post" modelAttribute="newFanfic">
-			<jsp:include page="makeFanficForm.jsp"></jsp:include>
-			<div class="row offset4">
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<form:form
+				action="${pageContext.servletContext.contextPath}/editFanfic/${editingFanficId}"
+				method="post" modelAttribute="newFanfic">
+				<jsp:include page="makeFanficForm.jsp"></jsp:include>
 				<spring:message code="editFanfic" var="editFanficTranslate" />
 				<input type="submit" value="${editFanficTranslate}" class="btn" />
-			</div>
-		</form:form>
+			</form:form>
+		</div>
+		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

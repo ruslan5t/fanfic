@@ -10,14 +10,16 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<c:forEach items="${foundedFanfics}" var="foundedFanfic">
-			<div class="row offset1">
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<c:forEach items="${foundedFanfics}" var="foundedFanfic">
 				<a
 					href="${pageContext.servletContext.contextPath}/fanfic/${foundedFanfic.getId()}">
 					${foundedFanfic.getName()} </a>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
+		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

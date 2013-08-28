@@ -35,10 +35,13 @@
 			action="${pageContext.servletContext.contextPath}/find" method="post">
 			<ul class="nav">
 				<li>
-					<a href="<spring:url value="?theme=white" />">White</a>
+					<a href="<spring:url value="?theme=white" />">
+						<img
+							class="flag" src="<c:url value="/resources/images/style.png" />" />
+					</a>
 				</li>
-				<li>
-					<a href="<spring:url value="?theme=black" />">Black</a>
+				<li class="delimiter">
+					|
 				</li>
 			</ul>
 			<ul class="nav flags">
@@ -49,9 +52,7 @@
 						class="flag" src="<c:url value="/resources/images/russian.gif" />" />
 				</a></li>
 			</ul>
-			<spring:message code="search" var="searchTranslate" />
-			<input type="text" class="form-control" placeholder="${searchTranslate}"
-				name="searchRequest" />
+			<input type="text" class="form-control"	name="searchRequest" />
 			<button type="submit" class="btn btn-default">
 				<spring:message code="find"/>
 			</button>

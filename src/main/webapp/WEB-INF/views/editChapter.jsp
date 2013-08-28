@@ -10,16 +10,18 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<form:form
-			action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
-			method="POST" modelAttribute="newChapter">
-			<jsp:include page="makeChapterForm.jsp"></jsp:include>
-			<div class="row offset4">
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<form:form
+				action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
+				method="POST" modelAttribute="newChapter">
+				<jsp:include page="makeChapterForm.jsp"></jsp:include>
 				<spring:message code="editChapter" var="editChapterTranslate" />
 				<input type="submit" value="${editChapterTranslate}" class="btn" />
-			</div>
-		</form:form>
+			</form:form>
+		</div>
+		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

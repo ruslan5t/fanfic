@@ -23,6 +23,7 @@
 			<jsp:include page="showCatalogFanfics.jsp"></jsp:include>
 		</div>
 		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

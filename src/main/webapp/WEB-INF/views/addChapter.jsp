@@ -10,15 +10,17 @@
 </head>
 <body>
 	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<form:form method="POST" modelAttribute="chapter"
-			action="${pageContext.servletContext.contextPath}/addChapter/${fanficId}">
-			<jsp:include page="makeChapterForm.jsp"></jsp:include>
-			<div class="row offset4">
+		<jsp:include page="menu.jsp" />
+		<div class="span9">
+			<form:form method="POST" modelAttribute="chapter"
+				action="${pageContext.servletContext.contextPath}/addChapter/${fanficId}">
+				<jsp:include page="makeChapterForm.jsp" />
 				<spring:message code="addChapter" var="addChapterTranslate" />
 				<input type="submit" value="${addChapterTranslate}" class="btn" />
-			</div>
-		</form:form>
+			</form:form>
+		</div>
+		<jsp:include page="sidebar.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

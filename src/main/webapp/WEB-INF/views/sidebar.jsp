@@ -4,10 +4,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <script src="<c:url value="/resources/js/settingTagCloud.js" />"></script>
 <script src="<c:url value="/resources/js/tagcloud.jquery.min.js" />"></script>
-<div class="sidePanel span3">
+<div class="sidePanel span4">
 	<div class="well sidebar-nav">
 		<ul class="nav nav-list">
-			<li class="nav-header"><h4>Навигация:</h4></li>
+			<li class="nav-header"><h4>
+					<spring:message code="navigation" />
+				</h4></li>
 			<li><a href="${pageContext.servletContext.contextPath}/catalog">
 					<spring:message code="all" />
 			</a></li>
