@@ -9,6 +9,14 @@
 		<ul class="nav">
 			<li><a href="${pageContext.servletContext.contextPath}/"><spring:message
 						code="mainPage" /></a></li>
+			<li class="dropdown"><a class="dropdown-toggle"
+				data-toggle="dropdown"> <spring:message code="themes" /> <b
+					class="caret"></b>
+			</a>
+				<ul class="dropdown-menu">
+					<li><a><spring:message code="dark" /></a></li>
+					<li><a><spring:message code="light" /></a></li>
+				</ul></li>
 			<sec:authorize ifAllGranted="ROLE_USER">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
@@ -31,18 +39,14 @@
 					<spring:message code="about" />
 			</a></li>
 		</ul>
+
 		<form class="navbar-form pull-right"
 			action="${pageContext.servletContext.contextPath}/find" method="post">
 			<ul class="nav">
-				<li>
-					<a href="<spring:url value="?theme=white" />">
-						<img
-							class="flag" src="<c:url value="/resources/images/style.png" />" />
-					</a>
-				</li>
-				<li class="delimiter">
-					|
-				</li>
+				<li><a href="<spring:url value="?theme=white" />"> <img
+						class="flag" src="<c:url value="/resources/images/style.png" />" />
+				</a></li>
+				<li class="delimiter">|</li>
 			</ul>
 			<ul class="nav flags">
 				<li><a href="<spring:url value="?lang=en" />"> <img
@@ -52,9 +56,9 @@
 						class="flag" src="<c:url value="/resources/images/russian.gif" />" />
 				</a></li>
 			</ul>
-			<input type="text" class="form-control"	name="searchRequest" />
+			<input type="text" class="form-control" name="searchRequest" />
 			<button type="submit" class="btn btn-default">
-				<spring:message code="find"/>
+				<spring:message code="find" />
 			</button>
 		</form>
 	</div>
