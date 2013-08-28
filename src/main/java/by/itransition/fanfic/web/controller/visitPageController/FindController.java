@@ -31,6 +31,7 @@ public class FindController extends VisitPageController {
 		else {
 			foundedFanfics = new ArrayList<Fanfic>();
 		}
+		model.addAttribute("searchRequest", request.getParameter("searchRequest"));
 		model.addAttribute("foundedFanfics", foundedFanfics); 
 		return "find";
 	}

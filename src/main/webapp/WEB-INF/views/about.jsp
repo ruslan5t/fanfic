@@ -21,7 +21,9 @@
 				<spring:message code="about" />
 			</div>
 			<spring:message code="goal"/>
-			<br /><br />
+			<br />
+			<spring:message code="statisticsRegisteredUsersOverThePast10o'clock" />:
+			<br />
 			<div id="chartContainer"></div>
 		</div>
 		<jsp:include page="sidebar.jsp" />

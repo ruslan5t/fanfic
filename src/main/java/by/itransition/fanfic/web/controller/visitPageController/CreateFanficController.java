@@ -37,23 +37,18 @@ public class CreateFanficController extends InputFanficController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String createFanfic(@ModelAttribute("newFanfic") Fanfic fanfic,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, Model model) {
 		User user = userService.getUserByName(
 				SecurityContextHolder.getContext().getAuthentication().getName());
 		if (fanfic.getCategories() == null) {
-			return "redirect:/createFanfic/emptyCategoriesError";
+			settingModel(model);
+			model.addAttribute("newFanfic", fanfic);
+			model.addAttribute("emptyCategoriesError", true);
+			return "createFanfic";
 		}
 		correctFanfic(fanfic);
 		user.addFanfic(fanfic);
 		userService.save(user);
 		return "redirect:/user/" + user.getId();
-	}
-	
-	@RequestMapping(value = "/emptyCategoriesError", method = RequestMethod.GET)
-	public String getErrorMessage(Model model) {
-		settingModel(model);
-		model.addAttribute("newFanfic", new Fanfic());
-		model.addAttribute("emptyCategoriesError", true);
-		return "createFanfic";
 	}
 }

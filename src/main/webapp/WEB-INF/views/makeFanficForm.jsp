@@ -10,7 +10,7 @@
 <script src="<c:url value="/resources/js/makeFanficForm.js" />"></script>
 <div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 <form:label path="name">
-	<spring:message code="name" />:</form:label>
+	<spring:message code="title" />:</form:label>
 <form:input path="name" />
 <form:label path="description">
 	<spring:message code="description" />:</form:label>

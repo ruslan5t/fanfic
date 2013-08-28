@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <form:label path="name">
-	<spring:message code="name" />:</form:label>
+	<spring:message code="title" />:</form:label>
 <form:input path="name" />
 <form:label path="content">
 	<spring:message code="content" />:</form:label>

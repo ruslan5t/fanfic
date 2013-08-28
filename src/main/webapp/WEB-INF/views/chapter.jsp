@@ -6,6 +6,7 @@
 <html>
 <head>
 <jsp:include page="minHeadBody.jsp"></jsp:include>
+<script src="<c:url value="/resources/js/jquery.cookie.js" />"></script>
 <script src="<c:url value="/resources/js/chapter.js" />"></script>
 </head>
 <body>
@@ -21,7 +22,7 @@
 				href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
 				<spring:message code="editChapter" />
 			</a> <select id="fontSizes"></select>
-			<input type="range" id="widthRange" />
+			<input type="range" id="widthRange" value="100" />
 			<div id="resizableChapterPlace">
 				<div id="textChapterPlace">${chapterParsedContent}</div>
 			</div>

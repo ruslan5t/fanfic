@@ -16,13 +16,16 @@
 				<div class="well">
 					<form:form method="POST" modelAttribute="user">
 						<spring:message code="email" var="emailTranslate" />
-						<form:input path="email" placeholder="${emailTranslate}" />
+						<form:input type="email" path="email" 
+							placeholder="${emailTranslate}" maxlength="75" />
 
 						<spring:message code="username" var="usernameTranslate" />
-						<form:input path="username" placeholder="${usernameTranslate }" />
+						<form:input path="username" placeholder="${usernameTranslate }" 
+							maxlength="30" />
 
 						<spring:message code="password" var="passwordTranslate" />
-						<form:password path="password" placeholder="${passwordTranslate}" />
+						<form:password path="password" placeholder="${passwordTranslate}" 
+							maxlength="30"/>
 
 						<c:if test="${not empty error}">
 							<form:label path="">

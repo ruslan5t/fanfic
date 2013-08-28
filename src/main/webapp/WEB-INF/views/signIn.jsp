@@ -18,10 +18,10 @@
 						action="${pageContext.servletContext.contextPath}/j_spring_security_check">
 						<spring:message code="username" var="usernameTranslate" />
 						<input id="j_username" name="j_username" type="text"
-							placeholder="${usernameTranslate}" /> <br />
+							placeholder="${usernameTranslate}" maxlength="30" /> <br />
 						<spring:message code="password" var="passwordTranslate" />
 						<input id="j_password" name="j_password" type="password"
-							placeholder="${passwordTranslate}" /> <br />
+							placeholder="${passwordTranslate}" maxlength="30" /> <br />
 						<c:if test="${not empty wrongNameOrPasswordError}">
 							<spring:message code="incorrectUsernameOrPassword" />
 							<br />
