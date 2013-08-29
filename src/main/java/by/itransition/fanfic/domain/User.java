@@ -33,11 +33,14 @@ public class User {
 	@DateBridge(resolution = Resolution.DAY)
 	private Date dateOfRegistration;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Fanfic> fanfics = new ArrayList<Fanfic>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Comment> comments = new ArrayList<Comment>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Vote> votes = new ArrayList<Vote>();
 	
 	@ManyToMany
 	private Set<Role> roles = new HashSet<Role>();
@@ -128,15 +131,6 @@ public class User {
 	public void setDateOfRegistration(Date dateOfRegistration) {
 		this.dateOfRegistration = dateOfRegistration;
 	}
-	
-	public void removeFanficById(int id) {
-		for (Fanfic fanfic : fanfics) {
-			if (fanfic.getId() == id) {
-				fanfics.remove(fanfic);
-				break;
-			}
-		}
-	}
 
 	@PrePersist
 	private void onCreate() {
@@ -155,4 +149,20 @@ public class User {
 		roles.add(role);
 	}
 
+	public void addComment(Comment comment) {
+		comments.add(comment);
+	}
+
+	public List<Vote> getVotes() {
+		return votes;
+	}
+
+	public void setVotes(List<Vote> votes) {
+		this.votes = votes;
+	}
+	
+	public void addVote(Vote vote) {
+		votes.add(vote);
+	}
+	
 }

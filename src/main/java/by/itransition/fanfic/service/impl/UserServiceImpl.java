@@ -11,11 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import by.itransition.fanfic.dao.CommentDao;
+import by.itransition.fanfic.dao.FanficDao;
 import by.itransition.fanfic.dao.RoleDao;
 import by.itransition.fanfic.dao.UnregisteredUserDao;
 import by.itransition.fanfic.dao.UserDao;
+import by.itransition.fanfic.dao.VoteDao;
+import by.itransition.fanfic.domain.Comment;
+import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.UnregisteredUser;
 import by.itransition.fanfic.domain.User;
+import by.itransition.fanfic.domain.Vote;
 import by.itransition.fanfic.service.UserService;
 
 @Service
@@ -29,6 +35,15 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private RoleDao roleDao;
+	
+	@Autowired
+	private CommentDao commentDao;
+	
+	@Autowired
+	private FanficDao fanficDao;
+	
+	@Autowired
+	private VoteDao voteDao;
 
 	@Override
 	@Transactional
@@ -82,6 +97,33 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void remove(User user) {
+		for (Comment comment : user.getComments()) {
+			comment.setAuthor(null);
+			Fanfic fanfic = comment.getFanfic();
+			fanfic.getComments().remove(comment);
+			comment.setFanfic(null);
+			commentDao.save(comment);
+			fanficDao.save(fanfic);
+		}
+		List<Comment> comments = user.getComments();
+		user.setComments(null);
+		for (Comment comment : comments) {
+			commentDao.remove(comment);
+		}
+		for (Vote vote : user.getVotes()) {
+			vote.setUser(null);
+			Fanfic fanfic = vote.getFanfic();
+			fanfic.getVotes().remove(vote);
+			vote.setFanfic(null);
+			voteDao.save(vote);
+			fanficDao.save(fanfic);
+		}
+		List<Vote> votes = user.getVotes();
+		user.setVotes(null);
+		for (Vote vote : votes) {
+			voteDao.remove(vote);
+		}
+		userDao.save(user);
 		userDao.remove(user);
 	}
 
@@ -100,7 +142,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void removeUserById(int id) {
-		userDao.remove(getUserById(id));
+		remove(getUserById(id));
 	}
 
 	@Override

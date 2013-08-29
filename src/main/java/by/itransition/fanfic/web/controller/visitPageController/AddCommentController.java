@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.domain.Comment;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.service.FanficService;
 import by.itransition.fanfic.service.UserService;
 
@@ -29,10 +30,14 @@ public class AddCommentController extends VisitPageController {
 			HttpServletRequest request) {
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		Comment comment = new Comment();
-		comment.setAuthor(userService.getUserById(authorId));
+		User user = userService.getUserById(authorId);
+		user.addComment(comment);
+		comment.setAuthor(user);
 		comment.setContent((String)request.getParameter("newComment"));
 		fanfic.addComment(comment);
+		comment.setFanfic(fanfic);
 		fanficService.save(fanfic);
+		userService.save(user);
 		return "redirect:/fanfic/" + fanficId;
 	}
 }

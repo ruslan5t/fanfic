@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.User;
+import by.itransition.fanfic.domain.Vote;
 import by.itransition.fanfic.service.FanficService;
 import by.itransition.fanfic.service.UserService;
 
@@ -32,8 +33,11 @@ public class SetFanficRatingController {
 		User user = userService.getUserByName(
 				SecurityContextHolder.getContext().getAuthentication().getName());
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
-		fanfic.makeVote(userRating, user);
+		Vote vote = fanfic.makeVote(userRating, user);
+		vote.setFanfic(fanfic);
+		user.addVote(vote);
 		fanficService.save(fanfic);
+		userService.save(user);
 		return Double.toString(fanfic.getRating());
 	}
 }

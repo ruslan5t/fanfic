@@ -7,10 +7,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import by.itransition.fanfic.dao.CategoryDao;
+import by.itransition.fanfic.dao.CommentDao;
 import by.itransition.fanfic.dao.FanficDao;
 import by.itransition.fanfic.dao.TagDao;
+import by.itransition.fanfic.dao.UserDao;
+import by.itransition.fanfic.dao.VoteDao;
 import by.itransition.fanfic.domain.Category;
+import by.itransition.fanfic.domain.Comment;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.User;
+import by.itransition.fanfic.domain.Vote;
 import by.itransition.fanfic.service.FanficService;
 
 @Service
@@ -21,9 +27,18 @@ public class FanficServiceImpl implements FanficService {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private UserDao userDao;
 
 	@Autowired
 	private TagDao tagDao;
+	
+	@Autowired
+	private CommentDao commentDao;
+	
+	@Autowired
+	private VoteDao voteDao;
 	
 	@Override
 	@Transactional
@@ -107,6 +122,42 @@ public class FanficServiceImpl implements FanficService {
 	@Transactional
 	public List<Fanfic> getFanficsByTagId(int id) {
 		return fanficDao.getFanficsByTag(tagDao.getTagById(id), 0, Integer.MAX_VALUE);
+	}
+	
+	@Override
+	@Transactional
+	public void removeFanficById(User user, int fanficId) {
+		Fanfic fanfic = getFanficById(fanficId);
+		user.getFanfics().remove(fanfic);
+		userDao.save(user);
+		for (Comment comment : fanfic.getComments()) {
+			User author = comment.getAuthor();
+			author.getComments().remove(comment);
+			comment.setAuthor(null);
+			comment.setFanfic(null);
+			userDao.save(author);
+			commentDao.save(comment);
+		}
+		List<Comment> comments = fanfic.getComments();
+		fanfic.setComments(null);
+		for (Comment comment : comments) {
+			commentDao.remove(comment);
+		}
+		for (Vote vote : fanfic.getVotes()) {
+			User author = vote.getUser();
+			author.getVotes().remove(vote);
+			vote.setUser(null);
+			vote.setFanfic(null);
+			userDao.save(author);
+			voteDao.save(vote);
+		}
+		List<Vote> votes = fanfic.getVotes();
+		fanfic.setComments(null);
+		for (Vote vote : votes) {
+			voteDao.remove(vote);
+		}
+		fanficDao.save(fanfic);
+		fanficDao.removeFanficById(fanfic.getId());
 	}
 	
 }

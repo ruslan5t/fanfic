@@ -23,8 +23,7 @@ public class RemoveFanficController {
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String removeFanfic(@PathVariable("fanficId") int fanficId) {
 		User author = fanficService.getFanficById(fanficId).getAuthor();
-		author.removeFanficById(fanficId);
-		userService.save(author);
+		fanficService.removeFanficById(author, fanficId);
 		return "redirect:/user/" + author.getId();
 	}
 }

@@ -126,7 +126,7 @@ public class Fanfic {
 		return id;
 	}
 
-	public void makeVote(int rating, User user) {
+	public Vote makeVote(int rating, User user) {
 		Vote newVote = null;
 		for (Vote vote : votes) {
 			if (vote.getUser().equals(user)) {
@@ -145,6 +145,7 @@ public class Fanfic {
 			this.rating += vote.getRating();
 		}
 		this.rating /= votes.size();
+		return newVote;
 	}
 
 	@Override

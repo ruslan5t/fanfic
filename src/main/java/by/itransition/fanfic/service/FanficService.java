@@ -4,6 +4,7 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.User;
 
 public interface FanficService {
 
@@ -34,5 +35,7 @@ public interface FanficService {
 	List<Fanfic> getFanficsByTagId(int id, int first, int count);
 	
 	List<Fanfic> getFanficsByTagId(int id);
+	
+	void removeFanficById(User user, int fanficId);
 
 }
