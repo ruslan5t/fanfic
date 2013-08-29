@@ -11,9 +11,9 @@ body {
 }
 
 .postTitle {
-	font-size: 1.8em;
+	font-size: 1.7em;
 	line-height: 1.2;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 
 .postTitle :HOVER {
@@ -30,7 +30,7 @@ select.categories {
 }
 
 .author a {
-	color: gray;	
+	color: gray;
 }
 
 .description {
@@ -42,7 +42,7 @@ select.categories {
 }
 
 .tags {
-	display: inline;	
+	display: inline;
 }
 
 .tag {
@@ -50,10 +50,9 @@ select.categories {
 	margin-left: 5px;
 }
 
-resizableChapterPlace {
-	margin: 0 auto;
-	border: 1px solid;
-	min-width: 75px;
+#resizableChapterPlace {
+	min-width: 300px;
+	max-width: 100%;
 }
 
 #textChapterPlace {
@@ -61,12 +60,16 @@ resizableChapterPlace {
 }
 
 .pageContainer {
-	max-width: 1050px;
+	max-width: 1100px;
 	margin: 0 auto;
 }
 
 .sidePanel {
-	/*border: 1px solid black;*/
+	
+}
+
+.span9 {
+	
 }
 
 .flag {
@@ -79,30 +82,31 @@ resizableChapterPlace {
 	display: inline;
 }
 
+#tagcloud {
+	margin-left: 10px;
+	margin-top: -30px;
+	margin-bottom: -55px;
+}
+
 #tagcloud a {
-	text-decoration: none;	
+	text-decoration: none;
+	font-style: oblique;
 }
 
 .categories {
-	padding-left: 30px;
-}
-
-.categoriesTitle {
-
-}
-
-.categories ul {
-	list-style: none;
-	margin-left: 5px;
+	padding-left: 10px;
 }
 
 #convertToPdf {
 	display: block;
-	margin-left: auto;	
+	margin-left: auto;
 }
 
 #contentTitle {
 	font-size: 1.5em;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 15px;
 }
 
 .nextChapterLink {
@@ -119,13 +123,75 @@ resizableChapterPlace {
 .comment {
 	border: 1px solid black;
 	min-height: 100px;
+	background-color: #e4dfcc;
+	padding: 5px;
 }
 
 #scrollUp {
 	bottom: 20px;
 	right: 20px;
-	height: 38px;  /* Height of image */
+	height: 38px; /* Height of image */
 	width: 38px; /* Width of image */
 	background: url(../../resources/images/top.png) no-repeat;
 	outline: none;
+}
+
+.contentItem {
+	font-size: 1.2em;
+	line-height: 1.2;
+	display: inline;
+}
+
+.goToContentLink {
+	text-align: center;
+	display: block;
+}
+
+.sidebar-nav {
+	margin-top: 50px;
+}
+
+footer {
+	padding-bottom: 10px;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+
+.remove {
+	margin-top: -5px;
+	background: none;
+	border: 0;
+	color: red;
+}
+
+.remove:HOVER div {
+	font-weight: bold;
+}
+
+form {
+	display: inline;
+}
+
+.delimiter {
+	padding-top: 7px;
+	font-size: 1.3em;
+}
+
+.descriptionCreate {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 100px;
+}
+
+.chapterCreate {
+	min-width: 98%;
+	max-width: 98%;
+	min-height: 50px;
+	height: 350px;
+}
+
+.account {
+	font-size: 1.1em;
 }

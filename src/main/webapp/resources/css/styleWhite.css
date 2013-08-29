@@ -192,3 +192,7 @@ form {
 	min-height: 50px;
 	height: 350px;
 }
+
+.account {
+	font-size: 1.1em;
+}
