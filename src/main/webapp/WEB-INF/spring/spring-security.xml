@@ -33,16 +33,18 @@
 		<form-login login-page="/signIn" default-target-url="/"
 			authentication-failure-url="/signIn/error" />
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />
-		<remember-me/>
+		<remember-me />
 	</http>
 
 
 	<beans:bean id="userDetailsService"
 		class="by.itransition.fanfic.service.impl.CustomUserDetailsService" />
+	<beans:bean
+		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
-	</authentication-manager>
 
+	</authentication-manager>
 </beans:beans>   

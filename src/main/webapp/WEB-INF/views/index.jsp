@@ -12,10 +12,10 @@
 <script src="<c:url value="/resources/js/settingRating.js" />"></script>
 </head>
 <body>
-	<sec:authorize ifAllGranted="ROLE_USER">
+	<sec:authorize access="hasRole('ROLE_USER')">
 		<div id="isLogged" value="true"></div>
 	</sec:authorize>
-	<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+	<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
 		<div id="isLogged" value="false"></div>
 	</sec:authorize>
 	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>

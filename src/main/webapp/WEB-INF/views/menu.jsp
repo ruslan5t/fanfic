@@ -17,19 +17,19 @@
 					<li><a><spring:message code="dark" /></a></li>
 					<li><a><spring:message code="light" /></a></li>
 				</ul></li>
-			<sec:authorize ifAllGranted="ROLE_USER">
+			<sec:authorize access="hasRole('ROLE_USER')">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/user/${currentUserId}">${currentUsername}</a></li>
 				<li><a href="<c:url value="/j_spring_security_logout" />">
 						<spring:message code="signOut" />
 				</a></li>
 			</sec:authorize>
-			<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+			<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
 				<li><a href="${pageContext.servletContext.contextPath}/signIn">
 						<spring:message code="signIn" />
 				</a></li>
 			</sec:authorize>
-			<sec:authorize ifAllGranted="ROLE_ADMIN">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li><a
 					href="${pageContext.servletContext.contextPath}/allUsers"> <spring:message
 							code="allUsers" />

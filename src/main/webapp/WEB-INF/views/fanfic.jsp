@@ -16,10 +16,10 @@
 <body>
 	<div class="pageContainer">
 		<div id="fanficId" value="${fanfic.getId()}"></div>
-		<sec:authorize ifAllGranted="ROLE_USER">
+		<sec:authorize access="hasRole('ROLE_USER')">
 			<div id="isLogged" value="true"></div>
 		</sec:authorize>
-		<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+		<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
 			<div id="isLogged" value="false"></div>
 		</sec:authorize>
 		<div id="contextPath"
@@ -117,15 +117,15 @@
 					<c:forEach items="${fanfic.getComments()}" var="comment">
 						<div class="comment">
 							<a
-								href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
-								${fanfic.getAuthor().getUsername()} </a>: ${comment.getContent()}
+								href="${pageContext.servletContext.contextPath}/user/${comment.getAuthor().getId()}">
+								${comment.getAuthor().getUsername()} </a>: ${comment.getContent()}
 						</div>
 						<br />
 					</c:forEach>
 				</div>
 			</c:if>
 			<hr />
-			<sec:authorize ifAllGranted="ROLE_USER">
+			<sec:authorize access="hasRole('ROLE_USER')">
 				<form
 					action="${pageContext.servletContext.contextPath}/addComment/${fanfic.getId()}/${currentUserId}"
 					method="post">
@@ -136,7 +136,7 @@
 					<input type="submit" value="${addCommentTranslate}" class="btn" />
 				</form>
 			</sec:authorize>
-			<sec:authorize ifAllGranted="ROLE_ANONYMOUS">
+			<sec:authorize access="hasRole('ROLE_ANONYMOUS')">
 				<spring:message code="signInToPostAComment" />
 			</sec:authorize>
 		</div>
