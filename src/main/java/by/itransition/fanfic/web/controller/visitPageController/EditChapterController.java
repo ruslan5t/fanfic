@@ -15,7 +15,7 @@ import by.itransition.fanfic.service.FanficService;
 
 @Controller
 @RequestMapping("/editChapter")
-public class EditChapterController extends VisitPageController {
+public class EditChapterController extends InputChapterController {
 
 	@Autowired
 	private FanficService fanficService;
@@ -37,10 +37,15 @@ public class EditChapterController extends VisitPageController {
 
 	@RequestMapping(value="/{editingFanficId}/{editingChapterId}",
 			method = RequestMethod.POST)
-	public String createFanfic(
-			@PathVariable("editingFanficId") int editingFanficId,
+	public String createChapter(@PathVariable("editingFanficId") int editingFanficId,
 			@PathVariable("editingChapterId") int editingChapterId,
-			@ModelAttribute("newChapter") Chapter newChapter) {
+			@ModelAttribute("newChapter") Chapter newChapter, Model model) {
+		if (checkErrorsInput(newChapter, model)) {
+			settingModel(model);
+			model.addAttribute("editingFanficId", editingFanficId);
+			model.addAttribute("editingChapterId", editingChapterId);
+			return "addChapter";
+		}
 		Fanfic editingFanfic = fanficService.getFanficById(editingFanficId);
 		Chapter editingChapter = editingFanfic.getChapterById(editingChapterId);
 		copyChapter(editingChapter, newChapter);

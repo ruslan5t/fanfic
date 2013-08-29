@@ -5,16 +5,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="<c:url value="/resources/js/makeFanficForm.js" />"></script>
 <div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
 <form:label path="name">
 	<spring:message code="title" />:</form:label>
 <form:input path="name" />
+<br />
+<c:if test="${not empty emptyTitle}">
+	<spring:message code="emptyTitle" />
+	<br />
+</c:if>
 <form:label path="description">
 	<spring:message code="description" />:</form:label>
-<form:textarea path="description" class="descriptionCreate"/>
+<form:textarea path="description" class="descriptionCreate" />
+<br />
+<c:if test="${not empty emptyDescription}">
+	<spring:message code="emptyDescription" />
+	<br />
+</c:if>
 <form:label path="tags">
 	<spring:message code="tags" />:</form:label>
 <form:input path="tags" id="tags" />
@@ -28,7 +37,7 @@
 	</c:forEach>
 </form:select>
 <br />
-<c:if test="${not empty emptyCategoriesError}">
+<c:if test="${not empty emptyCategories}">
 	<spring:message code="notSelectedCategory" />
 	<br />
 </c:if>

@@ -14,7 +14,7 @@ import by.itransition.fanfic.service.FanficService;
 
 @Controller
 @RequestMapping("/addChapter")
-public class AddChapterController extends VisitPageController {
+public class AddChapterController extends InputChapterController {
 	
 	@Autowired
 	private FanficService fanficService;
@@ -29,7 +29,12 @@ public class AddChapterController extends VisitPageController {
 
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.POST)
 	public String createChapter(@PathVariable("fanficId") int fanficId,
-			@ModelAttribute("chapter") Chapter chapter) {
+			@ModelAttribute("chapter") Chapter chapter, Model model) {
+		if (checkErrorsInput(chapter, model)) {
+			settingModel(model);
+			model.addAttribute("fanficId", fanficId);
+			return "addChapter";
+		}
 		chapter.setContent(chapter.getContent());
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		fanfic.addChapter(chapter);

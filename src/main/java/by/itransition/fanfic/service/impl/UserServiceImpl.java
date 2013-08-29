@@ -97,6 +97,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void remove(User user) {
+		for (Fanfic fanfic : user.getFanfics()) {
+			removeFanfic(user, fanfic);
+		}
 		for (Comment comment : user.getComments()) {
 			comment.setAuthor(null);
 			Fanfic fanfic = comment.getFanfic();
@@ -195,4 +198,38 @@ public class UserServiceImpl implements UserService {
 		return answer;
 	}
 
+	private void removeFanfic(User user, Fanfic fanfic) {
+		user.getFanfics().remove(fanfic);
+		userDao.save(user);
+		for (Comment comment : fanfic.getComments()) {
+			User author = comment.getAuthor();
+			author.getComments().remove(comment);
+			comment.setAuthor(null);
+			comment.setFanfic(null);
+			userDao.save(author);
+			commentDao.save(comment);
+		}
+		List<Comment> comments = fanfic.getComments();
+		fanfic.setComments(null);
+		for (Comment comment : comments) {
+			commentDao.remove(comment);
+		}
+		for (Vote vote : fanfic.getVotes()) {
+			User author = vote.getUser();
+			author.getVotes().remove(vote);
+			vote.setUser(null);
+			vote.setFanfic(null);
+			userDao.save(author);
+			voteDao.save(vote);
+		}
+		List<Vote> votes = fanfic.getVotes();
+		fanfic.setComments(null);
+		for (Vote vote : votes) {
+			voteDao.remove(vote);
+		}
+		fanficDao.save(fanfic);
+		fanficDao.removeFanficById(fanfic.getId());
+	}
+	
+	
 }

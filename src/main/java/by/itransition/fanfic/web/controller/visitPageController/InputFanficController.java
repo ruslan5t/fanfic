@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
@@ -33,6 +34,23 @@ public class InputFanficController extends VisitPageController {
 			newCategories.add(categoryService.getCategoryByName(category.getName()));
 		}
 		fanfic.setCategories(newCategories);
+	}
+	
+	protected boolean checkErrorsInput(Fanfic fanfic, Model model) {
+		boolean isErrorInput = false;
+		if (fanfic.getName().matches("\\s*")) {
+			model.addAttribute("emptyTitle", true);
+			isErrorInput = true;
+		}
+		if (fanfic.getDescription().matches("\\s*")) {
+			model.addAttribute("emptyDescription", true);
+			isErrorInput = true;
+		}
+		if (fanfic.getCategories() == null) {
+			model.addAttribute("emptyCategories", true);
+			isErrorInput = true;
+		}
+		return isErrorInput;
 	}
 
 }

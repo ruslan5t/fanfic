@@ -42,12 +42,6 @@
 
 		<form class="navbar-form pull-right"
 			action="${pageContext.servletContext.contextPath}/find" method="post">
-			<ul class="nav">
-				<li><a href="<spring:url value="?theme=white" />"> <img
-						class="flag" src="<c:url value="/resources/images/style.png" />" />
-				</a></li>
-				<li class="delimiter">|</li>
-			</ul>
 			<ul class="nav flags">
 				<li><a href="<spring:url value="?lang=en" />"> <img
 						class="flag" src="<c:url value="/resources/images/english.gif" />" />

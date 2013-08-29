@@ -38,15 +38,13 @@ public class CreateFanficController extends InputFanficController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createFanfic(@ModelAttribute("newFanfic") Fanfic fanfic,
 			BindingResult bindingResult, Model model) {
-		User user = userService.getUserByName(
-				SecurityContextHolder.getContext().getAuthentication().getName());
-		if (fanfic.getCategories() == null) {
+		if (checkErrorsInput(fanfic, model)) {
 			settingModel(model);
-			model.addAttribute("newFanfic", fanfic);
-			model.addAttribute("emptyCategoriesError", true);
 			return "createFanfic";
 		}
 		correctFanfic(fanfic);
+		User user = userService.getUserByName(
+				SecurityContextHolder.getContext().getAuthentication().getName());
 		user.addFanfic(fanfic);
 		userService.save(user);
 		return "redirect:/user/" + user.getId();

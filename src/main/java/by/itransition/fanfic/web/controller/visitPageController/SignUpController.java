@@ -1,6 +1,7 @@
 package by.itransition.fanfic.web.controller.visitPageController;
 
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -21,7 +22,7 @@ public class SignUpController extends VisitPageController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private EmailService emailService;
 
@@ -35,18 +36,40 @@ public class SignUpController extends VisitPageController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String createUser(@ModelAttribute("user") User user,
 			BindingResult bindingResult, Model model) {
-		if (!userService.isRegistered(user.getUsername())) {
-			int registrationId = userService.register(user);
-			userService.confirmRegistration(registrationId);
-//			ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
-//					LocaleContextHolder.getLocale());
-//			emailService.sendMessage(user.getEmail(), 
-//					resourceBundle.getString("ifYouRegisteredOnFanficLibraryWebsiteGoTo") +
-//					" http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
-			return "redirect:/messageSent";
+		if (checkInputErrors(user, model)) {
+			settingModel(model);
+			return "signUp";
 		}
-		model.addAttribute("error", true);
-		return "signUp";
-
+		int registrationId = userService.register(user);
+		userService.confirmRegistration(registrationId);
+		//			ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
+		//					LocaleContextHolder.getLocale());
+		//			emailService.sendMessage(user.getEmail(), 
+		//					resourceBundle.getString("ifYouRegisteredOnFanficLibraryWebsiteGoTo") +
+		//					" http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
+		return "redirect:/messageSent";
+	}
+	
+	private boolean checkInputErrors(User user, Model model) {
+		boolean isErrorInput = false;
+		if (!user.getEmail().matches(".+@.+\\..+") || user.getEmail().length() > 75) {
+			model.addAttribute("notCorrectEmail", true);
+			isErrorInput = true;
+		}
+		if (!user.getUsername().matches("\\w+") || user.getUsername().length() > 30) {
+			model.addAttribute("notCorrectUsername", true);
+			isErrorInput = true;
+		}
+		else {
+			if (userService.isRegistered(user.getUsername())) {
+				model.addAttribute("usernameAlreadyRegistered", true);
+				isErrorInput = true;
+			}
+		}
+		if (!user.getPassword().matches("\\w+") || user.getPassword().length() > 30) {
+			model.addAttribute("notCorrectPassword", true);
+			isErrorInput = true;
+		}
+		return isErrorInput;
 	}
 }

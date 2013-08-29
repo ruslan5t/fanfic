@@ -31,9 +31,12 @@ public class EditFanficController extends InputFanficController {
 	}
 
 	@RequestMapping(value="/{editingFanficId}", method = RequestMethod.POST)
-	public String editFanfic(
-			@PathVariable("editingFanficId") int editingFanficId,
-			@ModelAttribute("newFanfic") Fanfic newFanfic) {
+	public String editFanfic(@PathVariable("editingFanficId") int editingFanficId,
+			@ModelAttribute("newFanfic") Fanfic newFanfic, Model model) {
+		if (checkErrorsInput(newFanfic, model)) {
+			settingModel(model);
+			return "createFanfic";
+		}
 		Fanfic editingFanfic = fanficService.getFanficById(editingFanficId);
 		correctFanfic(newFanfic);
 		copyFanfic(editingFanfic, newFanfic);

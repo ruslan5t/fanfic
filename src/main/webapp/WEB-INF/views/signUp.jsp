@@ -16,21 +16,32 @@
 				<div class="well">
 					<form:form method="POST" modelAttribute="user">
 						<spring:message code="email" var="emailTranslate" />
-						<form:input type="email" path="email" 
+						<form:input type="email" path="email"
 							placeholder="${emailTranslate}" maxlength="75" />
-
+						<br />
+						<c:if test="${not empty notCorrectEmail}">
+							<spring:message code="notCorrectEmail" />
+							<br />
+						</c:if>
 						<spring:message code="username" var="usernameTranslate" />
-						<form:input path="username" placeholder="${usernameTranslate }" 
+						<form:input path="username" placeholder="${usernameTranslate }"
 							maxlength="30" />
-
+						<br />
+						<c:if test="${not empty notCorrectUsername}">
+							<spring:message code="notCorrectUsername" />
+							<br />
+						</c:if>
+						<c:if test="${not empty usernameAlreadyRegistered}">
+							<spring:message code="usernameAlreadyRegistered" />
+							<br />
+						</c:if>
 						<spring:message code="password" var="passwordTranslate" />
-						<form:password path="password" placeholder="${passwordTranslate}" 
-							maxlength="30"/>
-
-						<c:if test="${not empty error}">
-							<form:label path="">
-								<spring:message code="userWithThisNameIsAlreadyRegistered" />.
-							</form:label>
+						<form:password path="password" placeholder="${passwordTranslate}"
+							maxlength="30" />
+						<br />
+						<c:if test="${not empty notCorrectPassword}">
+							<spring:message code="notCorrectPassword" />
+							<br />
 						</c:if>
 						<spring:message code="register" var="registerTranslate" />
 						<input type="submit" value="${registerTranslate}" class="btn" />
