@@ -56,6 +56,7 @@
 			</c:forEach>
 		</div>
 		<jsp:include page="sidebar.jsp" />
+		
 		<jsp:include page="footer.jsp" />
 	</div>
 </body>

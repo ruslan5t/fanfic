@@ -24,7 +24,7 @@
 			</a> <select id="fontSizes"></select>
 			<input type="range" id="widthRange" value="100" />
 			<div id="resizableChapterPlace">
-				<div id="textChapterPlace">${chapterParsedContent}</div>
+				<div id="textChapterPlace"><pre>${chapterParsedContent}</pre></div>
 			</div>
 
 			<div class="span8">

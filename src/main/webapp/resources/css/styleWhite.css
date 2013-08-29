@@ -124,6 +124,8 @@ select.categories {
 .comment {
 	border: 1px solid black;
 	min-height: 100px;
+	background-color: #e4dfcc;
+	padding: 5px;
 }
 
 #scrollUp {

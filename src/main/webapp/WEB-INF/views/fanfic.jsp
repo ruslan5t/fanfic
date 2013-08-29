@@ -41,7 +41,8 @@
 					</td>
 				</tr>
 			</table>
-			<spring:message code="categories"/>:
+			<spring:message code="categories" />
+			:
 			<c:forEach items="${fanfic.getCategories()}" var="category">
 				<a
 					href="${pageContext.servletContext.contextPath}/catalog/category/${category.getId()}">
@@ -76,7 +77,8 @@
 					</button>
 
 					<div id="contentTitle">
-						<spring:message code="content"/>:
+						<spring:message code="content" />
+						:
 					</div>
 					<c:forEach items="${fanfic.getChapters()}" var="chapter">
 						<div class="contentItem">
@@ -96,7 +98,7 @@
 					</c:forEach>
 				</c:if>
 				<c:if test="${noChapters}">
-					No chapters
+					<spring:message code="noChapters" />
 				</c:if>
 				<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
 					<br />
@@ -113,14 +115,16 @@
 			</c:if>
 			<c:if test="${!noComments}">
 				<div class="comments">
-					<spring:message code="comments"/>:
+					<spring:message code="comments" />
+					:
 					<c:forEach items="${fanfic.getComments()}" var="comment">
 						<div class="comment">
 							<a
-								href="${pageContext.servletContext.contextPath}/user/${comment.getAuthor().getId()}">
-								${comment.getAuthor().getUsername()} </a>: ${comment.getContent()}
+									href="${pageContext.servletContext.contextPath}/user/${comment.getAuthor().getId()}">
+									${comment.getAuthor().getUsername()} </a>: ${comment.getContent()}
 						</div>
 						<br />
+
 					</c:forEach>
 				</div>
 			</c:if>

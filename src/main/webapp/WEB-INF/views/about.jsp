@@ -20,10 +20,11 @@
 			<div class="pageTitle">
 				<spring:message code="about" />
 			</div>
+			<hr />
 			<spring:message code="goal"/>
-			<br />
+			<br /><br />
 			<spring:message code="statisticsRegisteredUsersOverThePast10o'clock" />:
-			<br />
+			<br /><br />
 			<div id="chartContainer"></div>
 		</div>
 		<jsp:include page="sidebar.jsp" />

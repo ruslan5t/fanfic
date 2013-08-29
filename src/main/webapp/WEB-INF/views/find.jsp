@@ -12,7 +12,10 @@
 	<div class="pageContainer">
 		<jsp:include page="menu.jsp" />
 		<div class="span9">
-			<b>"${searchRequest}"</b>
+			<div class="pageTitle">
+				<spring:message code="search"/>: "${searchRequest}"
+			</div>
+			<hr />
 			<c:forEach items="${foundedFanfics}" var="foundedFanfic">
 				<a
 					href="${pageContext.servletContext.contextPath}/fanfic/${foundedFanfic.getId()}">

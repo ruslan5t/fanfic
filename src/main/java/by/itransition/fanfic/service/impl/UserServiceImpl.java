@@ -97,7 +97,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void remove(User user) {
-		for (Fanfic fanfic : user.getFanfics()) {
+		List<Fanfic> fanfics = user.getFanfics();
+		for (Fanfic fanfic : fanfics) {
 			removeFanfic(user, fanfic);
 		}
 		for (Comment comment : user.getComments()) {

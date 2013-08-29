@@ -14,8 +14,8 @@
 					class="caret"></b>
 			</a>
 				<ul class="dropdown-menu">
-					<li><a><spring:message code="dark" /></a></li>
-					<li><a><spring:message code="light" /></a></li>
+					<li><a href="<spring:url value="?theme=black" />" /><spring:message code="dark" /></a></li>
+					<li><a href="<spring:url value="?theme=white" />"><spring:message code="light" /></a></li>
 				</ul></li>
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<li><a
