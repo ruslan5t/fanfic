@@ -12,6 +12,7 @@
 <script src="<c:url value="/resources/js/settingRating.js" />"></script>
 </head>
 <body>
+
 	<sec:authorize access="hasRole('ROLE_USER')">
 		<div id="isLogged" value="true"></div>
 	</sec:authorize>
