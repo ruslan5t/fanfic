@@ -64,13 +64,30 @@
 		<beans:property name="defaultThemeName" value="white" />
 	</beans:bean>
 
-	<interceptors>  
-        <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-              <beans:property name="paramName" value="lang" />
-        </beans:bean>
-        <beans:bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
-              <beans:property name="paramName" value="theme" />
-        </beans:bean>
+	<interceptors>
+		<beans:bean
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<beans:property name="paramName" value="lang" />
+		</beans:bean>
+		<beans:bean
+			class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<beans:property name="paramName" value="theme" />
+		</beans:bean>
 	</interceptors>
+
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	</beans:bean>
 
 </beans:beans>

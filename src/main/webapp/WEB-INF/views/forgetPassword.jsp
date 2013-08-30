@@ -7,23 +7,41 @@
 <jsp:include page="minHeadBody.jsp"></jsp:include>
 </head>
 <body>
-	<div class="pageContainer">
-		<jsp:include page="menu.jsp"></jsp:include>
-		<div class="span9">
-			<div class="span4 offset2">
-				<div class="well">
-					<form method="post">
-						<spring:message code="username" var="usernameTranslate" />
-						<input type="text" name="username" 
-							placeholder="${usernameTranslate}" /> 
-						<spring:message code="continue" var="continueTranslate" />
-						<input type="submit" class="btn" value="${continueTranslate}" />
-					</form>
+	<jsp:include page="menu.jsp" />
+	<div class="container">
+		<div class="col-xs-12 col-sm-9">
+			<div class="page-header" id="banner">
+				<div class="row">
+					<div class="col-lg-6">
+						<h1>
+							Vosstanovlenie parolya
+						</h1>
+					</div>
 				</div>
+			</div>
+			<div class="well">
+				<form class="bs-example form-horizontal" method="post">
+                	<fieldset>
+                  		<legend>Legenda</legend>
+                  		<div class="form-group">
+                  			<spring:message code="username" var="usernameTranslate" />
+                    		<label for="username" class="col-lg-2 control-label">${usernameTranslate}</label>
+                    		<div class="col-lg-10">
+                      			<input type="text" name="username" placeholder="${usernameTranslate}"  class="form-control"/> 
+                    		</div>
+                  		</div>
+                  		<div class="form-group">
+                    		<div class="col-lg-10 col-lg-offset-2">
+                      			<spring:message code="continue" var="continueTranslate" />
+                      			<button type="submit" class="btn btn-primary">${continueTranslate}</button> 
+                    		</div>
+                  		</div>
+                	</fieldset>
+              	</form>
 			</div>
 		</div>
 		<jsp:include page="sidebar.jsp" />
-		<jsp:include page="footer.jsp" />
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

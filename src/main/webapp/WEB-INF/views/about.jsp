@@ -12,15 +12,19 @@
 <script src="<c:url value="/resources/js/about.js" />"></script>
 </head>
 <body>
-	<div class="pageContainer">
-		<div id="contextPath"
-			value="${pageContext.servletContext.contextPath}"></div>
-		<jsp:include page="menu.jsp" />
-		<div class="span9">
-			<div class="pageTitle">
-				<spring:message code="about" />
+	<div id="contextPath" value="${pageContext.servletContext.contextPath}"></div>
+	<jsp:include page="menu.jsp" />
+	<div class="container">
+		<div class="col-xs-12 col-sm-9">
+			<div class="page-header" id="banner">
+				<div class="row">
+					<div class="col-lg-6">
+						<h1>
+							<spring:message code="about" />
+						</h1>
+					</div>
+				</div>
 			</div>
-			<hr />
 			<spring:message code="goal"/>
 			<br /><br />
 			<spring:message code="statisticsRegisteredUsersOverThePast10o'clock" />:
@@ -28,7 +32,7 @@
 			<div id="chartContainer"></div>
 		</div>
 		<jsp:include page="sidebar.jsp" />
-		<jsp:include page="footer.jsp" />
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
