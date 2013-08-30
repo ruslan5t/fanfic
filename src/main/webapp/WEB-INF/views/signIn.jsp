@@ -14,14 +14,12 @@
 	</div>
 </div>
 
-<div class="well">
+<div class="well optionForm">
 	<form class="bs-example form-horizontal" method="post"
 		action="${pageContext.servletContext.contextPath}/j_spring_security_check">
 		<fieldset>
-			<legend>Login</legend>
 			<div class="form-group">
 				<spring:message code="username" var="usernameTranslate" />
-				<label for="j_username" class="col-lg-2 control-label">${usernameTranslate}</label>
 				<div class="col-lg-10">
 					<input id="j_username" name="j_username" type="text"
 						placeholder="${usernameTranslate}" maxlength="30"
@@ -30,7 +28,6 @@
 			</div>
 			<div class="form-group">
 				<spring:message code="password" var="passwordTranslate" />
-				<label for="j_password" class="col-lg-2 control-label">${passwordTranslate}</label>
 				<div class="col-lg-10">
 					<input id="j_password" name="j_password" type="password"
 						placeholder="${passwordTranslate}" maxlength="30"
@@ -41,16 +38,16 @@
 					</c:if>
 					<div class="checkbox">
 						<spring:message code="rememberMe" />
-						<label> <input id="j_remember"
-							name="_spring_security_remember_me" type="checkbox" />
+						<label>
+							<input id="j_remember" name="_spring_security_remember_me" type="checkbox" />
 						</label>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-lg-10 col-lg-offset-2">
+				<div class="okButton">
 					<spring:message code="signIn" var="signInTranslate" />
-					<button type="submit" class="btn btn-primary">"${signInTranslate}"</button>
+					<button type="submit" class="btn btn-primary">${signInTranslate}</button>
 				</div>
 			</div>
 			<a href="${pageContext.servletContext.contextPath}/signUp"> <spring:message

@@ -19,3 +19,7 @@
 		href="${pageContext.servletContext.contextPath}/fanfic/${foundedFanfic.getId()}">
 		${foundedFanfic.getName()} </a>
 </c:forEach>
+
+<c:if test="${noFoundedFanfics}">
+	<spring:message code="yourSearchDidNotMatchAny" />
+</c:if>

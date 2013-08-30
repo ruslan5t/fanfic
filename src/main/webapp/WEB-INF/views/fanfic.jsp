@@ -64,7 +64,7 @@
 	<form
 		action="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}"
 		method="get">
-		<button class="btn">
+		<button class="btn btn-primary">
 			<spring:message code="edit" />
 		</button>
 	</form>

@@ -4,9 +4,9 @@
 <tiles:insertAttribute name="minHeadBody" />
 </head>
 <body>
-	<tiles:insertAttribute name="menu"/>
+	<tiles:insertAttribute name="menu" />
 	<div class="container">
-		<div class="col-xs-12 col-sm-9">	
+		<div class="col-xs-12 col-sm-9">
 			<tiles:insertAttribute name="main" />
 		</div>
 		<tiles:insertAttribute name="sidebar" />

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="page-header" id="banner">
 	<div class="row">
@@ -9,20 +10,21 @@
 		</div>
 	</div>
 </div>
-<div class="well">
+<div class="well optionForm">
 	<form class="bs-example form-horizontal" method="post">
 		<fieldset>
-			<legend>Legenda</legend>
 			<div class="form-group">
 				<spring:message code="username" var="usernameTranslate" />
-				<label for="username" class="col-lg-2 control-label">${usernameTranslate}</label>
 				<div class="col-lg-10">
 					<input type="text" name="username"
 						placeholder="${usernameTranslate}" class="form-control" />
 				</div>
+				<c:if test="${not empty notExistUser}">
+					<spring:message code="notExistUser" />
+				</c:if>
 			</div>
 			<div class="form-group">
-				<div class="col-lg-10 col-lg-offset-2">
+				<div class="okButton">
 					<spring:message code="continue" var="continueTranslate" />
 					<button type="submit" class="btn btn-primary">${continueTranslate}</button>
 				</div>

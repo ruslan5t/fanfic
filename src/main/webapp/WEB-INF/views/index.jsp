@@ -21,7 +21,9 @@
 			<h1>
 				<spring:message code="mainPageTitle" />
 			</h1>
-			<p class="lead">It is site for you</p>
+			<p class="lead">
+				<spring:message code="siteForYou" />
+			</p>
 		</div>
 	</div>
 </div>

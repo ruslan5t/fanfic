@@ -30,7 +30,6 @@ public class AllUsersController extends VisitPageController {
 		List <User> users = new ArrayList<User>();
 		for (User user : userService.getAllUsers()) {
 			if (!user.getRoles().contains(roleService.getRoleByName(Role.ROLE_ADMIN))) {
-				System.out.println("**********");
 				users.add(user);
 			}
 		}

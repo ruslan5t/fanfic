@@ -1,5 +1,7 @@
 package by.itransition.fanfic.web.controller.visitPageController;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,18 +24,26 @@ public class FindController extends VisitPageController {
 	@Autowired
 	private FanficService fanficService;
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public String setFanficRating(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/sendSearchRequest", method = RequestMethod.GET)
+	public String changeFindRequest(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
+		return "redirect:/find/getFindPage/" + 
+			URLEncoder.encode(request.getParameter("searchRequest"), "utf-8");
+	}
+	
+	@RequestMapping(value = "/getFindPage/{searchRequest}", method = RequestMethod.GET)
+	public String findFanfics(@PathVariable("searchRequest") String searchRequest,
+			Model model) {
 		settingModel(model);
 		List <Fanfic> foundedFanfics;
-		if (!request.getParameter("searchRequest").equals("")) {
-			foundedFanfics = fanficService.search(request.getParameter("searchRequest"));
+		if (!searchRequest.equals("")) {
+			foundedFanfics = fanficService.search(searchRequest);
 		}
 		else {
 			foundedFanfics = new ArrayList<Fanfic>();
 		}
-		model.addAttribute("searchRequest", request.getParameter("searchRequest"));
+		model.addAttribute("searchRequest", searchRequest);
 		model.addAttribute("foundedFanfics", foundedFanfics); 
+		model.addAttribute("noFoundedFanfics", foundedFanfics.size() == 0);
 		return "find";
 	}
 }

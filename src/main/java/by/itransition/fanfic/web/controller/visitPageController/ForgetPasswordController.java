@@ -32,8 +32,13 @@ public class ForgetPasswordController extends VisitPageController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String sendPasswordToUser(HttpServletRequest request) {
+	public String sendPasswordToUser(Model model, HttpServletRequest request) {
 		User user = userService.getUserByName(request.getParameter("username"));
+		if (user == null) {
+			settingModel(model);
+			model.addAttribute("notExistUser", true);
+			return "forgetPassword";
+		}
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
 				LocaleContextHolder.getLocale());
 		emailService.sendMessage(user.getEmail(),

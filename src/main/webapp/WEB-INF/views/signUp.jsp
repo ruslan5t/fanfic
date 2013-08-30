@@ -15,14 +15,12 @@
 	</div>
 </div>
 
-<div class="well">
+<div class="well optionForm">
 	<form:form method="POST" modelAttribute="user"
 		class="bs-example form-horizontal">
 		<fieldset>
-			<legend>Registration</legend>
 			<div class="form-group">
 				<spring:message code="email" var="emailTranslate" />
-				<label for="email" class="col-lg-2 control-label">${emailTranslate}</label>
 				<div class="col-lg-10">
 					<form:input type="email" path="email"
 						placeholder="${emailTranslate}" maxlength="75"
@@ -35,7 +33,6 @@
 			</div>
 			<div class="form-group">
 				<spring:message code="username" var="usernameTranslate" />
-				<label for="username" class="col-lg-2 control-label">${usernameTranslate}</label>
 				<div class="col-lg-10">
 					<form:input path="username" placeholder="${usernameTranslate}"
 						maxlength="30" class="form-control" />
@@ -51,7 +48,6 @@
 			</div>
 			<div class="form-group">
 				<spring:message code="password" var="passwordTranslate" />
-				<label for="password" class="col-lg-2 control-label">${passwordTranslate}</label>
 				<div class="col-lg-10">
 					<form:password path="password" placeholder="${passwordTranslate}"
 						maxlength="30" class="form-control" />
@@ -62,7 +58,7 @@
 				</c:if>
 			</div>
 			<div class="form-group">
-				<div class="col-lg-10 col-lg-offset-2">
+				<div class="okButton">
 					<spring:message code="register" var="registerTranslate" />
 					<button type="submit" class="btn btn-primary">${registerTranslate}</button>
 				</div>
