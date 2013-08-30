@@ -3,25 +3,27 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html>
-<html>
-<head>
-<jsp:include page="minHeadBody.jsp"></jsp:include>
-</head>
-<body>
-	<div class="pageContainer">
-		<jsp:include page="menu.jsp" />
-		<div class="span9">
-			<form:form
-				action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
-				method="POST" modelAttribute="newChapter">
-				<jsp:include page="makeChapterForm.jsp"></jsp:include>
-				<spring:message code="editChapter" var="editChapterTranslate" />
-				<input type="submit" value="${editChapterTranslate}" class="btn" />
-			</form:form>
+
+<div class="page-header" id="banner">
+	<div class="row">
+		<div class="col-lg-6">
+			<h1>Editing chapter</h1>
 		</div>
-		<jsp:include page="sidebar.jsp" />
-		<jsp:include page="footer.jsp" />
 	</div>
-</body>
-</html>
+</div>
+
+<div class="well">
+	<form:form class="bs-example form-horizontal"
+		action="${pageContext.servletContext.contextPath}/editChapter/${editingFanficId}/${editingChapterId}"
+		method="POST" modelAttribute="newChapter">
+		<fieldset>
+			<jsp:include page="makeChapterForm.jsp" />
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<spring:message code="editChapter" var="editChapterTranslate" />
+					<button type="submit" class="btn btn-primary">${editChapterTranslate}</button>
+				</div>
+			</div>
+		</fieldset>
+	</form:form>
+</div>

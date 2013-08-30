@@ -181,16 +181,16 @@ form {
 }
 
 .descriptionCreate {
-	min-width: 98%;
-	max-width: 98%;
-	min-height: 50px;
+	min-width: 60%;
+	max-width: 60%;
+	min-height: 100px;
 	height: 100px;
 }
 
 .chapterCreate {
-	min-width: 98%;
-	max-width: 98%;
-	min-height: 50px;
+	min-width: 80%;
+	max-width: 80%;
+	min-height: 250px;
 	height: 350px;
 }
 

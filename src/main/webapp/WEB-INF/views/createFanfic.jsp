@@ -3,23 +3,26 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html>
-<html>
-<head>
-<jsp:include page="minHeadBody.jsp"></jsp:include>
-</head>
-<body>
-	<div class="pageContainer">
-		<jsp:include page="menu.jsp" />
-		<div class="span9">
-			<form:form method="post" modelAttribute="newFanfic">
-				<jsp:include page="makeFanficForm.jsp"/>
-				<spring:message code="createFanfic" var="createFanficTranslate" />
-				<input type="submit" value="${createFanficTranslate}" class="btn" />
-			</form:form>
+
+<div class="page-header" id="banner">
+	<div class="row">
+		<div class="col-lg-6">
+			<h1>Create fanfic</h1>
 		</div>
-		<jsp:include page="sidebar.jsp" />
-		<jsp:include page="footer.jsp" />
 	</div>
-</body>
-</html>
+</div>
+
+<div class="well">
+	<form:form method="post" modelAttribute="newFanfic"
+		class="bs-example form-horizontal">
+		<fieldset>
+			<jsp:include page="makeFanficForm.jsp" />
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<spring:message code="createFanfic" var="createFanficTranslate" />
+					<input type="submit" value="${createFanficTranslate}" class="btn btn-primary" />
+				</div>
+			</div>
+		</fieldset>
+	</form:form>
+</div>

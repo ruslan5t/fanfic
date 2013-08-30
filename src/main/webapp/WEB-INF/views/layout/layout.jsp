@@ -4,8 +4,13 @@
 <tiles:insertAttribute name="minHeadBody" />
 </head>
 <body>
-	<tiles:insertAttribute name="header" />
-	<tiles:insertAttribute name="body" />
+	<tiles:insertAttribute name="menu"/>
+	<div class="container">
+		<div class="col-xs-12 col-sm-9">	
+			<tiles:insertAttribute name="main" />
+		</div>
+		<tiles:insertAttribute name="sidebar" />
+	</div>
 	<tiles:insertAttribute name="footer" />
 </body>
 </html>
