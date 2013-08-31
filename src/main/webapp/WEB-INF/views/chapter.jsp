@@ -18,7 +18,7 @@
 	</div>
 </div>
 <select id="fontSizes"></select>
-<input type="range" id="widthRange" value="100" />
+<input type="range" id="widthRange" />
 
 <form action="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}" method="get" id="editChapterButton">
 	<button class="btn btn-primary">

@@ -1,13 +1,14 @@
 $(function() {
   var $fontSizes, $option, $resizableChapterPlace, $widthRange, fontSize, setChapterWidth, setFontSize, setWidtByWidthRange, userChapterWidth, userFontSize;
   userFontSize = parseInt($.cookie("userFontSize"));
-  userChapterWidth = parseInt($.cookie("userChapterWidth"));
   $resizableChapterPlace = $("#resizableChapterPlace");
   $widthRange = $("#widthRange");
   setFontSize = function(fontSize) {
     $resizableChapterPlace.css("font-size", fontSize);
     $resizableChapterPlace.css("line-height", 1);
-    return $.cookie("userFontSize", fontSize);
+    return $.cookie("userFontSize", fontSize, {
+      expires: 1
+    });
   };
   setChapterWidth = function(chapterWidth) {
     var maxWidth, minWidth;
@@ -15,14 +16,18 @@ $(function() {
     minWidth = parseFloat($resizableChapterPlace.css("min-width"));
     $resizableChapterPlace.css("width", minWidth + (chapterWidth * (maxWidth - minWidth)) / 100);
     $widthRange.val(chapterWidth);
-    return $.cookie("userChapterWidth", chapterWidth);
+    return $.cookie("userChapterWidth", chapterWidth, {
+      expires: 1
+    });
   };
   if (userFontSize === null) {
     userFontSize = parseInt($resizableChapterPlace.css("font-size"));
   }
   setFontSize(userFontSize);
-  if (userChapterWidth === null) {
-    userChapterWidth = parseFloat($resizableChapterPlace.css("width"));
+  if ($.cookie("userChapterWidth") === null) {
+    userChapterWidth = 100;
+  } else {
+    userChapterWidth = parseInt($.cookie("userChapterWidth"));
   }
   setChapterWidth(userChapterWidth);
   $fontSizes = $("#fontSizes");
