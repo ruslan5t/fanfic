@@ -60,7 +60,7 @@
 	</div>
 </c:forEach>
 <br />
-<c:if test="${fanfic.getAuthor().getId().equals(currentUserId)}">
+<c:if test="${canChangeFanfic}">
 	<form
 		action="${pageContext.servletContext.contextPath}/editFanfic/${fanfic.getId()}"
 		method="get">
@@ -86,7 +86,7 @@
 					href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
 					${chapter.getName()} </a>
 			</div>
-			<c:if test="${canRemoveChapters}">
+			<c:if test="${canChangeFanfic}">
 				<form method="post"
 					action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
 					<button class="remove">

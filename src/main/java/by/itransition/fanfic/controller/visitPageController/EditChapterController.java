@@ -1,5 +1,7 @@
 package by.itransition.fanfic.controller.visitPageController;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.domain.Chapter;
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.Role;
 import by.itransition.fanfic.service.ChapterService;
 import by.itransition.fanfic.service.FanficService;
 
@@ -28,10 +31,16 @@ public class EditChapterController extends InputChapterController {
 
 	@RequestMapping(value = "/{fanficId}/{chapterId}", method = RequestMethod.GET)
 	public String getChapterEditForm(@PathVariable("fanficId") int fanficId,
-			@PathVariable("chapterId") int chapterId, Model model) {
+			@PathVariable("chapterId") int chapterId, Model model,
+			HttpServletRequest request) {
+		Fanfic fanfic = fanficService.getFanficById(fanficId);
+		if (!(request.isUserInRole(Role.ROLE_ADMIN) || 
+				fanfic.getAuthor().getUsername().equals(request.getRemoteUser()))) {
+			return "redirect:/";
+		}
 		settingModel(model);
 		Chapter newChapter = new Chapter();
-		copyChapter(newChapter, fanficService.getFanficById(fanficId).getChapterById(chapterId));
+		copyChapter(newChapter, fanfic.getChapterById(chapterId));
 		model.addAttribute("newChapter", newChapter);
 		model.addAttribute("editingFanficId", fanficId);
 		model.addAttribute("editingChapterId", chapterId);

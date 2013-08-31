@@ -1,5 +1,7 @@
 package by.itransition.fanfic.controller.visitPageController;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import by.itransition.fanfic.domain.Fanfic;
+import by.itransition.fanfic.domain.Role;
 import by.itransition.fanfic.service.FanficService;
 
 /**
@@ -22,9 +25,14 @@ public class EditFanficController extends InputFanficController {
 	private FanficService fanficService;
 	
 	@RequestMapping(value = "/{fanficId}", method = RequestMethod.GET)
-	public String getFanficEditForm(@PathVariable("fanficId") int fanficId, Model model) {
-		settingModel(model);
+	public String getFanficEditForm(@PathVariable("fanficId") int fanficId, Model model,
+			HttpServletRequest request) {
 		Fanfic editingFanfic = fanficService.getFanficById(fanficId);
+		if (!(request.isUserInRole(Role.ROLE_ADMIN) || 
+				editingFanfic.getAuthor().getUsername().equals(request.getRemoteUser()))) {
+			return "redirect:/";
+		}
+		settingModel(model);
 		Fanfic newFanfic = new Fanfic();
 		copyFanfic(newFanfic, editingFanfic);
 		model.addAttribute("newFanfic", newFanfic);

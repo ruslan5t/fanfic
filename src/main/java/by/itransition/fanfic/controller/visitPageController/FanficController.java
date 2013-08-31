@@ -33,9 +33,9 @@ public class FanficController extends VisitPageController {
 		model.addAttribute("noComments", fanfic.getComments().size() == 0);
 		if (request.isUserInRole(Role.ROLE_ADMIN) || 
 				fanfic.getAuthor().getUsername().equals(request.getRemoteUser())) {
-			model.addAttribute("canRemoveChapters", true);
+			model.addAttribute("canChangeFanfic", true);
 		} else {
-			model.addAttribute("canRemoveChapters", false);
+			model.addAttribute("canChangeFanfic", false);
 		}
 		return "fanfic";
 	}
