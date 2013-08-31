@@ -28,8 +28,7 @@ public class GetStatisticsController {
 	String getStatistics(Model model) {
 		List<Integer> statistics = userService.getStatistics();
 		JSONArray statisticsJSON = new JSONArray();
-		for (int statisticsByTimeIndex = 0;
-				statisticsByTimeIndex < statistics.size();
+		for (int statisticsByTimeIndex = 0; statisticsByTimeIndex < statistics.size();
 				++statisticsByTimeIndex) {
 			JSONArray statisticsByTimeJSON = new JSONArray();
 			statisticsByTimeJSON.add( 

@@ -38,6 +38,7 @@ public class SetFanficRatingController {
 		Fanfic fanfic = fanficService.getFanficById(fanficId);
 		Vote vote = fanfic.makeVote(userRating, user);
 		vote.setFanfic(fanfic);
+		user.getVotes().remove(vote);
 		user.addVote(vote);
 		fanficService.save(fanfic);
 		userService.save(user);

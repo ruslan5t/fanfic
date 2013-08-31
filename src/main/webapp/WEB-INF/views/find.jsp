@@ -14,12 +14,34 @@
 	</div>
 </div>
 
-<c:forEach items="${foundedFanfics}" var="foundedFanfic">
-	<a
-		href="${pageContext.servletContext.contextPath}/fanfic/${foundedFanfic.getId()}">
-		${foundedFanfic.getName()} </a>
-	<br />
+<c:forEach items="${foundedFanfics}" var="fanfic">
+	<div class="row">
+		<div class="postTitle">
+			<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+				${fanfic.getName()}
+			</a>
+		</div>
+		<div class="author">
+			<a href="${pageContext.servletContext.contextPath}/user/${fanfic.getAuthor().getId()}">
+				${fanfic.getAuthor().getUsername()}
+			</a>
+		</div>
+		<div class="description">${fanfic.getDescription()}</div>
+		<div class="tags">
+			<spring:message code="tags" />:
+			<c:forEach items="${fanfic.getTags()}" var="tag">
+				<div class="tag">
+					<a href="${pageContext.servletContext.contextPath}/catalog/tag/${tag.getId()}">
+						${ tag.getName() }
+					</a>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="rating" fanficId="${fanfic.getId()}" rating="${fanfic.getRating()}"></div>
+		<hr />
+	</div>
 </c:forEach>
+
 
 <c:if test="${noFoundedFanfics}">
 	<spring:message code="yourSearchDidNotMatchAny" />
