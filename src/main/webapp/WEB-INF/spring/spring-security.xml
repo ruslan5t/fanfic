@@ -25,10 +25,8 @@
 			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
 		<intercept-url pattern="/addChapter*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/createFanfic*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editChapter*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editFanfic*" access="ROLE_ADMIN,ROLE_USER" />
+		<intercept-url pattern="/editChapter/*/*" access="ROLE_ADMIN,ROLE_USER" />
+		<intercept-url pattern="/editFanfic/*" access="ROLE_ADMIN,ROLE_USER" />
 		<intercept-url pattern="/allUsers*" access="ROLE_ADMIN" />
 		<form-login login-page="/signIn" default-target-url="/"
 			authentication-failure-url="/signIn/error" />

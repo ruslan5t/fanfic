@@ -64,11 +64,13 @@
 						<li>
 							<a tabindex="-1" href="<spring:url value='?lang=en' />">
 								<img class="flag" src="<c:url value="/resources/images/english.gif" />" />
+								English
 							</a>
 						</li>
 						<li>
 							<a tabindex="-1" href="<spring:url value='?lang=ru' />">
 								<img class="flag" src="<c:url value="/resources/images/russian.gif" />" />
+								Русский
 							</a>
 						</li>
 					</ul>

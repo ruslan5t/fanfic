@@ -6,8 +6,10 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
-			<h1>Add Chapter</h1>
+		<div class="col-lg-10">
+			<h1>
+				<spring:message code="chapterAdding"/>
+			</h1>
 		</div>
 	</div>
 </div>

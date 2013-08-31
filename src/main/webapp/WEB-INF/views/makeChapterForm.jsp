@@ -6,19 +6,21 @@
 <div class="form-group">
 	<form:label path="name" class="col-lg-2 control-label">
 		<spring:message code="title" />:</form:label>
-	<form:input path="name" class="form-control" />
 	<c:if test="${not empty emptyTitle}">
-		<spring:message code="emptyTitle" />
-		<br />
+		<c:set var="hasTitleError" value="has-error" />
 	</c:if>
+	<div class="${ hasTitleError }">
+		<form:input path="name" class="form-control" />
+	</div>
 </div>
 <div class="form-group">
 	<form:label path="content" class="col-lg-2 control-label">
 		<spring:message code="content" />:
 	</form:label>
-	<form:textarea path="content" class="chapterCreate form-control"/>
-	<br />
 	<c:if test="${not empty emptyContent}">
-		<spring:message code="emptyContent" />
+		<c:set var="hasContentError" value="has-error" />
 	</c:if>
+	<div class="${ hasContentError }">
+		<form:textarea path="content" class="chapterCreate form-control"/>
+	</div>
 </div>

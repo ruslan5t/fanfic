@@ -5,7 +5,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
 				<spring:message code="listOfUsers" />
 			</h1>

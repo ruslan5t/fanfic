@@ -34,20 +34,6 @@ public class CategoryDaoImpl implements CategoryDao {
 	
 	@Override
 	public List<Category> getAllCategories() {
-		if (null == getCategoryByName("detective")) {
-			List<Category> categories = new ArrayList<Category>();
-			categories.add(new Category("detective"));
-			categories.add(new Category("novel"));
-			categories.add(new Category("fantasy"));
-			categories.add(new Category("scientific"));
-			categories.add(new Category("prose"));
-			categories.add(new Category("documentary"));
-			entityManager.getTransaction().begin();
-			for (Category category : categories) {
-				entityManager.persist(category);
-			}
-			entityManager.getTransaction().commit();
-		}
 		TypedQuery<Category> query = entityManager.createQuery(
 				"SELECT c FROM Category c", Category.class);
 		return query.getResultList();

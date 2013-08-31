@@ -6,7 +6,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
 				<spring:message code="login" />
 			</h1>
@@ -32,14 +32,11 @@
 					<input id="j_password" name="j_password" type="password"
 						placeholder="${passwordTranslate}" maxlength="30"
 						class="form-control" />
-					<c:if test="${not empty wrongNameOrPasswordError}">
-						<spring:message code="incorrectUsernameOrPassword" />
-						<br />
-					</c:if>
+
 					<div class="checkbox">
 						<spring:message code="rememberMe" />
-						<label>
-							<input id="j_remember" name="_spring_security_remember_me" type="checkbox" />
+						<label> <input id="j_remember"
+							name="_spring_security_remember_me" type="checkbox" />
 						</label>
 					</div>
 				</div>
@@ -57,4 +54,11 @@
 			</a>
 		</fieldset>
 	</form>
+	<c:if test="${not empty wrongNameOrPasswordError}">
+		<br />
+		<br />
+		<div class="alert alert-dismissable alert-danger">
+			<spring:message code="incorrectUsernameOrPassword" />
+		</div>
+	</c:if>
 </div>

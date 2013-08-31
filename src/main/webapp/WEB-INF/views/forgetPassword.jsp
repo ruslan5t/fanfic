@@ -5,7 +5,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>Vosstanovlenie parolya</h1>
 		</div>
 	</div>
@@ -15,13 +15,18 @@
 		<fieldset>
 			<div class="form-group">
 				<spring:message code="username" var="usernameTranslate" />
-				<div class="col-lg-10">
+				<c:if test="${not empty notExistUser}">
+					<c:set var="hasUserError" value="has-error"/>
+				</c:if>
+				<div class="col-lg-10 ${ hasUserError }">
+					<c:if test="${not empty notExistUser}">
+						<label class="control-label" for="username">
+							<spring:message code="notExistUser" />
+						</label>
+					</c:if>
 					<input type="text" name="username"
 						placeholder="${usernameTranslate}" class="form-control" />
 				</div>
-				<c:if test="${not empty notExistUser}">
-					<spring:message code="notExistUser" />
-				</c:if>
 			</div>
 			<div class="form-group">
 				<div class="okButton">

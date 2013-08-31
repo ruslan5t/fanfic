@@ -22,7 +22,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>${fanfic.getName()}</h1>
 		</div>
 	</div>

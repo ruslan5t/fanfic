@@ -20,7 +20,7 @@ select.categories {
 }
 
 .author a {
-	color: gray;	
+	color: #a99750;
 }
 
 .description {
@@ -41,13 +41,9 @@ select.categories {
 }
 
 #resizableChapterPlace {
-	min-width: 300px;
-	max-width: 100%;
-}
-
-
-#textChapterPlace {
-	overflow: auto;
+	margin-top: 20px;
+	min-width: 200px;
+	max-width: 825px;
 }
 
 .pageContainer {
@@ -57,6 +53,10 @@ select.categories {
 
 #sidebar {
 	padding-top: 60px;
+}
+
+.right {
+	margin-left: auto;
 }
 
 .flag {
@@ -77,7 +77,11 @@ select.categories {
 
 #convertToPdf {
 	display: block;
-	margin-left: auto;	
+	margin-left: auto;
+}
+
+#editChapterButton {
+	float: right;
 }
 
 #contentTitle {
@@ -147,34 +151,35 @@ form {
 	height: 100px;
 }
 
+pre {
+	word-break: keep-all;
+}
+
 .chapterCreate {
 	min-width: 80%;
 	max-width: 80%;
-	min-height: 250px;
-	height: 350px;
+	min-height: 450px;
+	height: 500px;
 }
 
 .form-control {
+	display: inline-block;
 	max-width: 70%;
-	min-width: 280px;
+	min-width: 300px;
 }
 
 .optionForm {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 40%;
+	max-width: 42%;
 }
 
-.col-xs-6, .col-sm-3 {
+.col-xs-6,.col-sm-3 {
 	position: static;
 }
 
 .okButton {
 	text-align: center;
-}
-
-.okButton button {
-	width: 30%;
 }
 
 footer {

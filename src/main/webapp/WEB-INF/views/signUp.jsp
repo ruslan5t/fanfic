@@ -7,7 +7,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
 				<spring:message code="registration" />
 			</h1>
@@ -21,41 +21,57 @@
 		<fieldset>
 			<div class="form-group">
 				<spring:message code="email" var="emailTranslate" />
-				<div class="col-lg-10">
+				<c:if test="${not empty notCorrectEmail}">
+					<c:set var="hasEmailError" value="has-error"/>
+				</c:if>
+				<div class="col-lg-10 ${hasEmailError}">
+					<c:if test="${not empty notCorrectEmail}">
+						<label class="control-label" for="email">
+							<spring:message code="notCorrectEmail" />
+						</label>
+					</c:if>
 					<form:input type="email" path="email"
 						placeholder="${emailTranslate}" maxlength="75"
 						class="form-control" />
 				</div>
-				<c:if test="${not empty notCorrectEmail}">
-					<spring:message code="notCorrectEmail" />
-					<br />
-				</c:if>
 			</div>
 			<div class="form-group">
 				<spring:message code="username" var="usernameTranslate" />
-				<div class="col-lg-10">
+				<c:if test="${not empty notCorrectUsername}">
+					<c:set var="hasUsernameError" value="has-error"/>
+				</c:if>
+				<c:if test="${not empty usernameAlreadyRegistered}">
+					<c:set var="hasUsernameError" value="has-error"/>
+				</c:if>
+				<div class="col-lg-10 ${hasUsernameError}">
+					<c:if test="${not empty notCorrectUsername}">
+						<label class="control-label" for="username">
+							<spring:message code="notCorrectUsername" />
+						</label>
+					</c:if>
+					<c:if test="${not empty usernameAlreadyRegistered}">
+						<label class="control-label" for="username">
+							<spring:message code="usernameAlreadyRegistered" />
+						</label>						
+					</c:if>
 					<form:input path="username" placeholder="${usernameTranslate}"
 						maxlength="30" class="form-control" />
 				</div>
-				<c:if test="${not empty notCorrectUsername}">
-					<spring:message code="notCorrectUsername" />
-					<br />
-				</c:if>
-				<c:if test="${not empty usernameAlreadyRegistered}">
-					<spring:message code="usernameAlreadyRegistered" />
-					<br />
-				</c:if>
 			</div>
 			<div class="form-group">
 				<spring:message code="password" var="passwordTranslate" />
-				<div class="col-lg-10">
+				<c:if test="${not empty notCorrectPassword}">
+					<c:set var="hasPasswordError" value="has-error"/>
+				</c:if>
+				<div class="col-lg-10 ${hasPasswordError}">
+					<c:if test="${not empty notCorrectPassword}">
+						<label class="control-label" for="password">
+							<spring:message code="notCorrectPassword" />
+						</label>
+					</c:if>
 					<form:password path="password" placeholder="${passwordTranslate}"
 						maxlength="30" class="form-control" />
 				</div>
-				<c:if test="${not empty notCorrectPassword}">
-					<spring:message code="notCorrectPassword" />
-					<br />
-				</c:if>
 			</div>
 			<div class="form-group">
 				<div class="okButton">

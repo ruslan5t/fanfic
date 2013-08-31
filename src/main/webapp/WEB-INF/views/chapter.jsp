@@ -9,45 +9,40 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
-				<a
-					href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-					${fanfic.getName()} </a> / ${chapter.getName()}
+				<a href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+					${fanfic.getName()}</a> / ${chapter.getName()}
 			</h1>
 		</div>
 	</div>
 </div>
-<div class="pageTitle">
-	<a
-		href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-		${fanfic.getName()} </a> / ${chapter.getName()}
-</div>
-<a
-	href="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}">
-	<spring:message code="editChapter" />
-</a>
 <select id="fontSizes"></select>
 <input type="range" id="widthRange" value="100" />
-<div id="resizableChapterPlace">
-	<div id="textChapterPlace">
-		<pre>${chapterParsedContent}</pre>
-	</div>
-</div>
 
-<div class="span8">
-	<c:if test="${!isFirstChapter}">
-		<a
-			href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
-			${prevChapterName}</a>
-	</c:if>
-	<c:if test="${!isLastChapter}">
-		<a class="nextChapterLink"
-			href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
-			${nextChapterName}</a>
-	</c:if>
-	<br /> <a class="goToContentLink"
-		href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
-		<spring:message code="goToContent" />
+<form action="${pageContext.servletContext.contextPath}/editChapter/${fanfic.getId()}/${chapter.getId()}" method="get" id="editChapterButton">
+	<button class="btn btn-primary">
+		<spring:message code="editChapter" />
+	</button>
+</form>
+
+<pre id="resizableChapterPlace">
+	${chapterParsedContent}
+</pre>
+
+
+<c:if test="${!isFirstChapter}">
+	<a href="${pageContext.servletContext.contextPath}/chapter/prev/${fanfic.getId()}/${chapter.getId()}">
+		${prevChapterName}
 	</a>
-</div>
+</c:if>
+<c:if test="${!isLastChapter}">
+	<a class="nextChapterLink"
+		href="${pageContext.servletContext.contextPath}/chapter/next/${fanfic.getId()}/${chapter.getId()}">
+		${nextChapterName}</a>
+</c:if>
+<br />
+<a class="goToContentLink"
+	href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">
+	<spring:message code="goToContent" />
+</a>

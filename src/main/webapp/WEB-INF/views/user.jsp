@@ -7,7 +7,7 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
 				<spring:message code="userProfile" />
 			</h1>
@@ -15,9 +15,8 @@
 	</div>
 </div>
 
-<hr />
-<spring:message code="name" />
-: ${showedUser.getUsername()}
+<spring:message code="name" />:
+${showedUser.getUsername()}
 <br />
 <c:if test="${!noFanfics}">
 	<h3>

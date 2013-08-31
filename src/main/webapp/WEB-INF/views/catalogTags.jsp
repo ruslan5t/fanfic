@@ -12,9 +12,9 @@
 
 <div class="page-header" id="banner">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-10">
 			<h1>
-				<spring:message code="catalog" />
+				<spring:message code="tags" />
 				/ ${tagName}
 			</h1>
 		</div>

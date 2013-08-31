@@ -13,24 +13,25 @@
 	<form:label path="name" class="col-lg-2 control-label">
 		<spring:message code="title" />:
 	</form:label>
-	<form:input path="name" class="form-control" />
-	<br />
 	<c:if test="${not empty emptyTitle}">
-		<spring:message code="emptyTitle" />
-		<br />
+		<c:set var="hasTitleError" value="has-error" />
 	</c:if>
+	<div class="${hasTitleError}">
+		<c:if test="${not empty emptyTitle}">
+		</c:if>
+		<form:input path="name" class="form-control" />
+	</div>
 </div>
 <div class="form-group">
 	<form:label path="description" class="col-lg-2 control-label">
 		<spring:message code="description" />:</form:label>
-	<form:textarea path="description"
-		class="form-control descriptionCreate" />
-
 	<c:if test="${not empty emptyDescription}">
-		<span class="help-block"> <spring:message
-				code="emptyDescription" />
-		</span>
+		<c:set var="hasDescriptionError" value="has-error" />
 	</c:if>
+	<div class="${ hasDescriptionError }">
+		<form:textarea path="description"
+			class="form-control descriptionCreate" />
+	</div>
 </div>
 <div class="form-group">
 	<form:label path="tags" class="col-lg-2 control-label">
@@ -39,17 +40,19 @@
 	<form:input path="tags" id="tags" class="form-control" />
 </div>
 <div class="form-group">
-	<form:label path="categories" class="col-lg-2 control-label">
+	<form:label path="categories" class="col-lg-2 control-label"
+		for="categories">
 		<spring:message code="categories" />:</form:label>
-	<form:select path="categories" class="form-control">
-		<c:forEach items="${allCategories}" var="category">
-			<form:option value="${category.getName()}">
-				<spring:message code="${category.getName()}" />
-			</form:option>
-		</c:forEach>
-	</form:select>
 	<c:if test="${not empty emptyCategories}">
-		<spring:message code="notSelectedCategory" />
-		<br />
+		<c:set var="hasCategoriesError" value="has-error" />
 	</c:if>
+	<div class="${ hasCategoriesError }">
+		<form:select path="categories" class="form-control">
+			<c:forEach items="${allCategories}" var="category">
+				<form:option value="${category.getName()}">
+					<spring:message code="${category.getName()}" />
+				</form:option>
+			</c:forEach>
+		</form:select>
+	</div>
 </div>
