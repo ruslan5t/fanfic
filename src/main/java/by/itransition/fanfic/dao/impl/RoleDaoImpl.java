@@ -12,6 +12,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.RoleDao;
 import by.itransition.fanfic.domain.Role;
 
+/**
+ * Class that represent implementation of RoleDao. 
+ */
 @Repository
 public class RoleDaoImpl implements RoleDao {
 

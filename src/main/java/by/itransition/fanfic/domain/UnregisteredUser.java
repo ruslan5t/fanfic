@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Class that represent user before confirm registration. 
+ */
 @Entity
 public class UnregisteredUser {
 

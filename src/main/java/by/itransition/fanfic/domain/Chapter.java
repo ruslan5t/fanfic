@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.Field;
 
+/**
+ * Class that represent one chapter of fanfic. 
+ */
 @Entity
 public class Chapter {
 

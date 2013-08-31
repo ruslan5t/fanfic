@@ -6,6 +6,9 @@ import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.Tag;
 
+/**
+ * Class that represent interface for FanficDao. 
+ */
 public interface FanficDao {
 
 	void addFanfic(Fanfic fanfic);

@@ -7,6 +7,9 @@ import by.itransition.fanfic.dao.RoleDao;
 import by.itransition.fanfic.domain.Role;
 import by.itransition.fanfic.service.RoleService;
 
+/**
+ * Class that represent implementation of RoleService. 
+ */
 @Service
 public class RoleServiceImpl implements RoleService {
 

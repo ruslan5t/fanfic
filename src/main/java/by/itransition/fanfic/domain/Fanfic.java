@@ -24,6 +24,9 @@ import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.TokenFilterDef;
 import org.hibernate.search.annotations.TokenizerDef;
 
+/**
+ * Class that represent fanfic of user. 
+ */
 @Entity
 @Indexed
 @AnalyzerDef(name = "FanficAnalyzer",

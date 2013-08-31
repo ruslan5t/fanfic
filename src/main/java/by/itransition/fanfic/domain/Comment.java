@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * Class that represent a comment for one fanfic. 
+ */
 @Entity
 public class Comment {
 

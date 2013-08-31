@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.Field;
 
+/**
+ * Class that represent tag for fanfic. 
+ */
 @Entity
 public class Tag {
 

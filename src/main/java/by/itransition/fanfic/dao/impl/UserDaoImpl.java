@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.UserDao;
 import by.itransition.fanfic.domain.User;
 
+/**
+ * Class that represent implementation of UserDao. 
+ */
 @Repository
 public class UserDaoImpl implements UserDao {
 

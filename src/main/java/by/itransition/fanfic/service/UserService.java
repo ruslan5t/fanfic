@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.User;
 
+/**
+ * Class that represent interface of UserService. 
+ */
 public interface UserService {
 
 	User login(String username, String password);

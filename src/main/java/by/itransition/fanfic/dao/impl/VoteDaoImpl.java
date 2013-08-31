@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.VoteDao;
 import by.itransition.fanfic.domain.Vote;
 
+/**
+ * Class that represent implementation of VoteDao. 
+ */
 @Repository
 public class VoteDaoImpl implements VoteDao {
 

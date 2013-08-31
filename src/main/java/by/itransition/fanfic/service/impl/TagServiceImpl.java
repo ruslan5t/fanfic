@@ -10,6 +10,9 @@ import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Tag;
 import by.itransition.fanfic.service.TagService;
 
+/**
+ * Class that represent implementation of TagService. 
+ */
 @Service
 public class TagServiceImpl implements TagService {
 

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.domain.Chapter;
 
+/**
+ * Class that represent implementation of ChapterDao. 
+ */
 @Repository
 public class ChapterDaoImpl implements ChapterDao {
 

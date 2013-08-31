@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Chapter;
 
+/**
+ * Class that represent interface for ChapterDao. 
+ */
 public interface ChapterDao {
 
 	void addChapter(Chapter chapter);

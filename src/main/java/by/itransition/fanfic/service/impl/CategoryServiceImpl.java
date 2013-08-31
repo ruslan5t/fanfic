@@ -10,6 +10,9 @@ import by.itransition.fanfic.dao.CategoryDao;
 import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.service.CategoryService;
 
+/**
+ * Class that represent implementation of CategoryService. 
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

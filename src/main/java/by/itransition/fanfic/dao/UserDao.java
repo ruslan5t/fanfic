@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.User;
 
+/**
+ * Class that represent interface for UserDao. 
+ */
 public interface UserDao {
 	
 	List<User> getAllUsers();

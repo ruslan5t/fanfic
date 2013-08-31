@@ -10,6 +10,9 @@ import by.itransition.fanfic.dao.ChapterDao;
 import by.itransition.fanfic.domain.Chapter;
 import by.itransition.fanfic.service.ChapterService;
 
+/**
+ * Class that represent implementation of ChapterService. 
+ */
 @Service
 public class ChapterServiceImpl implements ChapterService {
 

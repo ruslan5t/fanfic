@@ -17,6 +17,9 @@ import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.Tag;
 
+/**
+ * Class that represent implementation of FanficDao. 
+ */
 @Repository
 public class FanficDaoImpl implements FanficDao {
 

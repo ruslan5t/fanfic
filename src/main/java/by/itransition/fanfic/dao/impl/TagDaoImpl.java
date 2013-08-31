@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.TagDao;
 import by.itransition.fanfic.domain.Tag;
-import by.itransition.fanfic.domain.User;
 
+/**
+ * Class that represent implementation of TagDao. 
+ */
 @Repository
 public class TagDaoImpl implements TagDao {
 

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.CommentDao;
 import by.itransition.fanfic.domain.Comment;
 
+/**
+ * Class that represent implementation of CommentDao. 
+ */
 @Repository
 public class CommentDaoImpl implements CommentDao {
 	

@@ -17,6 +17,9 @@ import javax.persistence.PrePersist;
 import org.hibernate.search.annotations.DateBridge;
 import org.hibernate.search.annotations.Resolution;
 
+/**
+ * Class that represent user. 
+ */
 @Entity
 public class User {
 

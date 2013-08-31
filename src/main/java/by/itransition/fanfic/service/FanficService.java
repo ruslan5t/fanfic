@@ -6,6 +6,9 @@ import by.itransition.fanfic.domain.Category;
 import by.itransition.fanfic.domain.Fanfic;
 import by.itransition.fanfic.domain.User;
 
+/**
+ * Class that represent interface of FanficService. 
+ */
 public interface FanficService {
 
 	void addFanfic(Fanfic fanfic);

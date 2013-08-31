@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Tag;
 
+/**
+ * Class that represent interface of TagService. 
+ */
 public interface TagService {
 
 	List<Tag> getAllTags();

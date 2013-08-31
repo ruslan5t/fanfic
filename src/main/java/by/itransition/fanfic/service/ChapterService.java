@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Chapter;
 
+/**
+ * Class that represent interface of ChapterService. 
+ */
 public interface ChapterService {
 
 	void addChapter(Chapter chapter);

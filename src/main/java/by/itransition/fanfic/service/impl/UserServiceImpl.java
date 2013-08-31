@@ -24,6 +24,9 @@ import by.itransition.fanfic.domain.User;
 import by.itransition.fanfic.domain.Vote;
 import by.itransition.fanfic.service.UserService;
 
+/**
+ * Class that represent implementation of UserService. 
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

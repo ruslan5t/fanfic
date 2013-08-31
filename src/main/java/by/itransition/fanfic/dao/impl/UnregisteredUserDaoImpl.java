@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import by.itransition.fanfic.dao.UnregisteredUserDao;
 import by.itransition.fanfic.domain.UnregisteredUser;
 
+/**
+ * Class that represent implementation of UnregisteredUserDao. 
+ */
 @Repository
 public class UnregisteredUserDaoImpl implements UnregisteredUserDao {
 

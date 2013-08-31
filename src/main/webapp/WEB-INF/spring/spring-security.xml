@@ -6,28 +6,16 @@
                     http://www.springframework.org/schema/security 
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	<http pattern="/css/**" security="none" />
-
 	<http auto-config="true">
-		<intercept-url pattern="/index*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/catalog*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/chapter*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/fanfic*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/find*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/home*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/user*"
-			access="ROLE_ADMIN,ROLE_USER,ROLE_ANONYMOUS" />
-		<intercept-url pattern="/addChapter*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/createFanfic*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editChapter/*/*" access="ROLE_ADMIN,ROLE_USER" />
-		<intercept-url pattern="/editFanfic/*" access="ROLE_ADMIN,ROLE_USER" />
+		<intercept-url pattern="/addChapter*" access="ROLE_USER" />
+		<intercept-url pattern="/createFanfic*" access="ROLE_USER" />
+		<intercept-url pattern="/editChapter/*/*" access="ROLE_USER" />
+		<intercept-url pattern="/editFanfic/*" access="ROLE_USER" />
 		<intercept-url pattern="/allUsers*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/removeUser/*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/removeFanfic/*" access="ROLE_USER" />
+		<intercept-url pattern="/removeChapter/*" access="ROLE_USER" />
+		<intercept-url pattern="/setFanficRating/*" access="ROLE_USER" />
 		<form-login login-page="/signIn" default-target-url="/"
 			authentication-failure-url="/signIn/error" />
 		<anonymous username="guest" granted-authority="ROLE_ANONYMOUS" />

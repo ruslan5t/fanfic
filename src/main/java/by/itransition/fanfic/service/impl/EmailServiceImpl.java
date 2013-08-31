@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import by.itransition.fanfic.service.EmailService;
 
+/**
+ * Class that represent implementation of EmailService. 
+ */
 @Service
 public class EmailServiceImpl implements EmailService {
 	

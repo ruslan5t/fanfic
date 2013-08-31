@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * Class that represent vote of user to fanfic. 
+ */
 @Entity
 public class Vote {
 

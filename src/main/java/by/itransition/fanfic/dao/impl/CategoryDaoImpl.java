@@ -1,6 +1,5 @@
 package by.itransition.fanfic.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,8 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import by.itransition.fanfic.dao.CategoryDao;
 import by.itransition.fanfic.domain.Category;
-import by.itransition.fanfic.domain.Tag;
 
+/**
+ * Class that represent implementation of CategoryDao. 
+ */
 @Repository
 public class CategoryDaoImpl implements CategoryDao {
 

@@ -4,6 +4,9 @@ import java.util.List;
 
 import by.itransition.fanfic.domain.Category;
 
+/**
+ * Class that represent interface of CategoryService. 
+ */
 public interface CategoryService {
 	
 	List<Category> getAllCategories();
