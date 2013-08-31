@@ -100,7 +100,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void remove(User user) {
-		List<Fanfic> fanfics = user.getFanfics();
+		List<Fanfic> fanfics = new ArrayList<Fanfic>();
+		for (Fanfic fanfic : user.getFanfics()) {
+			fanfics.add(fanfic);
+		}
 		for (Fanfic fanfic : fanfics) {
 			removeFanfic(user, fanfic);
 		}
