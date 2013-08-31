@@ -23,27 +23,37 @@ public class FindController extends VisitPageController {
 
 	@Autowired
 	private FanficService fanficService;
-	
+
 	@RequestMapping(value = "/sendSearchRequest", method = RequestMethod.GET)
 	public String changeFindRequest(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
-		return "redirect:/find/getFindPage/" + 
-			URLEncoder.encode(request.getParameter("searchRequest"), "utf-8");
+		if (!request.getParameter("searchRequest").isEmpty()) {
+			return "redirect:/find/getFindPage/" + 
+					URLEncoder.encode(request.getParameter("searchRequest"), "utf-8");
+		} else {
+			return "redirect:/find/emptySearchRequest";
+		}
 	}
-	
+
 	@RequestMapping(value = "/getFindPage/{searchRequest}", method = RequestMethod.GET)
 	public String findFanfics(@PathVariable("searchRequest") String searchRequest,
 			Model model) {
 		settingModel(model);
-		List <Fanfic> foundedFanfics;
-		if (!searchRequest.equals("")) {
-			foundedFanfics = fanficService.search(searchRequest);
-		}
-		else {
-			foundedFanfics = new ArrayList<Fanfic>();
-		}
+		List <Fanfic> foundedFanfics = fanficService.search(searchRequest);
+		settingResultSearchOnModel(model, searchRequest, foundedFanfics, foundedFanfics.size() == 0);
+		return "find";
+	}
+	
+	@RequestMapping(value = "/emptySearchRequest", method = RequestMethod.GET)
+	public String findFanfics(Model model) {
+		settingModel(model);
+		settingResultSearchOnModel(model, "", new ArrayList<Fanfic>(), true);
+		return "find";
+	}
+	
+	private void settingResultSearchOnModel(Model model, String searchRequest,
+			List <Fanfic> foundedFanfics, boolean noFoundedFanfics) {
 		model.addAttribute("searchRequest", searchRequest);
 		model.addAttribute("foundedFanfics", foundedFanfics); 
-		model.addAttribute("noFoundedFanfics", foundedFanfics.size() == 0);
-		return "find";
+		model.addAttribute("noFoundedFanfics", noFoundedFanfics);
 	}
 }
