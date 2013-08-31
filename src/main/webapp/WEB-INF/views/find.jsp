@@ -18,6 +18,7 @@
 	<a
 		href="${pageContext.servletContext.contextPath}/fanfic/${foundedFanfic.getId()}">
 		${foundedFanfic.getName()} </a>
+	<br />
 </c:forEach>
 
 <c:if test="${noFoundedFanfics}">

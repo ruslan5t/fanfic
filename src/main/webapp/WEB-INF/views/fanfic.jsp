@@ -135,9 +135,9 @@
 		method="post">
 		<spring:message code="addComment" var="addCommentTranslate" />
 		<div class="commentTextarea">
-			<textarea name="newComment" placeholder="${addCommentTranslate}"></textarea>
+			<textarea name="newComment" placeholder="${addCommentTranslate}" class="form-control"></textarea>
 		</div>
-		<input type="submit" value="${addCommentTranslate}" class="btn" />
+		<input type="submit" value="${addCommentTranslate}" class="btn btn-primary" />
 	</form>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_ANONYMOUS')">

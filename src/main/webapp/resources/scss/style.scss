@@ -135,13 +135,15 @@ select.categories {
 	max: {
 		width: 98%;
 	}
+	margin: {
+		bottom: 10px;
+	}
 	height: 100px;
 }
 
 .comment {
 	border: 1px solid black;
 	min-height: 100px;
-	background-color: #e4dfcc;
 	padding: 5px;
 }
 
