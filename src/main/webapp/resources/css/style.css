@@ -1,190 +1,149 @@
-@CHARSET "UTF-8";
-
 body {
-	word-wrap: break-word;
-}
+  word-wrap: break-word; }
 
 .postTitle {
-	font-size: 1.7em;
-	line-height: 1.2;
-	padding-top: 10px;
-}
+  font-size: 1.7em;
+  line-height: 1.2;
+  padding-top: 10px; }
 
 select.categories {
-	multiple: multiple;
-}
+  multiple: multiple; }
 
 .author {
-	font-size: 1.0em;
-	padding: 10px;
-}
-
-.author a {
-	color: #a99750;
-}
+  font-size: 1.0em;
+  padding: 10px; }
+  .author a {
+    color: #a99750; }
 
 .description {
-	padding-bottom: 10px;
-}
+  padding-bottom: 10px; }
 
 #chartContainer {
-	height: 300px;
-}
+  height: 300px; }
 
 .tags {
-	display: inline;
-}
+  display: inline; }
 
 .tag {
-	display: inline;
-	margin-left: 5px;
-}
+  display: inline;
+  margin-left: 5px; }
 
 #resizableChapterPlace {
-	margin-top: 20px;
-	min-width: 200px;
-	max-width: 825px;
-}
+  margin-top: 20px;
+  min-width: 200px;
+  max-width: 825px; }
 
 .pageContainer {
-	max-width: 1100px;
-	margin: 0 auto;
-}
+  max-width: 1100px;
+  margin: 0 auto; }
 
 #sidebar {
-	padding-top: 60px;
-}
+  padding-top: 60px; }
 
 .right {
-	margin-left: auto;
-}
+  margin-left: auto; }
 
 .flag {
-	max-width: 40px;
-	max-height: 20px;
-	display: inline;
-}
+  max-width: 40px;
+  max-height: 20px;
+  display: inline; }
 
 #tagcloud {
-	margin-top: -30px;
-	margin-bottom: -55px;
-}
-
-#tagcloud a {
-	text-decoration: none;
-	font-style: oblique;
-}
+  margin-top: -30px;
+  margin-bottom: -55px; }
+  #tagcloud a {
+    text-decoration: none;
+    font-style: oblique; }
 
 #convertToPdf {
-	display: block;
-	margin-left: auto;
-}
+  display: block;
+  margin-left: auto; }
 
 #editChapterButton {
-	float: right;
-}
+  float: right; }
 
 #contentTitle {
-	font-size: 1.5em;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-bottom: 15px;
-}
+  font-size: 1.5em;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 15px; }
 
 .nextChapterLink {
-	float: right;
-}
+  float: right; }
 
 .commentTextarea textarea {
-	min-width: 98%;
-	max-width: 98%;
-	min-height: 50px;
-	height: 100px;
-}
+  min-width: 98%;
+  min-height: 50px;
+  max-width: 98%;
+  height: 100px; }
 
 .comment {
-	border: 1px solid black;
-	min-height: 100px;
-	background-color: #e4dfcc;
-	padding: 5px;
-}
+  border: 1px solid black;
+  min-height: 100px;
+  background-color: #e4dfcc;
+  padding: 5px; }
 
 #scrollUp {
-	bottom: 20px;
-	right: 20px;
-	height: 38px;
-	width: 38px;
-	background: url(../../resources/images/top.png) no-repeat;
-	outline: none;
-}
+  bottom: 20px;
+  right: 20px;
+  height: 38px;
+  width: 38px;
+  background: url(../../resources/images/top.png) no-repeat;
+  outline: none; }
 
 .contentItem {
-	font-size: 1.2em;
-	line-height: 1.2;
-	display: inline;
-}
+  font-size: 1.2em;
+  line-height: 1.2;
+  display: inline; }
 
 .goToContentLink {
-	text-align: center;
-	display: block;
-}
+  text-align: center;
+  display: block; }
 
 .remove {
-	margin-top: -5px;
-	background: none;
-	border: 0;
-	color: red;
-}
+  margin-top: -5px;
+  background: none;
+  border: 0;
+  color: red; }
 
 form {
-	display: inline;
-}
+  display: inline; }
 
 .remove:HOVER div {
-	font-weight: bold;
-}
+  font-weight: bold; }
 
 .descriptionCreate {
-	min-width: 60%;
-	max-width: 60%;
-	min-height: 100px;
-	height: 100px;
-}
+  min-width: 60%;
+  min-height: 100px;
+  max-width: 60%; }
 
 pre {
-	word-break: keep-all;
-}
+  word-break: keep-all; }
 
 .chapterCreate {
-	min-width: 80%;
-	max-width: 80%;
-	min-height: 450px;
-	height: 500px;
-}
+  min-width: 80%;
+  min-height: 450px;
+  max-width: 80%;
+  height: 500px; }
 
 .form-control {
-	display: inline-block;
-	max-width: 70%;
-	min-width: 300px;
-}
+  display: inline-block;
+  max-width: 70%;
+  min-width: 300px; }
 
 .optionForm {
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 42%;
-}
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42%; }
 
-.col-xs-6,.col-sm-3 {
-	position: static;
-}
+.col-xs-6, .col-sm-3 {
+  position: static; }
 
 .okButton {
-	text-align: center;
-}
+  text-align: center; }
 
 footer {
-	max-width: 98%;
-	padding-bottom: 10px;
-	text-align: center;
-	margin: 0 auto;
-}
+  max-width: 98%;
+  padding-bottom: 10px;
+  text-align: center;
+  margin: 0 auto; }
