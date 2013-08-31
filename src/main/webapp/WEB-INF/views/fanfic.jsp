@@ -86,7 +86,7 @@
 					href="${pageContext.servletContext.contextPath}/chapter/${fanfic.getId()}/${chapter.getId()}">
 					${chapter.getName()} </a>
 			</div>
-			<c:if test="${canRemoveFanfics}">
+			<c:if test="${canRemoveChapters}">
 				<form method="post"
 					action="${pageContext.servletContext.contextPath}/removeChapter/${fanfic.getId()}/${chapter.getId()}">
 					<button class="remove">

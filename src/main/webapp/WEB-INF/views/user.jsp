@@ -25,7 +25,7 @@ ${showedUser.getUsername()}
 	<c:forEach items="${showedUser.getFanfics()}" var="fanfic">
 		<a
 			href="${pageContext.servletContext.contextPath}/fanfic/${fanfic.getId()}">${fanfic.getName()}</a>
-		<c:if test="${showedUser.getId().equals(currentUserId)}">
+		<c:if test="${canRemoveFanfics}">
 			<form method="post"
 				action="${pageContext.servletContext.contextPath}/removeFanfic/${fanfic.getId()}">
 				<button class="remove">
