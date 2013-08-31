@@ -1,5 +1,6 @@
 package by.itransition.fanfic.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -48,6 +49,9 @@ public class FanficDaoImpl implements FanficDao {
 
 	@Override
 	public List<Fanfic> search(String searchQuery) {
+		if (searchQuery.trim().isEmpty()) {
+			return new ArrayList<Fanfic>();
+		}
 		FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
 		QueryBuilder queryBuilder =
 				fullTextEntityManager.getSearchFactory().buildQueryBuilder().forEntity(Fanfic.class).get();

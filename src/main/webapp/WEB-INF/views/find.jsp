@@ -7,9 +7,9 @@
 <div class="page-header" id="banner">
 	<div class="row">
 		<div class="col-lg-10">
-			<h1>
-				<spring:message code="search" /> : "${searchRequest}"
-			</h1>
+			<h3>
+				<spring:message code="search" /> : <xmp id="searchRequest">"${searchRequest}"</xmp>
+			</h3>
 		</div>
 	</div>
 </div>

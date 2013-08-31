@@ -51,4 +51,12 @@ public class TagDaoImpl implements TagDao {
 		return entityManager.find(Tag.class, id);
 	}
 	
+	@Override
+	public List<Tag> getTags(int count) {
+		TypedQuery<Tag> query = entityManager.createQuery("SELECT t FROM Tag t order by rand()", Tag.class);
+		query.setFirstResult(0);
+		query.setMaxResults(count);
+		return query.getResultList();
+	}
+	
 }

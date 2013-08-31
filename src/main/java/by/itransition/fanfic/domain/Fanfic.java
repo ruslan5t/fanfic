@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 import org.apache.solr.analysis.LowerCaseFilterFactory;
 import org.apache.solr.analysis.SnowballPorterFilterFactory;
-import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.apache.solr.analysis.WhitespaceTokenizerFactory;
 import org.hibernate.search.annotations.Analyzer;
 import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
@@ -30,7 +30,7 @@ import org.hibernate.search.annotations.TokenizerDef;
 @Entity
 @Indexed
 @AnalyzerDef(name = "FanficAnalyzer",
-tokenizer = @TokenizerDef(factory = StandardTokenizerFactory.class),
+tokenizer = @TokenizerDef(factory = WhitespaceTokenizerFactory.class),
 filters = {
 	@TokenFilterDef(factory = LowerCaseFilterFactory.class),
 	@TokenFilterDef(factory = SnowballPorterFilterFactory.class, 

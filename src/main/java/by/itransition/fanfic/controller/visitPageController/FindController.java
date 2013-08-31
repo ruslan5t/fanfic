@@ -1,7 +1,5 @@
 package by.itransition.fanfic.controller.visitPageController;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,21 +26,30 @@ public class FindController extends VisitPageController {
 	private FanficService fanficService;
 
 	@RequestMapping(value = "/sendSearchRequest", method = RequestMethod.GET)
-	public String changeFindRequest(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
-		if (!request.getParameter("searchRequest").isEmpty()) {
-			return "redirect:/find/getFindPage/" + 
-					URLEncoder.encode(request.getParameter("searchRequest"), "utf-8");
+	public String changeFindRequest(Model model, HttpServletRequest request) {
+		String searchRequest = request.getParameter("searchRequest");
+		if (!searchRequest.isEmpty()) {
+			StringBuilder searchCharacterCodes = new StringBuilder();
+			for (char charOfRequest : searchRequest.toCharArray()) {
+				searchCharacterCodes.append((int)charOfRequest + "_");
+			}
+			return "redirect:/find/getFindPage/" + searchCharacterCodes;
 		} else {
 			return "redirect:/find/emptySearchRequest";
 		}
 	}
 
 	@RequestMapping(value = "/getFindPage/{searchRequest}", method = RequestMethod.GET)
-	public String findFanfics(@PathVariable("searchRequest") String searchRequest,
+	public String findFanfics(@PathVariable("searchRequest") String searchRequestCodes,
 			Model model) {
+		StringBuilder searchRequest = new StringBuilder();
+		for (String charCode : searchRequestCodes.split("_")) {
+			searchRequest.append((char)(int)Integer.valueOf(charCode));
+		}
 		settingModel(model);
-		List <Fanfic> foundedFanfics = fanficService.search(searchRequest);
-		settingResultSearchOnModel(model, searchRequest, foundedFanfics, foundedFanfics.size() == 0);
+		List <Fanfic> foundedFanfics = fanficService.search(searchRequest.toString());
+		settingResultSearchOnModel(model, searchRequest.toString(),
+				foundedFanfics, foundedFanfics.size() == 0);
 		return "find";
 	}
 	

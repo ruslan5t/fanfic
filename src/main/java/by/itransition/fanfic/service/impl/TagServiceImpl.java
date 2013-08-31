@@ -43,4 +43,10 @@ public class TagServiceImpl implements TagService {
 		return tagDao.getTagById(id);
 	}
 	
+	@Override
+	@Transactional
+	public List<Tag> getTags(int count) {
+		return tagDao.getTags(count);
+	}
+	
 }
