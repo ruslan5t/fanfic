@@ -59,7 +59,7 @@ public class SignUpController extends VisitPageController {
 			model.addAttribute("notCorrectEmail", true);
 			isErrorInput = true;
 		}
-		if (!user.getUsername().matches("\\w+") || user.getUsername().length() > 30) {
+		if (!user.getUsername().matches("[a-zA-Zà-ÿÀ-ß0-9_]+") || user.getUsername().length() > 30) {
 			model.addAttribute("notCorrectUsername", true);
 			isErrorInput = true;
 		}
@@ -69,7 +69,7 @@ public class SignUpController extends VisitPageController {
 				isErrorInput = true;
 			}
 		}
-		if (!user.getPassword().matches("\\w+") || user.getPassword().length() > 30) {
+		if (!user.getPassword().matches("[a-zA-Zà-ÿÀ-ß0-9_]+") || user.getPassword().length() > 30) {
 			model.addAttribute("notCorrectPassword", true);
 			isErrorInput = true;
 		}
