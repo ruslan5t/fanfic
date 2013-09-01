@@ -6,7 +6,7 @@
 <div class="page-header" id="banner">
 	<div class="row">
 		<div class="col-lg-10">
-			<h1>Vosstanovlenie parolya</h1>
+			<h1><spring:message code="passwordRecovery"/></h1>
 		</div>
 	</div>
 </div>

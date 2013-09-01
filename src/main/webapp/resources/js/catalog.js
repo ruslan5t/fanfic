@@ -1,12 +1,12 @@
 
 $(function() {
   var countItems, itemsOnPage;
-  countItems = $("#countItems").attr("value");
-  itemsOnPage = $("#countOnPage").attr("value");
+  countItems = parseInt($("#countItems").attr("value"));
+  itemsOnPage = parseInt($("#countOnPage").attr("value"));
   if (countItems > itemsOnPage) {
     return $("#pagination").pagination({
       items: countItems,
-      currentPage: $("#pageNumber").attr("value"),
+      currentPage: parseInt($("#pageNumber").attr("value")),
       itemsOnPage: itemsOnPage,
       cssStyle: "light-theme",
       onPageClick: function(pageNumber) {

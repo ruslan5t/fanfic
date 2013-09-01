@@ -12,14 +12,19 @@
 		<class>by.itransition.fanfic.domain.Vote</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ruslan" />
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://mysql-fanfic.jelastic.regruhosting.ru/fanfic" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="pass" />
+			<property name="hibernate.connection.password" value="TuFBKaatbk" />
+			<!--<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ruslan" 
+				/> <property name="hibernate.connection.username" value="root" /> <property 
+				name="hibernate.connection.password" value="pass" />-->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.connection.pool_size" value="20" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.search.default.directory_provider" value="ram" />
+			<property name="hibernate.search.default.directory_provider"
+				value="ram" />
 			<property name="hibernate.search.default.indexBase" value="/var/lucene/indexes" />
 		</properties>
 	</persistence-unit>

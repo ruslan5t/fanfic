@@ -28,7 +28,6 @@ public class GetTagsController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> getTags(Model model) {
 		List<Tag> tags = tagService.getAllTags();
-		System.out.println(tags.size());
 		JSONArray tagNamesJSON = new JSONArray();
 		for (Tag tag : tags) {
 			tagNamesJSON.add(tag.getName());

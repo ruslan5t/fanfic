@@ -77,7 +77,7 @@ public class FanficDaoImpl implements FanficDao {
 	@Override
 	public List<Fanfic> getFanficsByCategory(Category category, int first, int count) {
 		TypedQuery<Fanfic> query = entityManager.createQuery(
-				"SELECT f FROM Fanfic f WHERE :category MEMBER OF f.categories",
+				"SELECT f FROM Fanfic f WHERE :category MEMBER OF f.categories ORDER BY f.id DESC",
 				Fanfic.class);
 		query.setParameter("category", category);
 		query.setFirstResult(first);
@@ -87,7 +87,7 @@ public class FanficDaoImpl implements FanficDao {
 	
 	@Override
 	public List<Fanfic> getFanficsByDate(int first, int count) {
-		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT f FROM Fanfic f", Fanfic.class);
+		TypedQuery<Fanfic> query = entityManager.createQuery("SELECT f FROM Fanfic f ORDER BY f.id DESC", Fanfic.class);
 		query.setFirstResult(first);
 		query.setMaxResults(count);
 		return query.getResultList();

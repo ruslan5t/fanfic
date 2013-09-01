@@ -1,7 +1,8 @@
 package by.itransition.fanfic.controller.visitPageController;
 
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -38,21 +39,21 @@ public class SignUpController extends VisitPageController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String createUser(@ModelAttribute("user") User user,
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, HttpServletRequest request) {
 		if (checkInputErrors(user, model)) {
 			settingModel(model);
 			return "signUp";
 		}
 		int registrationId = userService.register(user);
-		userService.confirmRegistration(registrationId);
-		//			ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
-		//					LocaleContextHolder.getLocale());
-		//			emailService.sendMessage(user.getEmail(), 
-		//					resourceBundle.getString("ifYouRegisteredOnFanficLibraryWebsiteGoTo") +
-		//					" http://localhost:8080/fanfic/confirmRegistration/" + registrationId);
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("messages",
+				LocaleContextHolder.getLocale());
+		emailService.sendMessage(user.getEmail(), 
+				resourceBundle.getString("ifYouRegisteredOnFanficLibraryWebsiteGoTo") +
+				" http://" + request.getServerName() + ":" + request.getServerPort() +
+				"/confirmRegistration/" + registrationId);
 		return "redirect:/messageSent";
 	}
-	
+
 	private boolean checkInputErrors(User user, Model model) {
 		boolean isErrorInput = false;
 		if (!user.getEmail().matches(".+@.+\\..+") || user.getEmail().length() > 75) {

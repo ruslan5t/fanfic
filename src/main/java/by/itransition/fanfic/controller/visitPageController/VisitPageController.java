@@ -33,7 +33,7 @@ public abstract class VisitPageController {
 		Authentication authentication = SecurityContextHolder
 				.getContext().getAuthentication();
 		model.addAttribute("allTags", tagService.getTags(10));
-		if(hasAuthority(authentication, Role.ROLE_USER)) {
+		if (hasAuthority(authentication, Role.ROLE_USER)) {
 			model.addAttribute("isLogged", true);
 			User currentUser = userService.getUserByName(authentication.getName());
 			model.addAttribute("currentUserId", currentUser.getId());
