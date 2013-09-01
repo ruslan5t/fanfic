@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-lg-10">
 			<h3>
-				<spring:message code="search" /> : <xmp id="searchRequest">"${searchRequest}"</xmp>
+				<spring:message code="search" />: <xmp id="searchRequest">"${searchRequest}"</xmp>
 			</h3>
 		</div>
 	</div>
